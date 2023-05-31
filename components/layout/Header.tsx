@@ -1,5 +1,5 @@
-
-import React from 'react'
+import SearchForm from "../search/SearchForm"
+import Logo from "./Logo"
 
 interface Props {
     
@@ -9,10 +9,12 @@ const Header = (props: Props) => {
     return (
         <header className='header'>
           <div className="container header-layout">
-            <h2 className='header-logo'><span>E</span>Commerce</h2>  
+            <Logo />
+            <SearchForm />
           </div>
         </header>
     )
 }
 
 export default Header
+
