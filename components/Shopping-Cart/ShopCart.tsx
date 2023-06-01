@@ -1,4 +1,5 @@
 import ShopCartIcon from "../icons/cart-icon";
+import CartMenu from "./CartMenu";
 
 const ShopCart = () => {
     return (
@@ -6,6 +7,7 @@ const ShopCart = () => {
             <li className="shopCart">
                 <ShopCartIcon />
                 <div className="shopCart-badge"> 2 </div>
+                <CartMenu />
             </li>
         </ul>
     );

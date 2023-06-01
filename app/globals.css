@@ -72,10 +72,12 @@ a{
 
 .header {
   background-color: var(--second-color);
+  padding: 1rem 0;
 }
 .header-layout{
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 @media (min-width: 992px) {
    .header-layout{
@@ -173,4 +175,51 @@ a{
   bottom: 0;
   right: 0;
   transform: translate(25%, 25%);
+}
+.shopCart:hover .shopCart-badge{
+  display: none;
+}
+/* ===========Shopping cart - menu============= */
+.shopCart-menu{
+  display: none;
+}
+.shopCart:hover .shopCart-menu{
+  display: block;
+  position: absolute;
+  right: -12.5rem;
+  top: 100%;
+
+  max-height: 400px;
+  height: 300px;
+  min-width: 300px;
+  box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.74);
+}
+@media (min-width: 576px) {
+  .shopCart:hover .shopCart-menu{
+    right: -6rem;
+  }
+}
+
+.shopCart-menu table{
+  text-align: center;
+}
+.shopCart-menu thead{
+  border-bottom: solid 1px #d9dadd ;
+}
+.iconoCarrito-botones{
+  display: grid;
+  row-gap: .2rem;
+  
+}
+.shopCart-menu th {
+  padding: 12px 15px;
+}
+.shopCart-menu th:first-child{
+  padding: 12px 15px 12px 0px;
+} 
+
+.shopCart-menu td {
+  margin-top: 1rem;
+  border-bottom: solid 1px #d9dadd ;
+  padding: 1rem 0;
 }
