@@ -63,6 +63,7 @@ ul {
 }
 a{
   text-decoration: none;
+  color: #0e0d0d;
 }
 .container{
   max-width: 1200px;
@@ -137,6 +138,11 @@ a{
   width: 20px;
 }
 /* ============Shopping Cart =========== */
+.header-auth_div {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
 .shopCart {
   position: relative;
   border: 1px solid #ccc;
@@ -205,21 +211,31 @@ a{
 }
 .shopCart-menu thead{
   border-bottom: solid 1px #d9dadd ;
-}
-.iconoCarrito-botones{
-  display: grid;
-  row-gap: .2rem;
-  
+  padding: 0 1rem;
 }
 .shopCart-menu th {
   padding: 12px 15px;
 }
 .shopCart-menu th:first-child{
-  padding: 12px 15px 12px 0px;
+  padding: 12px 15px 12px 12px;
 } 
 
 .shopCart-menu td {
   margin-top: 1rem;
   border-bottom: solid 1px #d9dadd ;
   padding: 1rem 0;
+}
+
+
+/* ============AUTH========= */
+
+.Auth-container{ 
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.Auth-container a {
+  font-family: var(--textFont);
+  color: #5f6368;
+  font-weight: 700;
 }

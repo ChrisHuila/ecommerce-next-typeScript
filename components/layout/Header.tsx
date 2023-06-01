@@ -1,4 +1,5 @@
 import ShopCart from "../Shopping-Cart/ShopCart"
+import Auth from "../auth/Auth"
 import SearchForm from "../search/SearchForm"
 import Logo from "./Logo"
 
@@ -12,7 +13,10 @@ const Header = (props: Props) => {
           <div className="container header-layout">
             <Logo />
             <SearchForm />
-            <ShopCart />
+            <div className="header-auth_div">
+              <Auth />
+              <ShopCart />
+            </div>
           </div>
         </header>
     )
