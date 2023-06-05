@@ -239,3 +239,6 @@ a{
   color: #5f6368;
   font-weight: 700;
 }
+.Auth-container a:hover{
+  color: #2d6eaf;
+}

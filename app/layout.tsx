@@ -1,4 +1,5 @@
 import Header from '@/components/layout/Header'
+import ProductsProvaider from '@/context/productsContext';
 
 import './normalize.css'
 import './globals.css'
@@ -22,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <Header />
-        {children}
-        </body>
+        <ProductsProvaider>
+          <Header />
+          {children}
+        </ProductsProvaider>
+      </body>
     </html>
   )
 }
