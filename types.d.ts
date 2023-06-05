@@ -24,7 +24,7 @@ export interface Categories {
 }
 export interface ProductsContext {
     firebase: Firebase,
-    shoopingcart: Array<Product>
+    shopingcart: Array<Product>
 }
 
 export interface productReducerAction {

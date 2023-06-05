@@ -6,7 +6,7 @@ export default (state: ProductsContext, action: productReducerAction) => {
         case NEW_PURCHASE:
             return{
                 ...state,
-                shoopingcart: action.payload
+                shopingcart: action.payload
             }
         default:
             return state

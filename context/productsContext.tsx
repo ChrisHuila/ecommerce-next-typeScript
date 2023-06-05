@@ -2,7 +2,7 @@
 import { ReactNode, createContext, useReducer } from "react";
 import firebase from "@/components/firebase/firebase";
 import { ProductsContext } from "@/types";
-import shoopingCartReducer from "./shoopingCartReducer";
+import shopingCartReducer from "./shoopingCartReducer";
 
 interface productProvaiderProps {
     children: ReactNode
@@ -12,19 +12,19 @@ export const productsContext = createContext({} as ProductsContext);
 
 const initialState = {
     firebase,
-    shoopingcart: []
+    shopingcart: []
 }
 
 const ProductsProvaider = ({children}:productProvaiderProps) => {
 
    
-   const [state, dispatch] = useReducer(shoopingCartReducer, initialState);
+   const [state, dispatch] = useReducer(shopingCartReducer, initialState);
 
     return(
         <productsContext.Provider
             value={{
                 firebase,
-                shoopingcart: state.shoopingcart
+                shopingcart: state.shopingcart
             }}
         >
             {children}

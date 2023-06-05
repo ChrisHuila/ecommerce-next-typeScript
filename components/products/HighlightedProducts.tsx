@@ -2,31 +2,34 @@
 import { useContext } from 'react';
 import { productsContext } from '@/context/productsContext';
 
-import productos from '../mock/products';
-import { categorias } from '../mock/products';
-
+// import Product from './Product';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from "swiper";
 import 'swiper/css';
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import {Categories, Product} from '@/types'
+import ShowProduct from './Product';
 
-export const revalidate = 3600; // revalidate every minute
+export const revalidate = 3600; // revalidate every minute 
+
+interface Data {
+      dataall: [products: Array<Product>, categories: Array<Categories> ]   
+}
 
 const HighlightedProducts = async () => {
         const {firebase} = useContext(productsContext)
-
-        const [products, categories] = await Promise.all([
+        
+        const [products, categories]: Data["dataall"] = await Promise.all([
                 firebase.getCollet('productos', 20),
                 firebase.getCollet('categorias', 3)
-        ])
+        ] )
         console.log(products, categories);
         
-
     return (
         <>
-             {categorias.map( (categoria, i) => (
-                <div key={i} >
+             {categories.map( (categoria, i) => (
+                <ul key={i} >
                         <h2 className="categoria-header">{categoria.nombre}</h2>
                         <Swiper                    
                         navigation={true}
@@ -36,14 +39,16 @@ const HighlightedProducts = async () => {
                         slidesPerView={4}
                       
                         >       
-                                {productos.map( articulo => ( articulo.categoria === categoria.id && articulo.imagen
+                                {products.map( articulo => ( articulo.categoria === categoria.id && articulo.imagen
                                 ?<SwiperSlide key={articulo.id}>
-                                 <h3>{articulo.referencia}</h3>
+                                        <ShowProduct 
+                                        article={articulo}
+                                        />
                                 </SwiperSlide>
                                 : null))}
                                       
                         </Swiper>
-                </div>
+                </ul>
                 ))}
         </>
       );
