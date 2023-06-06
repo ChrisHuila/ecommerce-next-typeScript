@@ -11,8 +11,7 @@ import {
     Firestore,
  } from "firebase/firestore";
 
-
-class Firebase {
+export class Firebase {
     app
     db
     constructor(){

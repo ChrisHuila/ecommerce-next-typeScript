@@ -4,7 +4,7 @@
     --first-color-alt: #0a58ca;
     --body-color: #fff;
     --text-color: #0f0f0f;
-    --second-color: #F5F5F5;
+    --second-color: #ffffff;
 
     --textFont: 'Roboto', sans-serif;
     /* --title-color:
@@ -46,6 +46,7 @@ html {
 body{
     font-size: 16px;
     font-family: var(--textFont);
+    background-color: var(--body-color);
 }
 
 *, *:before, *:after {
@@ -73,6 +74,7 @@ a{
 
 .header {
   background-color: var(--second-color);
+  box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.284);
   padding: 1rem 0;
 }
 .header-layout{
@@ -241,4 +243,11 @@ a{
 }
 .Auth-container a:hover{
   color: #2d6eaf;
+}
+
+/* ========SHOW PRODUCTS========= */
+
+.showproduct-container {
+  width:100%;
+  margin-bottom: 1rem;
 }

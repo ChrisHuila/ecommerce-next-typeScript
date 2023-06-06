@@ -23,7 +23,6 @@ export interface Categories {
     date: number
 }
 export interface ProductsContext {
-    firebase: Firebase,
     shopingcart: Array<Product>
 }
 
