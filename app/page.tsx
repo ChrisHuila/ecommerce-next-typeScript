@@ -23,8 +23,6 @@ export default  async function Home() {
 console.log(products, categories);
   return (
     <>
-      <h2 >home</h2>
-     
       <HighlightedProducts 
         categories={categories}
         products={products}

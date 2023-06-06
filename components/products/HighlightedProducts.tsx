@@ -18,19 +18,17 @@ interface Props {
 const HighlightedProducts =({categories, products}: Props) => {
     // const {firebase} = useContext(productsContext)
     
-    console.log(products, categories);
-        
     return (
         <>
             {categories.map( (categoria, i) => (
-                <div key={i} >
-                    <h2 className="categoria-header">{categoria.nombre}</h2>
+                <div className='container' key={i} >
+                    {/* <h2 className="categoria-header">{categoria.nombre}</h2> */}
                     <Swiper                    
                     navigation={true}
                     pagination={true} 
                     modules={[Navigation, Pagination]}
                     spaceBetween={10}
-                    slidesPerView={1}
+                    slidesPerView={5}
                     >       
                         {products.map( articulo => ( articulo.categoria === categoria.id && articulo.imagen
                         ?<SwiperSlide key={articulo.id}>
