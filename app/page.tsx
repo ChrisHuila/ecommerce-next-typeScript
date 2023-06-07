@@ -1,32 +1,29 @@
-import HighlightedProducts from '@/components/products/HighlightedProducts'
-import firebase from '@/components/firebase/index';
+import HighlightedProducts from "@/components/products/HighlightedProducts";
+import firebase from "@/firebase/index";
 // Interface
-import {Categories, Product} from '@/types'
+import { Categories, Product } from "@/types";
 
-export const revalidate = 3600; // revalidate every minute 
-const getProducts = async() => {
-    const res= await firebase.getCollet('productos', 20) as Array<Product> 
-    return res
-}
+export const revalidate = 3600; // revalidate every minute
 
-const getCategories = async() => {
-    const res = await firebase.getCollet('categorias', 3) as Array<Categories> 
-    return res
-}
+const getProducts = async () => {
+    const res = (await firebase.getCollet("productos", 20)) as Array<Product>;
+    return res;
+};
 
-export default  async function Home() {
-  const [products, categories] = await Promise.all([
-    getProducts(),
-    getCategories()
-])
+const getCategories = async () => {
+    const res = (await firebase.getCollet("categorias", 3)) as Array<Categories>;
+    return res;
+};
 
-console.log(products, categories);
-  return (
-    <>
-      <HighlightedProducts 
-        categories={categories}
-        products={products}
-      />
-    </>
-  )
+export default async function Home() {
+    const [products, categories] = await Promise.all([getProducts(), getCategories()]);
+
+    return (
+        <>
+            <HighlightedProducts
+                categories={categories}
+                products={products}
+            />
+        </>
+    );
 }
