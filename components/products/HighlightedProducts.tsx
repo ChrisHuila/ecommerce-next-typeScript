@@ -7,38 +7,30 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 // interface
-import { Categories, Product } from "@/types";
+import { Categories, Product, ProductFire } from "@/types";
 
 interface Props {
-    categories: Array<Categories>;
-    products: Array<Product>;
+    products: Array<ProductFire>;
+    category: string;
 }
 
-const HighlightedProducts = ({ categories, products }: Props) => {
+const HighlightedProducts = ({ products, category }: Props) => {
     return (
-        <>
-            {categories.map((categoria, i) => (
-                <div
-                    className="container"
-                    key={i}>
-                    {/* <h2 className="categoria-header">{categoria.nombre}</h2> */}
-                    <Swiper
-                        navigation={true}
-                        pagination={true}
-                        modules={[Navigation, Pagination]}
-                        spaceBetween={10}
-                        slidesPerView={5}>
-                        {products.map(articulo =>
-                            articulo.categoria === categoria.id && articulo.imagen ? (
-                                <SwiperSlide key={articulo.id}>
-                                    <ShowProduct article={articulo} />
-                                </SwiperSlide>
-                            ) : null
-                        )}
-                    </Swiper>
-                </div>
-            ))}
-        </>
+        <div className="container">
+            <h2 className="categoria-header">{category}</h2>
+            <Swiper
+                navigation={true}
+                pagination={true}
+                modules={[Navigation, Pagination]}
+                spaceBetween={10}
+                slidesPerView={5}>
+                {products.map(product => (
+                    <SwiperSlide key={product.id}>
+                        <ShowProduct article={product} />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
     );
 };
 
