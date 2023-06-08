@@ -1,14 +1,15 @@
 "use client";
-// import ShowProduct from "./ShowProduct";
+
+import dynamic from "next/dynamic";
+import useResponsive from "@/hooks/useResponsive";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
+import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 // interface
 import { ProductFire } from "@/types";
-import dynamic from "next/dynamic";
 
 const ShowProduct = dynamic(() => import("./ShowProduct"), { ssr: false });
 
@@ -18,15 +19,16 @@ interface Props {
 }
 
 const HighlightedProducts = ({ products, category }: Props) => {
+    const { numberSwiper } = useResponsive();
+
     return (
         <div className="container HighlightedProducts">
             <h2 className="HighlightedProducts-category">{category}</h2>
             <Swiper
                 navigation={true}
-                pagination={true}
-                modules={[Navigation, Pagination]}
+                modules={[Navigation]}
                 spaceBetween={10}
-                slidesPerView={5}>
+                slidesPerView={numberSwiper()}>
                 {products.map(product => (
                     <SwiperSlide key={product.id}>
                         <ShowProduct article={product} />

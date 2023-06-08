@@ -102,7 +102,7 @@ a {
 .header-logo {
     font-size: var(--h1-font-size);
     font-weight: 700;
-    color: #e2891c;
+    color: #c00;
     cursor: pointer;
 }
 .header-logo span {
@@ -265,6 +265,7 @@ a {
     width: 100%;
     max-width: 232px;
     height: 100%;
+    margin: 0 auto;
     margin-top: 2rem;
     border: 1px solid #ccc;
     transition: 0.4s ease all;
