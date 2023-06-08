@@ -1,8 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const useResponsive = () => {
-    // window is undefined in the server
+const useSwiper = () => {
     const getWidth = () => {
         if (typeof window !== "undefined") {
             return (
@@ -13,20 +12,15 @@ const useResponsive = () => {
         }
     };
 
-    // set device's width
     const [width, setWidth] = useState(getWidth());
 
-    // device' with listener
     useEffect(() => {
-        let timeoutId: any = null;
         const resizeListener = () => {
-            clearTimeout(timeoutId);
-            // execute the fn getWidth
-            timeoutId = setTimeout(() => setWidth(getWidth()), 150);
-            // stop execute
+            setTimeout(() => (width === getWidth() ? null : setWidth(getWidth()), 150));
         };
+
         window.addEventListener("resize", resizeListener);
-    }, []);
+    }, [width]);
 
     const numberSwiper = () => {
         if (width) {
@@ -44,7 +38,7 @@ const useResponsive = () => {
         }
     };
 
-    return { numberSwiper, width };
+    return { numberSwiper };
 };
 
-export default useResponsive;
+export default useSwiper;

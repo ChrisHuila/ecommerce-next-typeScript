@@ -1,8 +1,6 @@
 "use client";
-
 import dynamic from "next/dynamic";
-import useResponsive from "@/hooks/useResponsive";
-
+import useSwiper from "@/hooks/useSwiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
@@ -19,7 +17,7 @@ interface Props {
 }
 
 const HighlightedProducts = ({ products, category }: Props) => {
-    const { numberSwiper } = useResponsive();
+    const { numberSwiper } = useSwiper();
 
     return (
         <div className="container HighlightedProducts">
