@@ -20,7 +20,7 @@ interface Props {
 const HighlightedProducts = ({ products, category }: Props) => {
     return (
         <div className="container HighlightedProducts">
-            <h2 className="">{category}</h2>
+            <h2 className="HighlightedProducts-category">{category}</h2>
             <Swiper
                 navigation={true}
                 pagination={true}

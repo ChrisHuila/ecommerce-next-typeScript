@@ -8,12 +8,14 @@ interface Props {
 }
 
 const ShowProduct = ({ article }: Props) => {
-    // const url = `https://firebasestorage.googleapis.com/v0/b/ecommercereact-ccb1d.appspot.com/o/${article?.imagen}?alt=media&token=fba7ec21-ca5e-4d2b-8cc3-2830309b446a`;
+    const discountOperation = Math.ceil(
+        parseInt(article.price) * (100 / (100 - article.discount))
+    );
 
-    const discountOperation =
-        parseInt(article.price) - parseInt(article.price) * (article.discount / 100);
-    const discountPrice = `$${discountOperation}`;
+    const discountPrice = `$${priceFormat(discountOperation)}`;
+
     const finalPrice = `$${priceFormat(parseInt(article.price))}`;
+
     return (
         <div className="showproduct-container">
             <div className="showproduct-img_container">
@@ -30,8 +32,13 @@ const ShowProduct = ({ article }: Props) => {
 
             <div className="showproduct-body_container">
                 <h3 className="percentage-discount">
-                    {article.discount}% off Free Shipping <ThunderIcon />
-                    <p className="price_discount">{discountPrice}</p>
+                    {article.discount ? article.discount + "% off" : " "} Free Shipping{" "}
+                    <ThunderIcon />
+                    <p
+                        className="price_discount"
+                        style={{ visibility: article.discount ? "initial" : "hidden" }}>
+                        {discountPrice}
+                    </p>
                 </h3>
                 <h3 className="final-price">
                     Price: <span>{finalPrice}</span>
