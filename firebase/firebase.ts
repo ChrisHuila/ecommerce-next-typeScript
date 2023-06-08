@@ -52,7 +52,7 @@ export class Firebase {
     async getColletBy(category: string) {
         const products: Array<ProductFire> = [];
         const postRef = collection(this.db, "products");
-        const q = query(postRef, where("categy", "==", category));
+        const q = query(postRef, where("category", "==", category));
         try {
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach(doc => {

@@ -1,5 +1,5 @@
 "use client";
-import ShowProduct from "./ShowProduct";
+// import ShowProduct from "./ShowProduct";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
@@ -7,7 +7,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 // interface
-import { Categories, Product, ProductFire } from "@/types";
+import { ProductFire } from "@/types";
+import dynamic from "next/dynamic";
+
+const ShowProduct = dynamic(() => import("./ShowProduct"), { ssr: false });
 
 interface Props {
     products: Array<ProductFire>;
@@ -16,8 +19,8 @@ interface Props {
 
 const HighlightedProducts = ({ products, category }: Props) => {
     return (
-        <div className="container">
-            <h2 className="categoria-header">{category}</h2>
+        <div className="container HighlightedProducts">
+            <h2 className="">{category}</h2>
             <Swiper
                 navigation={true}
                 pagination={true}
