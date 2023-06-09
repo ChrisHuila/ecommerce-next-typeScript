@@ -20,6 +20,10 @@ const useSwiper = () => {
         };
 
         window.addEventListener("resize", resizeListener);
+
+        return () => {
+            window.removeEventListener("resize", resizeListener);
+        };
     }, [width]);
 
     const numberSwiper = () => {
