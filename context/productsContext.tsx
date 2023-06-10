@@ -18,17 +18,10 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
     const [state, dispatch] = useReducer(shopingCartReducer, initialState);
 
     const addCartProduct = (product: ProductFire) => {
-        if (state.cartitems?.find(item => item.id === product.id) === null) {
-            dispatch({
-                type: ADD_CART,
-                payload: product,
-            });
-        } else {
-            dispatch({
-                type: INCREASE_CART_QUANTITY,
-                payload: product,
-            });
-        }
+        dispatch({
+            type: ADD_CART,
+            payload: product,
+        });
     };
 
     return (

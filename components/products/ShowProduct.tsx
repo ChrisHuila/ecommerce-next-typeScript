@@ -10,10 +10,10 @@ interface Props {
 }
 
 const ShowProduct = ({ article }: Props) => {
-    // const { addCartProduct } = useContext(productsContext);
+    const { addCartProduct } = useContext(productsContext);
 
     const handleCartProduct = () => {
-        // addCartProduct(article);
+        addCartProduct(article);
     };
 
     const discountOperation = Math.ceil(
