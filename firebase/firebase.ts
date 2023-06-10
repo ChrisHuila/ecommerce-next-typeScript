@@ -1,4 +1,4 @@
-import { Product, Categories, ProductFire } from "@/types";
+import { ProductFire } from "@/types";
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "./config";
 import {
@@ -35,8 +35,8 @@ export class Firebase {
         }
     }
 
-    async getCollet(collect: string, limitNumber: number) {
-        const items: Array<Product | Categories> = [];
+    async getCollet<T>(collect: string, limitNumber: number) {
+        const items: Array<T> = [];
         const q = query(
             collection(this.db, collect),
             orderBy("date", "desc"),
@@ -45,7 +45,7 @@ export class Firebase {
 
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach(doc => {
-            items.push(doc.data() as Product | Categories);
+            items.push(doc.data() as T);
         });
         return items;
     }

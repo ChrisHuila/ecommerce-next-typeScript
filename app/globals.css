@@ -196,7 +196,7 @@ a {
     transform: translate(25%, 25%);
 }
 .shopCart:hover .shopCart-badge {
-    display: none;
+    visibility: hidden;
 }
 /* ===========Shopping cart - menu============= */
 .shopCart-menu {
@@ -207,15 +207,17 @@ a {
     position: absolute;
     right: -12.5rem;
     top: 100%;
+    z-index: var(--z-tooltip);
 
     max-height: 400px;
     height: 300px;
     min-width: 300px;
+    background-color: #fff;
     box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.74);
 }
 @media (min-width: 576px) {
     .shopCart:hover .shopCart-menu {
-        right: -6rem;
+        right: -5rem;
     }
 }
 

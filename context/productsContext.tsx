@@ -1,31 +1,45 @@
-"use client"
+"use client";
 import { ReactNode, createContext, useReducer } from "react";
-import { ProductsContext } from "@/types";
+import { ProductFire, ProductsContext } from "@/types";
 import shopingCartReducer from "./shoopingCartReducer";
+import { ADD_CART, INCREASE_CART_QUANTITY } from "@/types/index";
 
 interface productProvaiderProps {
-    children: ReactNode
+    children: ReactNode;
 }
 
 export const productsContext = createContext({} as ProductsContext);
 
 const initialState = {
-    shopingcart: []
-}
+    cartitems: [],
+};
 
-const ProductsProvaider = ({children}:productProvaiderProps) => {
-   
-   const [state, dispatch] = useReducer(shopingCartReducer, initialState);
+const ProductsProvaider = ({ children }: productProvaiderProps) => {
+    const [state, dispatch] = useReducer(shopingCartReducer, initialState);
 
-    return(
+    const addCartProduct = (product: ProductFire) => {
+        if (state.cartitems?.find(item => item.id === product.id) === null) {
+            dispatch({
+                type: ADD_CART,
+                payload: product,
+            });
+        } else {
+            dispatch({
+                type: INCREASE_CART_QUANTITY,
+                payload: product,
+            });
+        }
+    };
+
+    return (
         <productsContext.Provider
             value={{
-                shopingcart: state.shopingcart
-            }}
-        >
+                cartitems: state.cartitems,
+                addCartProduct,
+            }}>
             {children}
         </productsContext.Provider>
-    )
-}
+    );
+};
 
 export default ProductsProvaider;

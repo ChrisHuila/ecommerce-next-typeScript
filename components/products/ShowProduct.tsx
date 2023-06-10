@@ -2,12 +2,20 @@ import priceFormat from "@/services/priceFormat";
 import Image from "next/image";
 import { ProductFire } from "@/types";
 import ThunderIcon from "../icons/Thunder";
+import { productsContext } from "@/context/productsContext";
+import { useContext } from "react";
 
 interface Props {
     article: ProductFire;
 }
 
 const ShowProduct = ({ article }: Props) => {
+    // const { addCartProduct } = useContext(productsContext);
+
+    const handleCartProduct = () => {
+        // addCartProduct(article);
+    };
+
     const discountOperation = Math.ceil(
         parseInt(article.price) * (100 / (100 - article.discount))
     );
@@ -45,7 +53,11 @@ const ShowProduct = ({ article }: Props) => {
                 </h3>
             </div>
             <div className="showproduct-btn_container">
-                <button className="showproduct-btn">Add</button>
+                <button
+                    className="showproduct-btn"
+                    onClick={handleCartProduct}>
+                    Add
+                </button>
             </div>
         </div>
     );
