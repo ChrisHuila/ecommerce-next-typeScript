@@ -1,8 +1,8 @@
 "use client";
-import { productReducerAction, stateReducer } from "@/types";
+import { ProductReducerAction, StateReducer } from "@/types";
 import { ADD_CART } from "@/types/index";
 
-export default (state: stateReducer, action: productReducerAction): stateReducer => {
+export default (state: StateReducer, action: ProductReducerAction): StateReducer => {
     switch (action.type) {
         case ADD_CART:
             if (!state.cartitems?.some(item => item.id === action.payload.id)) {

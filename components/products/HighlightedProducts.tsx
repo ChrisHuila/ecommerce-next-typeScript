@@ -7,12 +7,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 // interface
-import { ProductFire } from "@/types";
+import { Product } from "@/types";
 
 const ShowProduct = dynamic(() => import("./ShowProduct"), { ssr: false });
 
 interface Props {
-    products: Array<ProductFire>;
+    products: Array<Product>;
     category: string;
 }
 

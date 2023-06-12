@@ -1,8 +1,8 @@
 "use client";
 import { ReactNode, createContext, useReducer } from "react";
-import { ProductFire, ProductsContext } from "@/types";
+import { Product, ProductsContext } from "@/types";
 import shopingCartReducer from "./shoopingCartReducer";
-import { ADD_CART, INCREASE_CART_QUANTITY } from "@/types/index";
+import { ADD_CART } from "@/types/index";
 
 interface productProvaiderProps {
     children: ReactNode;
@@ -17,7 +17,7 @@ const initialState = {
 const ProductsProvaider = ({ children }: productProvaiderProps) => {
     const [state, dispatch] = useReducer(shopingCartReducer, initialState);
 
-    const addCartProduct = (product: ProductFire) => {
+    const addCartProduct = (product: Product) => {
         dispatch({
             type: ADD_CART,
             payload: product,

@@ -1,12 +1,12 @@
 import priceFormat from "@/services/priceFormat";
 import Image from "next/image";
-import { ProductFire } from "@/types";
+import { Product } from "@/types";
 import ThunderIcon from "../icons/Thunder";
 import { productsContext } from "@/context/productsContext";
 import { useContext } from "react";
 
 interface Props {
-    article: ProductFire;
+    article: Product;
 }
 
 const ShowProduct = ({ article }: Props) => {
@@ -16,9 +16,7 @@ const ShowProduct = ({ article }: Props) => {
         addCartProduct(article);
     };
 
-    const discountOperation = Math.ceil(
-        parseInt(article.price) * (100 / (100 - article.discount))
-    );
+    const discountOperation = Math.ceil(parseInt(article.price) * (100 / (100 - article.discount)));
 
     const discountPrice = `$${priceFormat(discountOperation)}`;
 
@@ -40,8 +38,7 @@ const ShowProduct = ({ article }: Props) => {
 
             <div className="showproduct-body_container">
                 <h3 className="percentage-discount">
-                    {article.discount ? article.discount + "% off" : " "} Free Shipping{" "}
-                    <ThunderIcon />
+                    {article.discount ? article.discount + "% off" : " "} Free Shipping <ThunderIcon />
                     <p
                         className="price_discount"
                         style={{ visibility: article.discount ? "initial" : "hidden" }}>

@@ -1,4 +1,4 @@
-export interface ProductFire {
+export interface Product {
     name: string;
     price: string;
     image: string;
@@ -10,20 +10,19 @@ export interface ProductFire {
     id: string;
     quantity?: number;
 }
-export type ProductsContext = {
-    cartitems: Array<ProductFire>;
-    addCartProduct: (product: ProductFire) => void;
-};
-export type stateReducer = {
-    cartitems: Array<ProductFire>;
-};
+export interface StateReducer {
+    cartitems: Array<Product>;
+}
+export interface ProductsContext extends StateReducer {
+    addCartProduct: (product: Product) => void;
+}
 
-export type productReducerAction =
+export type ProductReducerAction =
     | {
           type: ADD_CART;
-          payload: ProductFire;
+          payload: Product;
       }
     | {
           type: INCREASE_CART_QUANTITY;
-          payload: ProductFire;
+          payload: Product;
       };
