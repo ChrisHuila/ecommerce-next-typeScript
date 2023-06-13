@@ -1,13 +1,18 @@
+"use client";
+import { useContext } from "react";
+import { productsContext } from "@/context/productsContext";
 import ShopCartIcon from "../icons/cart-icon";
 import CartMenu from "./CartMenu";
 
 const ShopCart = () => {
+    const { cartquantity } = useContext(productsContext);
     return (
         <ul>
             <li className="shopCart">
                 <ShopCartIcon />
-                {/* TO DO CONDICIONAL BADGE */}
-                <div className="shopCart-badge"> 2 </div>
+
+                {cartquantity > 0 && <div className="shopCart-badge"> {cartquantity} </div>}
+
                 <CartMenu />
             </li>
         </ul>

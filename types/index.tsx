@@ -1,2 +1,2 @@
 export const ADD_CART = "ADD_CART";
-export const INCREASE_CART_QUANTITY = "INCREASE_CART_QUANTITY";
+export const CART_QUANTITY = "CART_QUANTITY";

@@ -1,6 +1,6 @@
 "use client";
 import { ProductReducerAction, StateReducer } from "@/types";
-import { ADD_CART } from "@/types/index";
+import { ADD_CART, CART_QUANTITY } from "@/types/index";
 
 export default (state: StateReducer, action: ProductReducerAction): StateReducer => {
     switch (action.type) {
@@ -25,6 +25,14 @@ export default (state: StateReducer, action: ProductReducerAction): StateReducer
                     ),
                 };
             }
+        case CART_QUANTITY:
+            return {
+                ...state,
+                cartquantity: state.cartitems.reduce(
+                    (quantity, item) => (item.quantity ? item.quantity + quantity : 0),
+                    0
+                ),
+            };
         default:
             return state;
     }

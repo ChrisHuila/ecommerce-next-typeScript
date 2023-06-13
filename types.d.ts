@@ -12,6 +12,7 @@ export interface Product {
 }
 export interface StateReducer {
     cartitems: Array<Product>;
+    cartquantity: number;
 }
 export interface ProductsContext extends StateReducer {
     addCartProduct: (product: Product) => void;
@@ -23,6 +24,6 @@ export type ProductReducerAction =
           payload: Product;
       }
     | {
-          type: INCREASE_CART_QUANTITY;
+          type: CART_QUANTITY;
           payload: Product;
       };

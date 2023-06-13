@@ -2,7 +2,7 @@
 import { ReactNode, createContext, useReducer } from "react";
 import { Product, ProductsContext } from "@/types";
 import shopingCartReducer from "./shoopingCartReducer";
-import { ADD_CART } from "@/types/index";
+import { ADD_CART, CART_QUANTITY } from "@/types/index";
 
 interface productProvaiderProps {
     children: ReactNode;
@@ -12,6 +12,7 @@ export const productsContext = createContext({} as ProductsContext);
 
 const initialState = {
     cartitems: [],
+    cartquantity: 0,
 };
 
 const ProductsProvaider = ({ children }: productProvaiderProps) => {
@@ -22,12 +23,22 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
             type: ADD_CART,
             payload: product,
         });
+
+        cartQuantity(product);
+    };
+
+    const cartQuantity = (product: Product) => {
+        dispatch({
+            type: CART_QUANTITY,
+            payload: product,
+        });
     };
 
     return (
         <productsContext.Provider
             value={{
                 cartitems: state.cartitems,
+                cartquantity: state.cartquantity,
                 addCartProduct,
             }}>
             {children}
