@@ -22,9 +22,9 @@ const CartItem = ({ product }: Props) => {
                 <Image
                     src={product?.image}
                     alt={product.name}
-                    width={70}
-                    height={70}
-                    style={{ borderRadius: "50%" }}
+                    width={60}
+                    height={60}
+                    style={{ borderRadius: "50%", objectFit: "cover" }}
                 />
             </td>
             <td>
