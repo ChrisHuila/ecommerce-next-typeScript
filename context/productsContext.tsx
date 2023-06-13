@@ -13,6 +13,7 @@ const initialState = {
     cartitems: [],
     cartquantity: 0,
     notificationadded: false,
+    totalprice: 0,
 };
 
 const ProductsProvaider = ({ children }: productProvaiderProps) => {
@@ -25,6 +26,8 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
         });
 
         cartQuantity();
+
+        totalPrice();
 
         notificationAdded(true);
 
@@ -39,11 +42,18 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
             payload: id,
         });
         cartQuantity();
+
+        totalPrice();
     };
 
     const cartQuantity = () => {
         dispatch({
             type: "CART_QUANTITY",
+        });
+    };
+    const totalPrice = () => {
+        dispatch({
+            type: "TOTAL_PRICE",
         });
     };
     const notificationAdded = (added: boolean) => {
@@ -52,12 +62,14 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
             payload: added,
         });
     };
+
     return (
         <productsContext.Provider
             value={{
                 cartitems: state.cartitems,
                 cartquantity: state.cartquantity,
                 notificationadded: state.notificationadded,
+                totalprice: state.totalprice,
                 addCartProduct,
                 removeFromCart,
             }}>

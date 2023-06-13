@@ -14,6 +14,7 @@ export interface StateReducer {
     cartitems: Array<Product>;
     cartquantity: number;
     notificationadded: boolean;
+    totalprice: number;
 }
 export interface ProductsContext extends StateReducer {
     addCartProduct: (product: Product) => void;
@@ -28,6 +29,9 @@ export type ProductReducerAction =
     | {
           type: "REMOVE_FROM_CART";
           payload: string;
+      }
+    | {
+          type: "TOTAL_PRICE";
       }
     | {
           type: "CART_QUANTITY";

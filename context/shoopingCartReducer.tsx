@@ -57,6 +57,14 @@ export default (state: StateReducer, action: ProductReducerAction): StateReducer
                     0
                 ),
             };
+        case "TOTAL_PRICE":
+            return {
+                ...state,
+                totalprice: state.cartitems.reduce(
+                    (total, cartItem) => (cartItem.quantity ? Number(cartItem.price) * cartItem.quantity + total : 0),
+                    0
+                ),
+            };
         default:
             return state;
     }

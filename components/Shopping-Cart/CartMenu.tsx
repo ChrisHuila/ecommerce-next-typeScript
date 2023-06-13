@@ -2,9 +2,10 @@
 import { useContext } from "react";
 import { productsContext } from "@/context/productsContext";
 import CartItem from "./CartItem";
+import priceFormat from "@/services/priceFormat";
 
 const CartMenu = () => {
-    const { cartitems, cartquantity } = useContext(productsContext);
+    const { cartitems, cartquantity, totalprice } = useContext(productsContext);
     return (
         <div className="shopCart-menu">
             {cartquantity === 0 && <p className="shopCart-empty">The shopping cart is empty</p>}
@@ -29,6 +30,7 @@ const CartMenu = () => {
                     ))}
                 </tbody>
             </table>
+            <h3>Total: ${priceFormat(totalprice)}</h3>
         </div>
     );
 };
