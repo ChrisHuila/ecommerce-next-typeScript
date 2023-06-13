@@ -206,18 +206,21 @@ a {
     display: block;
     position: absolute;
     right: -12.5rem;
-    top: 100%;
+    top: 98%;
     z-index: var(--z-tooltip);
 
     max-height: 400px;
-    height: 300px;
+    min-height: 300px;
     min-width: 300px;
     background-color: #fff;
     box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.74);
+
+    overflow: auto;
 }
 @media (min-width: 576px) {
     .shopCart:hover .shopCart-menu {
         right: -5rem;
+        min-width: 300px;
     }
 }
 
@@ -228,19 +231,34 @@ a {
     border-bottom: solid 1px #d9dadd;
     padding: 0 1rem;
 }
-.shopCart-menu th {
-    padding: 12px 15px;
-}
-.shopCart-menu th:first-child {
+
+.shopCart-menu th:first-child,
+.shopCart-menu th:last-child {
     padding: 12px 15px 12px 12px;
 }
 
 .shopCart-menu td {
-    margin-top: 1rem;
     border-bottom: solid 1px #d9dadd;
-    padding: 1rem 0;
+    margin-bottom: 1rem;
 }
-
+/* ========CART-ITEMS */
+.cartItem td {
+    padding: 0 1rem;
+    font-size: var(--small-font-size);
+    text-align: center;
+}
+.cartItem .remove-item {
+    background-color: #dd3b3b;
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+.cartItem .remove-item:hover {
+    background-color: #fb0101;
+}
 /* ============AUTH========= */
 
 .Auth-container {
