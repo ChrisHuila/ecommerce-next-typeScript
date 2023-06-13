@@ -2,7 +2,6 @@
 import { ReactNode, createContext, useReducer } from "react";
 import { Product, ProductsContext } from "@/types";
 import shopingCartReducer from "./shoopingCartReducer";
-import { ADD_CART, CART_QUANTITY } from "@/types/index";
 
 interface productProvaiderProps {
     children: ReactNode;
@@ -13,6 +12,7 @@ export const productsContext = createContext({} as ProductsContext);
 const initialState = {
     cartitems: [],
     cartquantity: 0,
+    notificationadded: false,
 };
 
 const ProductsProvaider = ({ children }: productProvaiderProps) => {
@@ -20,26 +20,46 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
 
     const addCartProduct = (product: Product) => {
         dispatch({
-            type: ADD_CART,
+            type: "ADD_CART",
             payload: product,
         });
 
-        cartQuantity(product);
+        cartQuantity();
+
+        notificationAdded(true);
+
+        setTimeout(() => {
+            notificationAdded(false);
+        }, 3000);
     };
 
-    const cartQuantity = (product: Product) => {
+    const removeFromCart = (id: string) => {
         dispatch({
-            type: CART_QUANTITY,
-            payload: product,
+            type: "REMOVE_FROM_CART",
+            payload: id,
         });
+        cartQuantity();
     };
 
+    const cartQuantity = () => {
+        dispatch({
+            type: "CART_QUANTITY",
+        });
+    };
+    const notificationAdded = (added: boolean) => {
+        dispatch({
+            type: "MESSAGE_ADDED",
+            payload: added,
+        });
+    };
     return (
         <productsContext.Provider
             value={{
                 cartitems: state.cartitems,
                 cartquantity: state.cartquantity,
+                notificationadded: state.notificationadded,
                 addCartProduct,
+                removeFromCart,
             }}>
             {children}
         </productsContext.Provider>

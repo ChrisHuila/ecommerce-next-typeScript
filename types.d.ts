@@ -13,17 +13,26 @@ export interface Product {
 export interface StateReducer {
     cartitems: Array<Product>;
     cartquantity: number;
+    notificationadded: boolean;
 }
 export interface ProductsContext extends StateReducer {
     addCartProduct: (product: Product) => void;
+    removeFromCart: (id: string) => void;
 }
 
 export type ProductReducerAction =
     | {
-          type: ADD_CART;
+          type: "ADD_CART";
           payload: Product;
       }
     | {
-          type: CART_QUANTITY;
-          payload: Product;
+          type: "REMOVE_FROM_CART";
+          payload: string;
+      }
+    | {
+          type: "CART_QUANTITY";
+      }
+    | {
+          type: "MESSAGE_ADDED";
+          payload: boolean;
       };

@@ -1,10 +1,9 @@
 "use client";
 import { ProductReducerAction, StateReducer } from "@/types";
-import { ADD_CART, CART_QUANTITY } from "@/types/index";
 
 export default (state: StateReducer, action: ProductReducerAction): StateReducer => {
     switch (action.type) {
-        case ADD_CART:
+        case "ADD_CART":
             if (!state.cartitems?.some(item => item.id === action.payload.id)) {
                 // add the product
                 return {
@@ -25,7 +24,32 @@ export default (state: StateReducer, action: ProductReducerAction): StateReducer
                     ),
                 };
             }
-        case CART_QUANTITY:
+        case "MESSAGE_ADDED": {
+            return {
+                ...state,
+                notificationadded: action.payload,
+            };
+        }
+        case "REMOVE_FROM_CART":
+            if (state.cartitems?.find(item => item.id === action.payload)?.quantity === 1) {
+                return {
+                    ...state,
+                    cartitems: state.cartitems.filter(item => item.id !== action.payload),
+                };
+            } else {
+                return {
+                    ...state,
+                    cartitems: state.cartitems?.map(item =>
+                        item.id === action.payload
+                            ? {
+                                  ...item,
+                                  quantity: item.quantity && item.quantity - 1,
+                              }
+                            : item
+                    ),
+                };
+            }
+        case "CART_QUANTITY":
             return {
                 ...state,
                 cartquantity: state.cartitems.reduce(

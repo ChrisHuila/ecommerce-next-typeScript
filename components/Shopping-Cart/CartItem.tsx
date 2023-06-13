@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { productsContext } from "@/context/productsContext";
 import Image from "next/image";
 import priceFormat from "@/services/priceFormat";
 import { Product } from "@/types";
@@ -7,7 +9,13 @@ interface Props {
 }
 
 const CartItem = ({ product }: Props) => {
+    const { removeFromCart } = useContext(productsContext);
+
     const finalPrice = `$${priceFormat(parseInt(product.price))}`;
+
+    const handleRemove = () => {
+        removeFromCart(product.id);
+    };
     return (
         <tr className="cartItem">
             <td>
@@ -30,7 +38,11 @@ const CartItem = ({ product }: Props) => {
             </td>
 
             <td>
-                <p className="remove-item">&times;</p>
+                <button
+                    className="remove-item"
+                    onClick={handleRemove}>
+                    &times;
+                </button>
             </td>
         </tr>
     );

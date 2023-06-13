@@ -1,3 +1,4 @@
+import Notification from "@/components/layout/Notification";
 import UploadProductTest from "@/components/mock/UploadProductTest";
 import HighlightedProducts from "@/components/products/HighlightedProducts";
 import firebase from "@/firebase/index";
@@ -26,6 +27,7 @@ export default async function Home() {
                 products={technology}
                 category={"technology"}
             />
+            <Notification />
         </>
     );
 }

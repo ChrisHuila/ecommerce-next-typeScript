@@ -195,12 +195,24 @@ a {
     right: 0;
     transform: translate(25%, 25%);
 }
+.shopCart-empty {
+    background-color: #1278de;
+    color: #fff;
+    font-family: var(--text-color);
+    font-size: var(--normal-font-size);
+    text-align: center;
+    border-radius: 2px;
+    padding: 1rem 0;
+    width: 80%;
+    margin: 2rem auto 0 auto;
+}
 .shopCart:hover .shopCart-badge {
     visibility: hidden;
 }
 /* ===========Shopping cart - menu============= */
 .shopCart-menu {
     display: none;
+    padding-bottom: 15px;
 }
 .shopCart:hover .shopCart-menu {
     display: block;
@@ -239,25 +251,26 @@ a {
 
 .shopCart-menu td {
     border-bottom: solid 1px #d9dadd;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
 }
 /* ========CART-ITEMS */
 .cartItem td {
-    padding: 0 1rem;
+    padding: 0 10px;
     font-size: var(--small-font-size);
     text-align: center;
 }
 .cartItem .remove-item {
     background-color: #dd3b3b;
     border-radius: 50%;
+    border: none;
     padding: 5px 10px;
-    text-decoration: none;
     color: white;
     font-weight: bold;
-    margin-right: 1rem;
+    margin-right: 10px;
 }
 .cartItem .remove-item:hover {
     background-color: #fb0101;
+    cursor: pointer;
 }
 /* ============AUTH========= */
 
@@ -361,4 +374,22 @@ a {
     background-color: var(--first-color-alt);
     color: #fff;
     cursor: pointer;
+}
+/* =====NOTIFICATION====== */
+
+.notification-added {
+    position: fixed;
+    bottom: 5%;
+    left: 5%;
+    z-index: var(--z-fixed);
+    /* display: inline; */
+    padding: 1rem;
+    background-color: #2e3747;
+    color: #fff;
+    border-radius: 5px;
+    opacity: 0.9;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
