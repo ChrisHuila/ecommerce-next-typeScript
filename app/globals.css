@@ -206,6 +206,11 @@ a {
     width: 80%;
     margin: 2rem auto 0 auto;
 }
+.shopCart-totalprice {
+    text-align: end;
+    padding: 20px 20px 0;
+    font-family: var(--textFont);
+}
 .shopCart:hover .shopCart-badge {
     visibility: hidden;
 }

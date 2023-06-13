@@ -30,7 +30,7 @@ const CartMenu = () => {
                     ))}
                 </tbody>
             </table>
-            <h3>Total: ${priceFormat(totalprice)}</h3>
+            {totalprice > 0 && <h3 className="shopCart-totalprice">Total: ${priceFormat(totalprice)}</h3>}
         </div>
     );
 };
