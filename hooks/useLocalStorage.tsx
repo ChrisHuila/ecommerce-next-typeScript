@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 export default function useLocalStorage<T>(key: string, initialvalue: T) {
-    const [value] = useState<T>(() => {
+    function getStorage(): T {
         const jsonvalue = localStorage.getItem(key);
 
         if (jsonvalue != null) {
@@ -10,7 +10,9 @@ export default function useLocalStorage<T>(key: string, initialvalue: T) {
         } else {
             return initialvalue;
         }
-    });
+    }
+
+    const [value] = useState<T>(getStorage());
 
     return value;
 }
