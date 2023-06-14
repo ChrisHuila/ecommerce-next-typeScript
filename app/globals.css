@@ -268,8 +268,8 @@ a {
 .shopCart:hover .shopCart-menu {
     display: block;
     position: absolute;
-    right: -12.5rem;
-    top: 98%;
+    right: -7rem;
+    top: 90%;
     z-index: var(--z-tooltip);
 
     max-height: 400px;
@@ -280,10 +280,14 @@ a {
 
     overflow: auto;
 }
+@media (min-width: 400px) {
+    .shopCart:hover .shopCart-menu {
+        right: -3rem;
+    }
+}
 @media (min-width: 576px) {
     .shopCart:hover .shopCart-menu {
-        right: -5rem;
-        min-width: 300px;
+        right: -2rem;
     }
 }
 
