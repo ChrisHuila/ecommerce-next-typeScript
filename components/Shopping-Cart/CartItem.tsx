@@ -16,6 +16,7 @@ const CartItem = ({ product }: Props) => {
     const handleRemove = () => {
         removeFromCart(product.id);
     };
+
     return (
         <tr className="cartItem">
             <td>
@@ -28,7 +29,7 @@ const CartItem = ({ product }: Props) => {
                 />
             </td>
             <td>
-                <p>{product.name}</p>
+                <p>{product.name.substring(0, 27)}</p>
             </td>
             <td>
                 <p>{`${finalPrice}`}</p>
