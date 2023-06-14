@@ -49,6 +49,8 @@ export default (state: StateReducer, action: ProductReducerAction): StateReducer
                     ),
                 };
             }
+        case "SET_LOCALSTORAGE":
+            localStorage.setItem("shopping-cart", JSON.stringify(state.cartitems));
         case "CART_QUANTITY":
             return {
                 ...state,

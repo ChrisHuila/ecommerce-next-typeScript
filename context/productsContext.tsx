@@ -2,6 +2,7 @@
 import { ReactNode, createContext, useReducer } from "react";
 import { Product, ProductsContext } from "@/types";
 import shopingCartReducer from "./shoopingCartReducer";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 interface productProvaiderProps {
     children: ReactNode;
@@ -9,14 +10,16 @@ interface productProvaiderProps {
 
 export const productsContext = createContext({} as ProductsContext);
 
-const initialState = {
-    cartitems: [],
-    cartquantity: 0,
-    notificationadded: false,
-    totalprice: 0,
-};
-
 const ProductsProvaider = ({ children }: productProvaiderProps) => {
+    const value = useLocalStorage("shopping-cart", []);
+
+    const initialState = {
+        cartitems: value,
+        cartquantity: 0,
+        notificationadded: false,
+        totalprice: 0,
+    };
+
     const [state, dispatch] = useReducer(shopingCartReducer, initialState);
 
     const addCartProduct = (product: Product) => {
@@ -24,6 +27,7 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
             type: "ADD_CART",
             payload: product,
         });
+        setLocalStorage();
 
         cartQuantity();
 
@@ -41,6 +45,9 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
             type: "REMOVE_FROM_CART",
             payload: id,
         });
+
+        setLocalStorage();
+
         cartQuantity();
 
         totalPrice();
@@ -62,7 +69,15 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
             payload: added,
         });
     };
-
+    const setLocalStorage = () => {
+        dispatch({
+            type: "SET_LOCALSTORAGE",
+        });
+    };
+    const getLocalStorage = () => {
+        cartQuantity();
+        totalPrice();
+    };
     return (
         <productsContext.Provider
             value={{
@@ -72,6 +87,7 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
                 totalprice: state.totalprice,
                 addCartProduct,
                 removeFromCart,
+                getLocalStorage,
             }}>
             {children}
         </productsContext.Provider>
