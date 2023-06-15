@@ -459,3 +459,24 @@ a {
     align-items: center;
     gap: 0.5rem;
 }
+
+/* ==========FOOTER============ */
+.footer {
+    padding: 2rem 0;
+    margin-top: 1rem;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.284);
+}
+.footer-box {
+    display: grid;
+    gap: 1.25rem;
+}
+@media (min-width: 768px) {
+    .footer-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.icon-linkedin {
+    fill: #1278de;
+    width: 40px;
+    height: 40px;
+}
