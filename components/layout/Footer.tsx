@@ -1,7 +1,5 @@
-import IconGitHub from "../icons/github-icon";
-import IconLinkedin from "../icons/linkedin-icon";
-import IconWhatsapp from "../icons/whatsapp-icon";
 import Logo from "./Logo";
+import NetworksLinks from "./NetworksLinks";
 
 const Footer = () => {
     return (
@@ -13,17 +11,7 @@ const Footer = () => {
                         Lorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
                         tempora.
                     </p>
-                    <a
-                        href="https://www.linkedin.com/in/christian-camilo-huila-garces/"
-                        target="_blank">
-                        <IconLinkedin />
-                    </a>
-                    <a href="">
-                        <IconWhatsapp />
-                    </a>
-                    <a href="">
-                        <IconGitHub />
-                    </a>
+                    <NetworksLinks />
                 </div>
             </div>
         </div>
