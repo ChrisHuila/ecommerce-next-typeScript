@@ -1,5 +1,7 @@
 import Logo from "./Logo";
-import NetworksLinks from "./NetworksLinks";
+import NetworksLinks from "../footer/NetworksLinks";
+import CardContact from "../footer/CardContact";
+import IconPhone from "../icons/phone-icon";
 
 const Footer = () => {
     return (
@@ -12,6 +14,14 @@ const Footer = () => {
                         tempora.
                     </p>
                     <NetworksLinks />
+                </div>
+                <div className="footer-contact">
+                    <h2 className="">contact us</h2>
+                    <CardContact
+                        title="phone number"
+                        description="+57">
+                        <IconPhone />
+                    </CardContact>
                 </div>
             </div>
         </div>

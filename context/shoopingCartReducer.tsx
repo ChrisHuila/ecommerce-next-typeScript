@@ -51,6 +51,14 @@ export default (state: StateReducer, action: ProductReducerAction): StateReducer
             }
         case "SET_LOCALSTORAGE":
             localStorage.setItem("shopping-cart", JSON.stringify(state.cartitems));
+            return{
+                ...state
+            }
+        case "GET_LOCALSTORAGE":
+            return{
+                ...state,
+                cartitems: action.payload
+            }
         case "CART_QUANTITY":
             return {
                 ...state,

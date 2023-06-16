@@ -19,7 +19,7 @@ export interface StateReducer {
 export interface ProductsContext extends StateReducer {
     addCartProduct: (product: Product) => void;
     removeFromCart: (id: string) => void;
-    getLocalStorage: () => void;
+    getLocalStorage: (storage: Product[]) => void;
 }
 
 export type ProductReducerAction =
@@ -43,4 +43,8 @@ export type ProductReducerAction =
       }
     | {
           type: "SET_LOCALSTORAGE";
-      };
+      }
+    | {
+        type: "GET_LOCALSTORAGE";
+        payload:  Product[] | [];
+    };

@@ -3,13 +3,16 @@ import { useContext, useEffect } from "react";
 import { productsContext } from "@/context/productsContext";
 import CartItem from "./CartItem";
 import priceFormat from "@/services/priceFormat";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 const CartMenu = () => {
     const { cartitems, cartquantity, totalprice, getLocalStorage } = useContext(productsContext);
 
-    useEffect(() => {
-        getLocalStorage();
-    }, []);
+    // useEffect(() => {
+    //     getLocalStorage();
+    // }, []);
+    useLocalStorage("shopping-cart", []);
+
 
     return (
         <div className="shopCart-menu">

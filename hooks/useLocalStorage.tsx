@@ -1,18 +1,22 @@
 "use client";
-import { useState } from "react";
+import { productsContext } from "@/context/productsContext";
+import { useContext, useEffect } from "react";
 
 export default function useLocalStorage<T>(key: string, initialvalue: T) {
-    function getStorage(): T {
-        const jsonvalue = localStorage.getItem(key);
+   const {getLocalStorage} = useContext(productsContext)
 
-        if (jsonvalue != null) {
-            return JSON.parse(jsonvalue);
-        } else {
-            return initialvalue;
+    useEffect(() => {
+        function getStorage(){
+            const jsonvalue = localStorage.getItem(key)
+
+            if (jsonvalue != null) {
+                getLocalStorage(JSON.parse(jsonvalue))
+            } else {
+                getLocalStorage(initialvalue as [])
+            }
         }
-    }
+        getStorage()
+       
+    }, [])
 
-    const [value] = useState<T>(getStorage());
-
-    return value;
 }

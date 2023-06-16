@@ -1,5 +1,8 @@
 const loading = () => {
-    return <p>loading ...</p>;
+    return (
+        <main className="minvh">
+        </main>
+    )
 };
 
 export default loading;

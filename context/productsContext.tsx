@@ -2,7 +2,6 @@
 import { ReactNode, createContext, useReducer } from "react";
 import { Product, ProductsContext } from "@/types";
 import shopingCartReducer from "./shoopingCartReducer";
-import useLocalStorage from "@/hooks/useLocalStorage";
 
 interface productProvaiderProps {
     children: ReactNode;
@@ -11,10 +10,9 @@ interface productProvaiderProps {
 export const productsContext = createContext({} as ProductsContext);
 
 const ProductsProvaider = ({ children }: productProvaiderProps) => {
-    const value = useLocalStorage("shopping-cart", []);
 
     const initialState = {
-        cartitems: value,
+        cartitems: [],
         cartquantity: 0,
         notificationadded: false,
         totalprice: 0,
@@ -74,7 +72,11 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
             type: "SET_LOCALSTORAGE",
         });
     };
-    const getLocalStorage = () => {
+    const getLocalStorage = (storage: Product[]) => {
+        dispatch({
+            type:"GET_LOCALSTORAGE",
+            payload: storage
+        })
         cartQuantity();
         totalPrice();
     };

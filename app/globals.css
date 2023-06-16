@@ -495,3 +495,15 @@ a {
     width: 40px;
     height: 40px;
 }
+.footer-contact h2 {
+    font-family: var(--textFont);
+    font-weight: 700;
+    font-size: var(--h2-font-size);
+    color: var(--title-color);
+    text-transform: capitalize;
+}
+.icon-phone {
+    fill: #000;
+    width: 40px;
+    height: 40px;
+}
