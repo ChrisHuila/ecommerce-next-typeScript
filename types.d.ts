@@ -46,5 +46,5 @@ export type ProductReducerAction =
       }
     | {
         type: "GET_LOCALSTORAGE";
-        payload:  Product[] | [];
+        payload:  Product[];
     };
