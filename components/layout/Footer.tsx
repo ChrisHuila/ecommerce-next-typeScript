@@ -31,6 +31,7 @@ const Footer = () => {
                     </CardContact>
                 </div>
             </div>
+             <p className="footer-author">Developed by <span>Christian Camilo huila Garcés</span> &#169;{new Date().getFullYear()}</p>
         </div>
     );
 };

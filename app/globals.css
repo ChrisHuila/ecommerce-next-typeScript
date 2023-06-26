@@ -464,7 +464,7 @@ a {
 .footer {
     background-color: #34383a;
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.284);
-    padding: 5rem 0 3rem;
+    padding-top: 5rem;
     margin-top: 13rem;
 }
 .footer-box {
@@ -518,6 +518,7 @@ a {
     font-size: var(--h2-font-size);
     text-transform: capitalize;
     margin-bottom: 1.6rem;
+    color: #00bcd4;
 }
 
 /* =======CARD CONTACT====== */
@@ -537,12 +538,23 @@ a {
 }
 
 .icon-gmail {
-    fill: #fff;
+    fill: #000;
     width: 30px;
     height: 30px;
 }
 .icon-map{
-    fill: #fff;
+    fill: #d73d3d;
     width: 30px;
     height: 30px;
+}
+
+.footer-author{
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 3rem;
+    font-family: var(--textFont);
+}
+.footer-author span {
+    font-weight: 700;
 }
