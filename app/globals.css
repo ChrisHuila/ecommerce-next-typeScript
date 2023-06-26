@@ -462,10 +462,10 @@ a {
 
 /* ==========FOOTER============ */
 .footer {
-    background-color: #171717;
+    background-color: #34383a;
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.284);
-    padding: 2rem 0;
-    margin-top: 1rem;
+    padding: 5rem 0 3rem;
+    margin-top: 13rem;
 }
 .footer-box {
     display: grid;
@@ -507,15 +507,42 @@ a {
     height: 35px;
     background-color: #ffffff;
 }
+.footer-contact {
+    color: #fff;
+    display: grid;
+    gap: 1rem;
+}
 .footer-contact h2 {
     font-family: var(--textFont);
     font-weight: 700;
     font-size: var(--h2-font-size);
-    color: var(--title-color);
     text-transform: capitalize;
+    margin-bottom: 1.6rem;
 }
+
+/* =======CARD CONTACT====== */
+.contact-card{
+    display: grid;
+    grid-template-columns: 6% 50%;
+    row-gap: 1rem;
+    column-gap: 2rem;
+    background-color: #3a4145;
+    padding: 1.6rem;
+    font-family: var(--textFont);
+}
+.card-icon{
+    display: grid;
+    text-align: center;
+    align-items: center; 
+}
+
 .icon-gmail {
-    fill: #0e0d0d;
-    width: 24px;
-    height: 24px;
+    fill: #fff;
+    width: 30px;
+    height: 30px;
+}
+.icon-map{
+    fill: #fff;
+    width: 30px;
+    height: 30px;
 }

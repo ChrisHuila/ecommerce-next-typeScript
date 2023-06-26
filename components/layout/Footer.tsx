@@ -2,6 +2,7 @@ import Logo from "./Logo";
 import NetworksLinks from "../footer/NetworksLinks";
 import CardContact from "../footer/CardContact";
 import IconPhone from "../icons/gmail-icon";
+import IconMap from "../icons/map-icon";
 
 const Footer = () => {
     return (
@@ -18,9 +19,15 @@ const Footer = () => {
                 <div className="footer-contact">
                     <h2 className="">contact us</h2>
                     <CardContact
-                        title="phone number"
-                        description="+57 xxx xx xxxx">
+                        title="E-mail"
+                        description="christian.huila22@gmail.com">
                         <IconPhone />
+                    </CardContact>
+
+                    <CardContact
+                        title="Address"
+                        description="Colombia">
+                        <IconMap />
                     </CardContact>
                 </div>
             </div>

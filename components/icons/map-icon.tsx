@@ -2,11 +2,7 @@ import { SVGProps } from "react"
 const IconMap = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={36}
-    height={36}
-    style={{
-      fill: "#000",
-    }}
+   className="icon-map"
     viewBox="0 0 24 24"
     {...props}
   >
