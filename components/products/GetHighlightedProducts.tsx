@@ -23,9 +23,7 @@ const GetHighlightedProducts = async () => {
                 products={technology}
                 category={"technology"}
             />
-
         </div>
-        
     );
 };
 

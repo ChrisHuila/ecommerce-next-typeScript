@@ -7,7 +7,34 @@ const Login = () => {
         <main className="minvh">
             <div className="user_form">
                 <div className="form-container">
-                    <h3>Log in</h3>
+                    <h2 className="title-login">Log in</h2>
+                    <form action="">
+                        <div className="form-field">
+                            <label htmlFor="email">E-mail</label>
+                            <input 
+                            type="text"
+                            name="email"
+                            id="email"
+                            placeholder="your E-mail"
+                             />
+                        </div>
+                        <div className="form-field">
+                            <label htmlFor="password">Password</label>
+                            <input 
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="your Password"
+                             />
+                        </div>
+                        <div className="form-field">
+                            <input 
+                            type="submit"
+                            value='Log in'
+                            className="btn btn-primary btn-block"
+                             />
+                        </div>
+                    </form>
                 </div>
             </div>
         </main>
