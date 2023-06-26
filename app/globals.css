@@ -354,6 +354,9 @@ a {
     color: #2d6eaf;
 }
 /* ==========HIGHLIGHTED PRODUCT======= */
+.highlighted-products_container{
+    margin-bottom: 10rem;
+}
 .HighlightedProducts {
     margin-top: 3rem;
 }
@@ -465,13 +468,29 @@ a {
     align-items: center;
     gap: 0.5rem;
 }
-
+/* ==========AUTH =============== */
+.user_form{
+    background: rgb(159,197,217);
+    background: linear-gradient(180deg, rgba(159,197,217,1) 2%, rgba(255,255,255,1) 98%);
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-container{
+    padding: 3rem 2rem;
+    max-width: 500px;
+    width: 95%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
+}
 /* ==========FOOTER============ */
 .footer {
     background-color: #34383a;
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.284);
     padding-top: 5rem;
-    margin-top: 10rem;
 }
 .footer-box {
     display: grid;

@@ -1,4 +1,3 @@
-import Header from "@/components/layout/Header";
 import ProductsProvaider from "@/context/productsContext";
 
 import "./normalize.css";
@@ -21,7 +20,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en">
             <body className={roboto.className}>
                 <ProductsProvaider>
-                    <Header />
                     {children}
                     <Footer />
                 </ProductsProvaider>
