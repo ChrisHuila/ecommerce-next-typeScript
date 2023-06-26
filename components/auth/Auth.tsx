@@ -5,12 +5,12 @@ const Auth = () => {
     <nav>
         <ul className="Auth-container">
             <li>
-                <Link href="/">
+                <Link href="/signup">
                     Sign up
                 </Link>
             </li>
             <li>
-                <Link href="/">
+                <Link href="/login">
                     Log in
                 </Link>
             </li>
