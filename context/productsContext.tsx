@@ -11,6 +11,7 @@ export const productsContext = createContext({} as ProductsContext);
 
 const ProductsProvaider = ({ children }: productProvaiderProps) => {
 
+
     const initialState = {
         cartitems: [],
         cartquantity: 0,
@@ -80,6 +81,7 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
         cartQuantity();
         totalPrice();
     };
+
     return (
         <productsContext.Provider
             value={{

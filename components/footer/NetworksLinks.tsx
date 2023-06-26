@@ -4,7 +4,7 @@ import IconWhatsapp from "../icons/whatsapp-icon";
 
 const NetworksLinks = () => {
     return (
-        <>
+        <div className="networkslinks">
             <a
                 href="https://www.linkedin.com/in/christian-camilo-huila-garces/"
                 target="_blank">
@@ -20,7 +20,7 @@ const NetworksLinks = () => {
                 target="_blank">
                 <IconGitHub />
             </a>
-        </>
+        </div>
     );
 };
 

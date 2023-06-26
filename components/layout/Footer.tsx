@@ -1,7 +1,7 @@
 import Logo from "./Logo";
 import NetworksLinks from "../footer/NetworksLinks";
 import CardContact from "../footer/CardContact";
-import IconPhone from "../icons/phone-icon";
+import IconPhone from "../icons/gmail-icon";
 
 const Footer = () => {
     return (
@@ -19,7 +19,7 @@ const Footer = () => {
                     <h2 className="">contact us</h2>
                     <CardContact
                         title="phone number"
-                        description="+57">
+                        description="+57 xxx xx xxxx">
                         <IconPhone />
                     </CardContact>
                 </div>

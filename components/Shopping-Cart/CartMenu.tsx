@@ -6,7 +6,7 @@ import priceFormat from "@/services/priceFormat";
 import useCartLocalStorage from "@/hooks/useCartLocalStorage";
 
 const CartMenu = () => {
-    const { cartitems, cartquantity, totalprice, getLocalStorage } = useContext(productsContext);
+    const { cartitems, cartquantity, totalprice } = useContext(productsContext);
 
     useCartLocalStorage("shopping-cart", []);
 
