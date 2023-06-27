@@ -115,7 +115,7 @@ const SignUp = () => {
                     <Link href="/login" className="account-link">
                         Log in
                     </Link>
-                    {error && <p> {error}</p>}
+                    {error && <p className="auth-error"> {error}</p>}
                 </div>
             </div>
         </main>

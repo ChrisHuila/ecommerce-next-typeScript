@@ -553,6 +553,11 @@ a {
 .account-link:hover {
     color: #2d6eaf;
 }
+.auth-error{
+    color: 	#ff3333;
+    font-family: var(--textFont);
+    font-weight: 700;
+}
 
 /* ==========FOOTER============ */
 .footer {
