@@ -2,8 +2,15 @@
 import Link from "next/link";
 import { useState} from "react";
 
-
 const Login = () => {
+
+    const [ user, setUser] = useState({
+        nombre: '',
+        email: '',
+        password: '',
+        confirmar: ''
+    });
+
     return (
         <main className="minvh">
             <div className="user_form">
