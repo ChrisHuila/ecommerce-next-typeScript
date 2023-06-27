@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import { useState} from "react";
 
 
@@ -35,6 +36,9 @@ const Login = () => {
                              />
                         </div>
                     </form>
+                    <Link href="/signup" className="account-link">
+                        Sign up
+                    </Link>
                 </div>
             </div>
         </main>

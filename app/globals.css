@@ -541,6 +541,19 @@ a {
     display: block;
     width: 100%;
 }
+.account-link{ 
+    margin-top: 2rem;
+    display: inline-block;
+    opacity: .7;
+    transition: ease all .3s;
+    font-size: var(--normal-font-size);
+    font-family: var(--textFont);
+    font-weight: 700;
+}
+.account-link:hover {
+    color: #2d6eaf;
+}
+
 /* ==========FOOTER============ */
 .footer {
     background-color: #34383a;

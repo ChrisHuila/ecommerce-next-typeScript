@@ -43,7 +43,6 @@ const HighlightedProducts = ({ products, category }: Props) => {
                 spaceBetween={10}
                 slidesPerView={1}
                 breakpoints={productResponsive}
-                // prettier-ignore
             >
                 {products.map(product => (
                     <SwiperSlide key={product.id}>
