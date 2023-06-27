@@ -16,7 +16,7 @@ const Login = () => {
                             type="text"
                             name="email"
                             id="email"
-                            placeholder="your E-mail"
+                            placeholder="Enter your E-mail"
                              />
                         </div>
                         <div className="form-field">
@@ -25,7 +25,7 @@ const Login = () => {
                             type="password"
                             name="password"
                             id="password"
-                            placeholder="your Password"
+                            placeholder="Enter your Password"
                              />
                         </div>
                         <div className="form-field">
