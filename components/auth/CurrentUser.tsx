@@ -9,12 +9,12 @@ const CurrentUser = ({ user }: Props) => {
     return (
         <nav>
             <ul className="Auth-container">
-                <li>
-                    hi: {user?.displayName}
+                <li className="currentUser">
+                    <span>hi:</span>  {user?.displayName}
                 </li>
                 <li>
                    <button 
-                   className=""
+                   className="btn-logout"
                    onClick={() => firebase.logout()
                    }
                    > Log out
