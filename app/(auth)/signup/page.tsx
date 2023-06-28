@@ -2,60 +2,24 @@
 import Link from "next/link";
 import firebase from "@/firebase/firebase";
 import { useState } from "react";
+import useValidation from "@/hooks/useValidation";
+import signupValidation from "@/services/validation/signupValidation";
 
+const initialState = {
+    user_name: '',
+    email: '',
+    password: '',
+    confirm: ''
+}
 
 const SignUp = () => {
-    const [ user, setUser ] = useState({
-        user_name: '',
-        email: '',
-        password: '',
-        confirm: ''
-    });
+   const { user, errors, handleChange, onSubmit } =  useValidation(initialState,signupValidation, getSignUp)
+   
+   const [ errorauth, setErrorAuth ] = useState<string | null>(null)
 
-    const [ error, setError ] = useState<string | null>(null)
-
-    const { user_name, email, password, confirm } = user;
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value
-        })
-    }
-    const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-
-        if(user_name.trim() === '' || email.trim() === '' || password.trim() === '' || confirm.trim() === ''){
-            setError('All fields are required')
-            return
-        }
-
-        if(!er.test(email)){
-            setError('Invalid email')
-            return
-        }
-
-        if(password.trim().length < 6 && confirm.trim().length < 6 ){
-            setError( "The password must have at least six characters" )
-            return
-        }
-
-        if(password !== confirm){
-            setError( "The password doesn't match" )
-            return
-        }
-        setError(null)
-
-        firebase.signup(email, password)
+    async function getSignUp() {
+        console.log('desde sign up');
         
-        setUser({
-            user_name: '',
-            email: '',
-            password: '',
-            confirm: ''
-        })
     }
 
     return (
@@ -72,9 +36,11 @@ const SignUp = () => {
                             id="user_name"
                             placeholder="Enter your name"
                             onChange={handleChange}
-                            value={user_name}
+                            value={user.user_name}
                              />
                         </div>
+                        {errors.user_name && <p className="auth-error"> {errors.user_name}</p>}
+
                         <div className="form-field">
                             <label htmlFor="email">E-mail</label>
                             <input 
@@ -83,9 +49,11 @@ const SignUp = () => {
                             id="email"
                             placeholder="Enter your E-mail"
                             onChange={handleChange}
-                            value={email}
+                            value={user.email}
                              />
                         </div>
+                        {errors.email && <p className="auth-error"> {errors.email}</p>}
+
                         <div className="form-field">
                             <label htmlFor="password">Password</label>
                             <input 
@@ -94,9 +62,11 @@ const SignUp = () => {
                             id="password"
                             placeholder="Enter your Password"
                             onChange={handleChange}
-                            value={password}
+                            value={user.password}
                              />
                         </div>
+                        {errors.password && <p className="auth-error"> {errors.password}</p>}
+
                         <div className="form-field">
                             <label htmlFor="password">Confirm your Password</label>
                             <input 
@@ -105,9 +75,11 @@ const SignUp = () => {
                             id="confirm"
                             placeholder="Confirm your Password"
                             onChange={handleChange}
-                            value={confirm}
+                            value={user.confirm}
                              />
                         </div>
+                        {errors.confirm && <p className="auth-error"> {errors.confirm}</p>}
+                        
                         <div className="form-field">
                             <input 
                             type="submit"
@@ -119,7 +91,7 @@ const SignUp = () => {
                     <Link href="/login" className="account-link">
                         Log in
                     </Link>
-                    {error && <p className="auth-error"> {error}</p>}
+                    {errorauth && <p className="auth-error"> {errorauth}</p>}
                 </div>
             </div>
         </main>
