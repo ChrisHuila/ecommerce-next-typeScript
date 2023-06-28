@@ -23,8 +23,9 @@ const Login = () => {
             router.push('/');
             setErrorAuth(null)
         } catch (error) {
-            console.log(error);
-            setErrorAuth('Email or Password incorrect')
+            if (error instanceof Error) {
+                setErrorAuth(error.message?.replace(/^Firebase: Error\s*/, '').replace('-', ' '))
+            }
         }
     }
  

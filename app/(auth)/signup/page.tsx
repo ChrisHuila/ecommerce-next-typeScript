@@ -1,7 +1,8 @@
 "use client"
 import Link from "next/link";
-import firebase from "@/firebase/firebase";
 import { useState } from "react";
+import { useRouter } from 'next/navigation'
+import firebase from "@/firebase/firebase";
 import useValidation from "@/hooks/useValidation";
 import signupValidation from "@/services/validation/signupValidation";
 
@@ -15,11 +16,23 @@ const initialState = {
 const SignUp = () => {
    const { user, errors, handleChange, onSubmit } =  useValidation(initialState,signupValidation, getSignUp)
    
-   const [ errorauth, setErrorAuth ] = useState<string | null>(null)
+   const [ errorauth, setErrorAuth ] = useState<string | null >(null)
+
+    const router = useRouter() //allow navigation
 
     async function getSignUp() {
-        console.log('desde sign up');
+        try {
+            await firebase.signup(user.email, user.password);
+            console.log('llego');
+            router.push('/');
+            setErrorAuth(null)
+
+        } catch (error) {
+            if (error instanceof Error) {
+                setErrorAuth(error.message?.replace(/^Firebase: Error\s*/, '').replaceAll('-', ' '))
+            }
         
+        }        
     }
 
     return (

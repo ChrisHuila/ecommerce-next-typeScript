@@ -31,11 +31,8 @@ export class Firebase {
     }
     // Sign up
     async signup(email: string, password: string) {
-        try {
-            await createUserWithEmailAndPassword(this.auth, email, password)
-        } catch (error) {
-            console.log('error', error);
-        }
+        await createUserWithEmailAndPassword(this.auth, email, password)
+      
     }
     
     // log in
