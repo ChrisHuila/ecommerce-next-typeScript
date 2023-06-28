@@ -2,14 +2,23 @@
 import Link from 'next/link';
 import CurrentUser from './CurrentUser';
 import useAuth from '@/hooks/useAuth';
+import { useContext, useEffect } from 'react';
+import { productsContext } from '@/context/productsContext';
 
 const Auth = () => {
    const user = useAuth();
+
+   const { getUser } = useContext(productsContext);
+
+   useEffect(() => {
+        getUser(user)
+
+   }, [user])
     
     return (
         <nav>
             {user 
-            ? <CurrentUser user= {user}/>
+            ? <CurrentUser />
             :    <ul className="Auth-container">
                     <li>
                         <Link href="/signup">
@@ -23,7 +32,6 @@ const Auth = () => {
                     </li>
                 </ul>
             }
-
         </nav>
     );
 }

@@ -11,6 +11,7 @@ export interface Product {
     quantity?: number;
 }
 export interface StateReducer {
+    user: User | null; 
     cartitems: Array<Product>;
     cartquantity: number;
     notificationadded: boolean;
@@ -20,9 +21,14 @@ export interface ProductsContext extends StateReducer {
     addCartProduct: (product: Product) => void;
     removeFromCart: (id: string) => void;
     getLocalStorage: (storage: Product[]) => void;
+    getUser: (user: User) => void;
 }
 
 export type ProductReducerAction =
+    | {
+          type: "GET_USER";
+          payload: User;
+      }
     | {
           type: "ADD_CART";
           payload: Product;

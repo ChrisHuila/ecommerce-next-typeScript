@@ -3,6 +3,11 @@ import { ProductReducerAction, StateReducer } from "@/types";
 
 export default (state: StateReducer, action: ProductReducerAction): StateReducer => {
     switch (action.type) {
+        case "GET_USER":
+            return{
+                ...state,
+                user: action.payload
+            }
         case "ADD_CART":
             if (!state.cartitems?.some(item => item.id === action.payload.id)) {
                 // add the product

@@ -1,11 +1,10 @@
+import { productsContext } from "@/context/productsContext";
 import firebase from "@/firebase/firebase";
-import { User } from "firebase/auth";
+import { useContext } from "react";
 
-interface Props {
-    user: User | null
-}
-
-const CurrentUser = ({ user }: Props) => {
+const CurrentUser = () => {
+    const { user } = useContext(productsContext);
+    
     return (
         <nav>
             <ul className="Auth-container">

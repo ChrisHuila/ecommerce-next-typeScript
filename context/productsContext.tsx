@@ -1,7 +1,8 @@
 "use client";
 import { ReactNode, createContext, useReducer } from "react";
-import { Product, ProductsContext } from "@/types";
 import shopingCartReducer from "./shoopingCartReducer";
+import { Product, ProductsContext } from "@/types";
+import { User } from "firebase/auth";
 
 interface productProvaiderProps {
     children: ReactNode;
@@ -13,6 +14,7 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
 
 
     const initialState = {
+        user: null,
         cartitems: [],
         cartquantity: 0,
         notificationadded: false,
@@ -20,6 +22,13 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
     };
 
     const [state, dispatch] = useReducer(shopingCartReducer, initialState);
+
+    const getUser = (user: User) => {
+        dispatch({
+            type: "GET_USER",
+            payload: user,
+        })
+    }
 
     const addCartProduct = (product: Product) => {
         dispatch({
@@ -57,22 +66,26 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
             type: "CART_QUANTITY",
         });
     };
+
     const totalPrice = () => {
         dispatch({
             type: "TOTAL_PRICE",
         });
     };
+
     const notificationAdded = (added: boolean) => {
         dispatch({
             type: "MESSAGE_ADDED",
             payload: added,
         });
     };
+
     const setLocalStorage = () => {
         dispatch({
             type: "SET_LOCALSTORAGE",
         });
     };
+
     const getLocalStorage = (storage: Product[]) => {
         dispatch({
             type:"GET_LOCALSTORAGE",
@@ -85,10 +98,12 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
     return (
         <productsContext.Provider
             value={{
+                user: state.user,
                 cartitems: state.cartitems,
                 cartquantity: state.cartquantity,
                 notificationadded: state.notificationadded,
                 totalprice: state.totalprice,
+                getUser,
                 addCartProduct,
                 removeFromCart,
                 getLocalStorage,
