@@ -7,6 +7,7 @@ import {
     signInWithEmailAndPassword,
     updateProfile,
     signOut,
+    sendEmailVerification,
     User
 } from "firebase/auth";
 import {
@@ -37,9 +38,11 @@ export class Firebase {
     async signup(name: string,  email: string, password: string) {
         await createUserWithEmailAndPassword(this.auth, email, password)
 
-        return await updateProfile(this.auth.currentUser as User, {
+        await updateProfile(this.auth.currentUser as User, {
         displayName: name 
         })
+
+        return await sendEmailVerification(this.auth.currentUser as User)
       
     }
     
@@ -52,7 +55,7 @@ export class Firebase {
     async logout(){
         await signOut(this.auth)
     }
-    
+
     // add to the collection
     async collect(element: object, nameCollect: string) {
         try {
