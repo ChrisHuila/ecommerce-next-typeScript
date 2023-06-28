@@ -556,7 +556,8 @@ a {
 .auth-error{
     color: 	#ff3333;
     font-family: var(--textFont);
-    font-weight: 700;
+    font-weight: 400;
+    font-size: var(--smaller-font-size);
 }
 
 /* ==========FOOTER============ */

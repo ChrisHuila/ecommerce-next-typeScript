@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link";
 // import firebase from "@/firebase/firebase";
-import { useState} from "react";
 import useValidation from "@/hooks/useValidation";
 import loginValidation from "@/services/validation/loginValidation";
 
@@ -10,30 +9,8 @@ const initialState = {
     password: '',
 }
 const Login = () => {
-    const { values, handleChange, onSubmit } = useValidation(initialState, loginValidation);
-
-
-    // const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault()
-
-    //     if( email.trim() === '' || password.trim() === ''){
-    //         setError('All fields are required')
-    //         return
-    //     }
-
-    //     if(!er.test(email)){
-    //         setError('Invalid email')
-    //         return
-    //     }
-
-    //     setError(null)
-        
-    //     setUser({
-    //         email: '',
-    //         password: '',
-    //     })
-    // }
-
+    const { user, errors, handleChange, onSubmit } = useValidation(initialState, loginValidation);
+ 
     return (
         <main className="minvh">
             <div className="user_form">
@@ -48,9 +25,11 @@ const Login = () => {
                             id="email"
                             placeholder="Enter your E-mail"
                             onChange={handleChange}
-                            value={values.email}
+                            value={user.email}
                              />
                         </div>
+                        {errors.email && <p className="auth-error"> {errors.email}</p>}
+
                         <div className="form-field">
                             <label htmlFor="password">Password</label>
                             <input 
@@ -59,9 +38,11 @@ const Login = () => {
                             id="password"
                             placeholder="Enter your Password"
                             onChange={handleChange}
-                            value={values.password}
+                            value={user.password}
                              />
                         </div>
+                        {errors.password && <p className="auth-error"> {errors.password}</p>}
+
                         <div className="form-field">
                             <input 
                             type="submit"
@@ -73,7 +54,6 @@ const Login = () => {
                     <Link href="/signup" className="account-link">
                         Sign up
                     </Link>
-                    {/* {error && <p className="auth-error"> {error}</p>} */}
                 </div>
             </div>
         </main>
