@@ -4,7 +4,11 @@ import { initializeApp } from "firebase/app";
 import { 
     getAuth, 
     createUserWithEmailAndPassword, 
-    signInWithEmailAndPassword } from "firebase/auth";
+    signInWithEmailAndPassword,
+    updateProfile,
+    signOut,
+    User
+} from "firebase/auth";
 import {
     getFirestore,
     collection,
@@ -30,8 +34,12 @@ export class Firebase {
         this.auth = getAuth(this.app)
     }
     // Sign up
-    async signup(email: string, password: string) {
+    async signup(name: string,  email: string, password: string) {
         await createUserWithEmailAndPassword(this.auth, email, password)
+
+        return await updateProfile(this.auth.currentUser as User, {
+        displayName: name 
+        })
       
     }
     
@@ -40,6 +48,11 @@ export class Firebase {
         return await signInWithEmailAndPassword(this.auth, email, password)
     }
 
+    // log out
+    async logout(){
+        await signOut(this.auth)
+    }
+    
     // add to the collection
     async collect(element: object, nameCollect: string) {
         try {

@@ -22,7 +22,7 @@ const SignUp = () => {
 
     async function getSignUp() {
         try {
-            await firebase.signup(user.email, user.password);
+            await firebase.signup(user.user_name, user.email, user.password);
             console.log('llego');
             router.push('/');
             setErrorAuth(null)
