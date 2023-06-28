@@ -1,6 +1,8 @@
 "use client"
 import Link from "next/link";
+import firebase from "@/firebase/firebase";
 import { useState } from "react";
+
 
 const SignUp = () => {
     const [ user, setUser ] = useState({
@@ -46,6 +48,8 @@ const SignUp = () => {
         }
         setError(null)
 
+        firebase.signup(email, password)
+        
         setUser({
             user_name: '',
             email: '',

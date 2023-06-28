@@ -1,46 +1,38 @@
 "use client"
 import Link from "next/link";
+// import firebase from "@/firebase/firebase";
 import { useState} from "react";
+import useValidation from "@/hooks/useValidation";
+import loginValidation from "@/services/validation/loginValidation";
 
+const initialState = {
+    email: '',
+    password: '',
+}
 const Login = () => {
+    const { values, handleChange, onSubmit } = useValidation(initialState, loginValidation);
 
-    const [ user, setUser] = useState({
-        email: '',
-        password: '',
-    });
-    const [ error, setError ] = useState<string | null>(null)
 
-    const { email, password } = user;
+    // const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault()
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value
-        })
-    }
+    //     if( email.trim() === '' || password.trim() === ''){
+    //         setError('All fields are required')
+    //         return
+    //     }
 
-    const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //     if(!er.test(email)){
+    //         setError('Invalid email')
+    //         return
+    //     }
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-
-        if( email.trim() === '' || password.trim() === ''){
-            setError('All fields are required')
-            return
-        }
-
-        if(!er.test(email)){
-            setError('Invalid email')
-            return
-        }
-
-        setError(null)
-
-        setUser({
-            email: '',
-            password: '',
-        })
-    }
+    //     setError(null)
+        
+    //     setUser({
+    //         email: '',
+    //         password: '',
+    //     })
+    // }
 
     return (
         <main className="minvh">
@@ -56,7 +48,7 @@ const Login = () => {
                             id="email"
                             placeholder="Enter your E-mail"
                             onChange={handleChange}
-                            value={email}
+                            value={values.email}
                              />
                         </div>
                         <div className="form-field">
@@ -67,7 +59,7 @@ const Login = () => {
                             id="password"
                             placeholder="Enter your Password"
                             onChange={handleChange}
-                            value={password}
+                            value={values.password}
                              />
                         </div>
                         <div className="form-field">
@@ -81,7 +73,7 @@ const Login = () => {
                     <Link href="/signup" className="account-link">
                         Sign up
                     </Link>
-                    {error && <p className="auth-error"> {error}</p>}
+                    {/* {error && <p className="auth-error"> {error}</p>} */}
                 </div>
             </div>
         </main>

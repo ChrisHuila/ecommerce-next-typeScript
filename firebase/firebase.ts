@@ -1,6 +1,10 @@
 import { Product } from "@/types";
-import { initializeApp } from "firebase/app";
 import firebaseConfig from "./config";
+import { initializeApp } from "firebase/app";
+import { 
+    getAuth, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword } from "firebase/auth";
 import {
     getFirestore,
     collection,
@@ -18,9 +22,29 @@ import {
 export class Firebase {
     app;
     db;
+    auth;
+
     constructor() {
         this.app = initializeApp(firebaseConfig);
         this.db = getFirestore(this.app);
+        this.auth = getAuth(this.app)
+    }
+    // Sign up
+    async signup(email: string, password: string) {
+        try {
+            await createUserWithEmailAndPassword(this.auth, email, password)
+        } catch (error) {
+            console.log('error', error);
+        }
+    }
+    // log in
+    async login(email: string, password: string) {
+        try {
+            return await signInWithEmailAndPassword(this.auth, email, password)
+            
+        } catch (error) {
+            console.log('error', error);
+        }
     }
     // add to the collection
     async collect(element: object, nameCollect: string) {
