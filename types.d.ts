@@ -48,3 +48,16 @@ export type ProductReducerAction =
         type: "GET_LOCALSTORAGE";
         payload:  Product[];
     };
+
+export interface UserValidation {
+    user_name?: string,
+    email: string,
+    password: string,
+    confirm?: string
+}
+export interface ErrorsValidation {
+    user_name?: string,
+    email?: string,
+    password?: string, 
+    confirm?: string
+}

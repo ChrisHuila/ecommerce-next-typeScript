@@ -1,15 +1,9 @@
-export interface Values {
-    email: string,
-    password: string,
-}
+import { ErrorsValidation, UserValidation } from "@/types";
 
-export interface Errors {
-    email?: string,
-    password?: string,
-}
 
-export default function loginValidation(user: Values) {
-     let errors:Errors  = {}
+
+export default function loginValidation(user: UserValidation) {
+     let errors:ErrorsValidation  = {}
 
     const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
 

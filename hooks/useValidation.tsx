@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Errors, Values } from "@/services/validation/loginValidation";
+import { ErrorsValidation, UserValidation } from "@/types";
 
-export default function useValidation<T>(
+
+export default function useValidation<T extends UserValidation>(
     initialState: T, 
-    validation: (data: Values) => Errors  
+    validation: (data: UserValidation) => ErrorsValidation  
     ){
   const [ values, setValues ] =  useState<T>(initialState)
-  const [ errorslogin, setErrorLogin ] = useState<Errors>({})
+  const [ errorslogin, setErrorLogin ] = useState<ErrorsValidation>({})
     
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValues({
@@ -17,8 +18,9 @@ export default function useValidation<T>(
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const errorsValidation = validation(values as Values)
+        const errorsValidation = validation(values)
         setErrorLogin(errorsValidation)
+        
     }
 
     return{ values, handleChange, onSubmit }
