@@ -37,15 +37,12 @@ export class Firebase {
             console.log('error', error);
         }
     }
+    
     // log in
     async login(email: string, password: string) {
-        try {
-            return await signInWithEmailAndPassword(this.auth, email, password)
-            
-        } catch (error) {
-            console.log('error', error);
-        }
+        return await signInWithEmailAndPassword(this.auth, email, password)
     }
+
     // add to the collection
     async collect(element: object, nameCollect: string) {
         try {

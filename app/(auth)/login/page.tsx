@@ -1,15 +1,32 @@
 "use client"
 import Link from "next/link";
-// import firebase from "@/firebase/firebase";
+import { useRouter } from 'next/navigation'
+import firebase from "@/firebase/firebase";
 import useValidation from "@/hooks/useValidation";
 import loginValidation from "@/services/validation/loginValidation";
+import { useState } from "react";
 
 const initialState = {
     email: '',
     password: '',
 }
 const Login = () => {
-    const { user, errors, handleChange, onSubmit } = useValidation(initialState, loginValidation);
+    const { user, errors, handleChange, onSubmit } = useValidation(initialState, loginValidation, access);
+
+    const [ errorauth, setErrorAuth ] = useState<string | null>(null)
+
+    const router = useRouter() //allow navigation
+
+    async function access(){
+        try {
+            const userLogin = await firebase.login(user.email, user.password);
+            router.push('/');
+            setErrorAuth(null)
+        } catch (error) {
+            console.log(error);
+            setErrorAuth('Email or Password incorrect')
+        }
+    }
  
     return (
         <main className="minvh">
@@ -54,6 +71,7 @@ const Login = () => {
                     <Link href="/signup" className="account-link">
                         Sign up
                     </Link>
+                    {errorauth && <p className="auth-error"> {errorauth}</p>}
                 </div>
             </div>
         </main>
