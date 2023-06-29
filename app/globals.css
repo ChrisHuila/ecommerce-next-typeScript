@@ -568,6 +568,23 @@ a {
    font-weight: 700;
    font-style: normal;
 }
+.btn-newproduct{
+    font-weight: 700;
+    font-family: var(--textFont);
+    text-transform: uppercase;
+    border: 1px solid #d1d1d1;
+    padding: .8rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    font-size: var(--smaller-font-size);
+    background-color: #fff;
+    transition: .5s ease all;
+}
+.btn-newproduct:hover {
+    cursor: pointer;
+    background-color:#6dacea;
+    color: #fff;
+}
 .btn-logout {
     font-weight: 700;
     font-family: var(--textFont);

@@ -48,6 +48,7 @@ const NewProduct = () => {
                         id="name"
                         placeholder="Product name"
                         onChange={handleChange}
+                        value={product.name}
                          />
                     </div>
 
@@ -59,6 +60,7 @@ const NewProduct = () => {
                         id="price"
                         placeholder="Product price dollar"
                         onChange={handleChange}
+                        value={product.price}
                          />
                     </div>
                     <div className="newproduct-field">
@@ -79,6 +81,7 @@ const NewProduct = () => {
                         id="category"
                         placeholder="Product category"
                         onChange={handleChange}
+                        value={product.category}
                          />
                     </div>
 
@@ -90,6 +93,7 @@ const NewProduct = () => {
                         id="discount"
                         placeholder="percentage discount"
                         onChange={handleChange}
+                        value={product.discount}
                          />
                     </div>
 
@@ -101,6 +105,7 @@ const NewProduct = () => {
                         id="warranty"
                         placeholder="number"
                         onChange={handleChange}
+                        value={product.number_warranty}
                          />
                          <select name="date_warranty" value={product.date_warranty}>
                             <option value="day">Day</option>
