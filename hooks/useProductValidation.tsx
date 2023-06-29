@@ -6,7 +6,7 @@ import { ErrorsValidationProduct, ValidationProduct } from "@/types";
 export default function useProductValidation<T extends ValidationProduct>(
 initialState: T, 
 validation: (product: ValidationProduct, img: File | null) => Promise<ErrorsValidationProduct>,
-acces: () => void  
+addProduct: () => void  
 ){
     const [ values, setValues ] =  useState<T>(initialState)
     const [ image, setImage ] = useState< File | null >(null)
@@ -37,7 +37,7 @@ acces: () => void
             if(submitform){
                 const noErrors = Object.keys(errors).length === 0;
                 if(noErrors) {
-                    acces();
+                    addProduct();
                     // setValues(initialState)
                 }
                 setSubmitForm(false)
@@ -46,5 +46,5 @@ acces: () => void
         getConnection()
     },[submitform])
 
-    return{ product:values, errors, handleChange, handleFile, onSubmit }
+    return{ product:values, image ,errors, handleChange, handleFile, onSubmit }
 }
