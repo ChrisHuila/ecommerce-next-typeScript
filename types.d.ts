@@ -67,3 +67,20 @@ export interface ErrorsValidation {
     password?: string, 
     confirm?: string
 }
+export interface ErrorsValidationProduct {
+    name?: string;
+    price?: string;
+    category?: string;
+    information?: string;
+    number?: string;
+    date?: string;
+    discount?: string;
+}
+export interface ValidationProduct {
+    name?: string;
+    price?: string;
+    category?: string;
+    information?: string;
+    warranty?: { number: number; date: string };
+    discount?: number;
+}
