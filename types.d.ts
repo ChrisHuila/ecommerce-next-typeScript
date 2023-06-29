@@ -78,10 +78,10 @@ export interface ErrorsValidationProduct {
 }
 export interface ValidationProduct {
     name?: string;
-    price?: number;
+    price?: string;
     category?: string;
     information?: string;
-    number_warranty: number;
+    number_warranty: string;
     date_warranty: string;
-    discount?: number;
+    discount?: string;
 }

@@ -7,13 +7,11 @@ export default function newProductValidation(product: ValidationProduct) {
         errors.name = 'name is required'
     }
 
-    if(!product.price){
+    if(product.price?.trim() === ''){
         errors.price = "price is required"
-    }else if (product.price <= 0){
-        errors.price = "invalid price"
     }
 
-    if(!product.category){
+    if(product.category?.trim() === ''){
         errors.category = "category is required"
     }
 
@@ -21,11 +19,11 @@ export default function newProductValidation(product: ValidationProduct) {
         errors.information = "Add a description of your product"
     }
 
-    if(typeof product.discount !== "number" || product.discount < 0){
+    if(product.discount?.trim() === '' ){
         errors.discount = "invalid discount"
     }
 
-    if(typeof product.number_warranty !== "number" || product.number_warranty < 0){
+    if( product.number_warranty.trim() === '' ){
         errors.number_warranty = "invalid warranty"
     }
 

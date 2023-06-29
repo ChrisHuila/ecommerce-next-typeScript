@@ -30,7 +30,10 @@ acces: () => void
         const getConnection = () => {
             if(submitform){
                 const noErrors = Object.keys(errors).length === 0;
-                if(noErrors) acces();
+                if(noErrors) {
+                    acces();
+                    setValues(initialState)
+                }
                 setSubmitForm(false)
             }
         }

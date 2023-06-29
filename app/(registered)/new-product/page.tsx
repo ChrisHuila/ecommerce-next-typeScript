@@ -5,17 +5,17 @@ import { useRouter } from 'next/navigation'
 import firebase from "@/firebase/firebase";
 import useProductValidation from "@/hooks/useProductValidation";
 import newProductValidation from "@/services/validation/newProductValidation";
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const initialState = {
     name: '',
-    price: 0,
+    price: '',
     category: '',
     information: '',
-    number_warranty: 0,
+    number_warranty: '0',
     date_warranty: 'month',
-    discount: 0,
+    discount: '0',
 }
 
 const NewProduct = () => {
@@ -23,6 +23,8 @@ const NewProduct = () => {
 
    const { product, errors, handleChange, onSubmit } =  useProductValidation(initialState,newProductValidation, addProduct)
    
+   const { name, price, category, information, number_warranty, date_warranty, discount } = product;
+
    const [ errorauth, setErrorAuth ] = useState<string | null >(null)
 
     const router = useRouter() //allow navigation
@@ -33,10 +35,26 @@ const NewProduct = () => {
             
         }
         
-        // firebase.uploadImage(image, `products/image.name}` + uuid())
-        console.log('hola');
+        const urlImage = await firebase.uploadImage(image, `productsImg/${image.name}` + uuidv4());
         
-      
+        // build product's object
+        const product = {
+            name,
+            price,
+            image: urlImage,
+            category,
+            date: Date.now(),
+            information,
+            warranty: {
+                Number: Number(number_warranty),
+                date: date_warranty
+            },
+            discount: Number(discount)
+        }
+
+        // Add to the database
+        firebase.collect(product, "products");
+        
     }
     // technology
     const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +77,7 @@ const NewProduct = () => {
                         id="name"
                         placeholder="Product name"
                         onChange={handleChange}
-                        value={product.name}
+                        value={name}
                          />
                     </div>
 
@@ -69,9 +87,10 @@ const NewProduct = () => {
                         type="number"
                         name="price"
                         id="price"
+                        min='0'
                         placeholder="Product price dollar"
                         onChange={handleChange}
-                        value={product.price}
+                        value={price}
                          />
                     </div>
                     <div className="newproduct-field">
@@ -93,7 +112,7 @@ const NewProduct = () => {
                         id="category"
                         placeholder="Product category"
                         onChange={handleChange}
-                        value={product.category}
+                        value={category}
                          />
                     </div>
 
@@ -103,9 +122,11 @@ const NewProduct = () => {
                         type="number"
                         name="discount"
                         id="discount"
+                        min='0'
+                        max="100"
                         placeholder="percentage discount"
                         onChange={handleChange}
-                        value={product.discount}
+                        value={discount}
                          />
                     </div>
 
@@ -117,7 +138,7 @@ const NewProduct = () => {
                         id="warranty"
                         placeholder="number"
                         onChange={handleChange}
-                        value={product.number_warranty}
+                        value={number_warranty}
                          />
                          <select 
                          name="date_warranty" 
@@ -138,7 +159,7 @@ const NewProduct = () => {
                         name="information"
                         id="information"
                         onChange={handleChange}
-                        value={product.information}
+                        value={information}
                         />
                     </div>    
                 </fieldset>
