@@ -9,26 +9,32 @@ export default function newProductValidation(product: ValidationProduct) {
 
     if(!product.price){
         errors.price = "price is required"
+    }else if (product.price <= 0){
+        errors.price = "invalid price"
     }
 
     if(!product.category){
         errors.category = "category is required"
     }
 
-    if(!product.information){
+    if(product.information?.trim() === ''){
         errors.information = "Add a description of your product"
     }
 
     if(!product.discount){
         errors.discount = "add a discount"
+    }else if (product.discount < 0){
+        errors.discount = "invalid discount"
     }
 
-    if(!product.warranty?.number){
-        errors.number = "enter a number"
+    if(!product.number_warranty){
+        errors.number_warranty = "enter a number"
+    }else if (product.number_warranty < 0) {
+        errors.number_warranty = "invalid warranty"
     }
 
-    if(!product.warranty?.number){
-        errors.date = "select date"
+    if(!product.date_warranty){
+        errors.date_warranty = "select date"
     }
 
     return errors;

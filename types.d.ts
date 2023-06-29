@@ -72,15 +72,16 @@ export interface ErrorsValidationProduct {
     price?: string;
     category?: string;
     information?: string;
-    number?: string;
-    date?: string;
+    number_warranty?: string;
+    date_warranty?: string;
     discount?: string;
 }
 export interface ValidationProduct {
     name?: string;
-    price?: string;
+    price?: number;
     category?: string;
     information?: string;
-    warranty?: { number: number; date: string };
+    number_warranty: number;
+    date_warranty: string;
     discount?: number;
 }

@@ -8,10 +8,11 @@ import newProductValidation from "@/services/validation/newProductValidation";
 
 const initialState = {
     name: '',
-    price: '',
+    price: 0,
     category: '',
     information: '',
-    warranty: { number: 0, date: '' },
+    number_warranty: 0,
+    date_warranty: '',
     discount: 0,
 }
 
@@ -74,6 +75,22 @@ const NewProduct = () => {
                         placeholder="percentage discount"
                         onChange={handleChange}
                          />
+                    </div>
+
+                    <div className="newproduct-field">
+                        <label htmlFor="warranty">Warranty</label>
+                        <input 
+                        type="number"
+                        name="number_warranty"
+                        id="warranty"
+                        placeholder="number"
+                        onChange={handleChange}
+                         />
+                         <select name="date_warranty" >
+                            <option value="day">Day</option>
+                            <option value="month">Month</option>
+                            <option value="year">Year</option>
+                         </select>
                     </div>
                 </fieldset>
                 <fieldset>

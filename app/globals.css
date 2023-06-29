@@ -611,6 +611,12 @@ a {
     flex: 0 0 150px;
     font-size: var(--normal-font-size);
 }
+.newproduct-field select{
+    flex: 0 0 50px;
+    font-size: var(--normal-font-size);
+    margin-left: 20px;
+    padding: 1rem;
+}
 .newproduct-field input,
 .newproduct-field textarea{
     flex: 1;
