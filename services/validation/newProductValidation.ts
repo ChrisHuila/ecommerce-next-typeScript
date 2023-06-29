@@ -1,6 +1,6 @@
 import { ErrorsValidationProduct , ValidationProduct } from "@/types";
 
-export default function newProductValidation(product: ValidationProduct) {
+export default async function  newProductValidation(product: ValidationProduct, image: File | null) {
     let errors: ErrorsValidationProduct  = {}
 
     if(product.name?.trim() === ''){
@@ -27,6 +27,25 @@ export default function newProductValidation(product: ValidationProduct) {
         errors.number_warranty = "invalid warranty"
     }
 
+    if(!image){
+        errors.img = "image is required"
+    }else{
+        const img = new Image()
+        let objectUrl = URL.createObjectURL(image)
+        img.src = objectUrl;
+        
+        const loadingImg = new Promise (resolve => {
+            img.onload = () => {
+               if(img.width > 640 || img.height > 640 ){
+                errors.img = "The image should be no more than 640 x 640 pixels in size"
+               }
+
+                URL.revokeObjectURL(objectUrl)
+                resolve(true)
+            }
+        })
+        await loadingImg;
+    }
 
     return errors;
 }

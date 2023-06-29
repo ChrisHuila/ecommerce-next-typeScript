@@ -19,55 +19,53 @@ const initialState = {
 }
 
 const NewProduct = () => {
-    const [ image, setImage ] = useState< File | null >(null)
-    const [ imgerror, setImgError ] = useState< string | null >(null);
+    // const [ image, setImage ] = useState< File | null >(null)
 
-   const { product, errors, handleChange, onSubmit } =  useProductValidation(initialState,newProductValidation, addProduct)
+   const { product, errors, handleChange, handleFile, onSubmit } =  useProductValidation(initialState,newProductValidation, addProduct)
    
-   const { name, price, category, information, number_warranty, date_warranty, discount } = product;
+   const { name, price, category, information, number_warranty, discount } = product;
 
    const [ errorauth, setErrorAuth ] = useState<string | null >(null)
 
     const router = useRouter() //allow navigation
 
     async function addProduct() {
-        if(!image) {
-            setImgError("image is required")
-            return 
-        }
-        try {
-            const urlImage = await firebase.uploadImage(image, `productsImg/${image.name}` + uuidv4());
+     
+        console.log('dese el final');
+                
+        // try {
+        //     const urlImage = await firebase.uploadImage(image, `productsImg/${image.name}` + uuidv4());
         
-            // build product's object
-            const product = {
-                name,
-                price,
-                image: urlImage,
-                category,
-                date: Date.now(),
-                information,
-                warranty: {
-                    Number: Number(number_warranty),
-                    date: date_warranty
-                },
-                discount: Number(discount)
-            }
+        //     // build product's object
+        //     const product = {
+        //         name,
+        //         price,
+        //         image: urlImage,
+        //         category,
+        //         date: Date.now(),
+        //         information,
+        //         warranty: {
+        //             Number: Number(number_warranty),
+        //             date: date_warranty
+        //         },
+        //         discount: Number(discount)
+        //     }
 
-            // Add to the database
-            firebase.collect(product, "products");
-        } catch (error) {
-               if (error instanceof Error) {
-                setErrorAuth(error.message?.replace(/^Firebase: Error\s*/, '').replaceAll('-', ' '))
-            }
-        }
+        //     // Add to the database
+        //     firebase.collect(product, "products");
+        // } catch (error) {
+        //        if (error instanceof Error) {
+        //         setErrorAuth(error.message?.replace(/^Firebase: Error\s*/, '').replaceAll('-', ' '))
+        //     }
+        // }
       
         
     }
-    // technology
-    const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!e.target.files) return
-        setImage(e.target.files[0]);
-    }
+
+    // const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     if (!e.target.files) return
+    //     setImage(e.target.files[0]);
+    // }
 
     return(
         <main className="minvh">
@@ -113,7 +111,7 @@ const NewProduct = () => {
                         onChange={handleFile }
                          />
                     </div>
-                    {imgerror && <p className="auth-error"> {imgerror}</p>}
+                    {errors.img && <p className="auth-error"> {errors.img}</p>}
                      
                     <div className="newproduct-field">
                         <label htmlFor="name">Category</label>

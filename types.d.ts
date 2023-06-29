@@ -75,6 +75,7 @@ export interface ErrorsValidationProduct {
     number_warranty?: string;
     date_warranty?: string;
     discount?: string;
+    img?: string;
 }
 export interface ValidationProduct {
     name?: string;

@@ -5,12 +5,13 @@ import { ErrorsValidationProduct, ValidationProduct } from "@/types";
 
 export default function useProductValidation<T extends ValidationProduct>(
 initialState: T, 
-validation: (product: ValidationProduct) => ErrorsValidationProduct,
+validation: (product: ValidationProduct, img: File | null) => Promise<ErrorsValidationProduct>,
 acces: () => void  
 ){
-  const [ values, setValues ] =  useState<T>(initialState)
-  const [ errors, setErrors ] = useState<ErrorsValidationProduct>({})
-  const [ submitform, setSubmitForm ] = useState(false)
+    const [ values, setValues ] =  useState<T>(initialState)
+    const [ image, setImage ] = useState< File | null >(null)
+    const [ errors, setErrors ] = useState<ErrorsValidationProduct>({})
+    const [ submitform, setSubmitForm ] = useState(false)
     
   const handleChange = (e: React.ChangeEvent< HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement >) => {
         setValues({
@@ -19,9 +20,14 @@ acces: () => void
         })
     }
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files) return
+        setImage(e.target.files[0]);
+    }
+    
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const errorsValidation = validation(values)
+        const errorsValidation = await validation(values, image)
         setErrors(errorsValidation)
         setSubmitForm(true)
     }
@@ -32,7 +38,7 @@ acces: () => void
                 const noErrors = Object.keys(errors).length === 0;
                 if(noErrors) {
                     acces();
-                    setValues(initialState)
+                    // setValues(initialState)
                 }
                 setSubmitForm(false)
             }
@@ -40,5 +46,5 @@ acces: () => void
         getConnection()
     },[submitform])
 
-    return{ product:values, errors, handleChange, onSubmit }
+    return{ product:values, errors, handleChange, handleFile, onSubmit }
 }
