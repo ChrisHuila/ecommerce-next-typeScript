@@ -20,6 +20,7 @@ const initialState = {
 
 const NewProduct = () => {
     const [ image, setImage ] = useState< File | null >(null)
+    const [ imgerror, setImgError ] = useState< string | null >(null);
 
    const { product, errors, handleChange, onSubmit } =  useProductValidation(initialState,newProductValidation, addProduct)
    
@@ -31,29 +32,35 @@ const NewProduct = () => {
 
     async function addProduct() {
         if(!image) {
-            return console.log('agrega una imagen');
-            
+            setImgError("image is required")
+            return 
         }
+        try {
+            const urlImage = await firebase.uploadImage(image, `productsImg/${image.name}` + uuidv4());
         
-        const urlImage = await firebase.uploadImage(image, `productsImg/${image.name}` + uuidv4());
-        
-        // build product's object
-        const product = {
-            name,
-            price,
-            image: urlImage,
-            category,
-            date: Date.now(),
-            information,
-            warranty: {
-                Number: Number(number_warranty),
-                date: date_warranty
-            },
-            discount: Number(discount)
-        }
+            // build product's object
+            const product = {
+                name,
+                price,
+                image: urlImage,
+                category,
+                date: Date.now(),
+                information,
+                warranty: {
+                    Number: Number(number_warranty),
+                    date: date_warranty
+                },
+                discount: Number(discount)
+            }
 
-        // Add to the database
-        firebase.collect(product, "products");
+            // Add to the database
+            firebase.collect(product, "products");
+        } catch (error) {
+               if (error instanceof Error) {
+                setErrorAuth(error.message?.replace(/^Firebase: Error\s*/, '').replaceAll('-', ' '))
+            }
+        }
+      
         
     }
     // technology
@@ -80,6 +87,7 @@ const NewProduct = () => {
                         value={name}
                          />
                     </div>
+                     {errors.name && <p className="auth-error"> {errors.name}</p>}
 
                     <div className="newproduct-field">
                         <label htmlFor="name">Price</label>
@@ -93,6 +101,8 @@ const NewProduct = () => {
                         value={price}
                          />
                     </div>
+                     {errors.price && <p className="auth-error"> {errors.price}</p>}
+                     
                     <div className="newproduct-field">
                         <label htmlFor="image">Image</label>
                         <input 
@@ -103,7 +113,8 @@ const NewProduct = () => {
                         onChange={handleFile }
                          />
                     </div>
-
+                    {imgerror && <p className="auth-error"> {imgerror}</p>}
+                     
                     <div className="newproduct-field">
                         <label htmlFor="name">Category</label>
                         <input 
@@ -115,6 +126,7 @@ const NewProduct = () => {
                         value={category}
                          />
                     </div>
+                    {errors.category && <p className="auth-error"> {errors.category}</p>}
 
                     <div className="newproduct-field">
                         <label htmlFor="name">Discount</label>
@@ -129,6 +141,7 @@ const NewProduct = () => {
                         value={discount}
                          />
                     </div>
+                    {errors.discount && <p className="auth-error"> {errors.discount}</p>}
 
                     <div className="newproduct-field">
                         <label htmlFor="warranty">Warranty</label>
@@ -150,6 +163,8 @@ const NewProduct = () => {
                             <option value="year">Year</option>
                          </select>
                     </div>
+                    {errors.number_warranty && <p className="auth-error"> {errors.number_warranty}</p>}
+
                 </fieldset>
                 <fieldset>
                     <legend>Product features</legend>
@@ -161,11 +176,14 @@ const NewProduct = () => {
                         onChange={handleChange}
                         value={information}
                         />
-                    </div>    
+                    </div> 
+                    {errors.information && <p className="auth-error"> {errors.information}</p>}
+
                 </fieldset>
                 <input className="newproduct-submit" type="submit" value="Add Product" />
-            </form>
+                {errorauth && <p className="auth-error"> {errorauth}</p>}
 
+            </form>
         </main>
         
     )
