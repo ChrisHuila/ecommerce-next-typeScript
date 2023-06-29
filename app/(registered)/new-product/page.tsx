@@ -12,11 +12,13 @@ const initialState = {
     category: '',
     information: '',
     number_warranty: 0,
-    date_warranty: '',
+    date_warranty: 'month',
     discount: 0,
 }
 
 const NewProduct = () => {
+    const [ image, setImage ] = useState< File | null >(null)
+
    const { product, errors, handleChange, onSubmit } =  useProductValidation(initialState,newProductValidation, addProduct)
    
    const [ errorauth, setErrorAuth ] = useState<string | null >(null)
@@ -26,11 +28,16 @@ const NewProduct = () => {
     async function addProduct() {
       
     }
+    const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files) return
+            setImage(e.target.files[0])
+    }
+
     return(
         <main className="minvh">
             <h1 className="newproduct-title">New Product</h1>
 
-            <form className="newproduct-form">
+            <form className="newproduct-form" onSubmit={onSubmit}>
                 <fieldset>
                     <legend>General information </legend>
                     <div className="newproduct-field">
@@ -52,6 +59,15 @@ const NewProduct = () => {
                         id="price"
                         placeholder="Product price dollar"
                         onChange={handleChange}
+                         />
+                    </div>
+                    <div className="newproduct-field">
+                        <label htmlFor="image">Image</label>
+                        <input 
+                        type="file"
+                        name="image"
+                        id="image"
+                        onChange={handleFile }
                          />
                     </div>
 
@@ -86,7 +102,7 @@ const NewProduct = () => {
                         placeholder="number"
                         onChange={handleChange}
                          />
-                         <select name="date_warranty" >
+                         <select name="date_warranty" value={product.date_warranty}>
                             <option value="day">Day</option>
                             <option value="month">Month</option>
                             <option value="year">Year</option>
@@ -101,91 +117,16 @@ const NewProduct = () => {
                         name="information"
                         id="information"
                         onChange={handleChange}
-                        >
-
-                        </textarea>
+                        value={product.information}
+                        />
                     </div>    
                 </fieldset>
-                 <input className="newproduct-submit" type="submit" value="Add Product" />
+                <input className="newproduct-submit" type="submit" value="Add Product" />
             </form>
 
         </main>
         
     )
-    // return (
-    //      <main className="minvh">
-    //         <div className="user_form">
-    //             <div className="form-container">
-    //                 <h2 className="title-login">Sign up</h2>
-    //                 <form action="" onSubmit={onSubmit}>
-    //                     <div className="form-field">
-    //                         <label htmlFor="user_name">Name</label>
-    //                         <input 
-    //                         type="text"
-    //                         name="user_name"
-    //                         id="user_name"
-    //                         placeholder="Enter your name"
-    //                         onChange={handleChange}
-    //                         value={user.user_name}
-    //                          />
-    //                     </div>
-    //                     {errors.user_name && <p className="auth-error"> {errors.user_name}</p>}
-
-    //                     <div className="form-field">
-    //                         <label htmlFor="email">E-mail</label>
-    //                         <input 
-    //                         type="email"
-    //                         name="email"
-    //                         id="email"
-    //                         placeholder="Enter your E-mail"
-    //                         onChange={handleChange}
-    //                         value={user.email}
-    //                          />
-    //                     </div>
-    //                     {errors.email && <p className="auth-error"> {errors.email}</p>}
-
-    //                     <div className="form-field">
-    //                         <label htmlFor="password">Password</label>
-    //                         <input 
-    //                         type="password"
-    //                         name="password"
-    //                         id="password"
-    //                         placeholder="Enter your Password"
-    //                         onChange={handleChange}
-    //                         value={user.password}
-    //                          />
-    //                     </div>
-    //                     {errors.password && <p className="auth-error"> {errors.password}</p>}
-
-    //                     <div className="form-field">
-    //                         <label htmlFor="password">Confirm your Password</label>
-    //                         <input 
-    //                         type="password"
-    //                         name="confirm"
-    //                         id="confirm"
-    //                         placeholder="Confirm your Password"
-    //                         onChange={handleChange}
-    //                         value={user.confirm}
-    //                          />
-    //                     </div>
-    //                     {errors.confirm && <p className="auth-error"> {errors.confirm}</p>}
-                        
-    //                     <div className="form-field">
-    //                         <input 
-    //                         type="submit"
-    //                         value='Sign up'
-    //                         className="btn btn-primary btn-block"
-    //                          />
-    //                     </div>
-    //                 </form>
-    //                 <Link href="/login" className="account-link">
-    //                     Log in
-    //                 </Link>
-    //                 {errorauth && <p className="auth-error"> {errorauth}</p>}
-    //             </div>
-    //         </div>
-    //     </main>
-    //   );
 }
  
 export default NewProduct;
