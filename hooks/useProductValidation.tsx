@@ -12,7 +12,7 @@ acces: () => void
   const [ errors, setErrors ] = useState<ErrorsValidationProduct>({})
   const [ submitform, setSubmitForm ] = useState(false)
     
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent< HTMLInputElement |HTMLTextAreaElement >) => {
         setValues({
             ...values,
             [e.target.name]: e.target.value
@@ -37,5 +37,5 @@ acces: () => void
         getConnection()
     },[submitform])
 
-    return{ user:values, errors, handleChange, onSubmit }
+    return{ product:values, errors, handleChange, onSubmit }
 }

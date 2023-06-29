@@ -132,7 +132,7 @@ a {
 .header-logo {
     font-size: 2rem;
     font-weight: 700;
-    color: #c00;
+    color: #cc0000;
     cursor: pointer;
 }
 @media (min-width: 480px) {
@@ -575,7 +575,7 @@ a {
     border: 1px solid #d1d1d1;
     padding: .8rem;
     margin-right: 1rem;
-    background-color:#2d6eaf ;
+    background-color:#2d6eaf;
     color: white;
     border-radius: 5px;
     font-size: var(--smaller-font-size);
@@ -584,7 +584,58 @@ a {
     cursor: pointer;
     background-color:#6dacea
 }
-
+/* ========NEW PRODUCT======== */
+.newproduct-title{
+    margin-top: 5rem;
+    text-align: center;
+    font-family: var(--textFont);
+    font-size: var(--h1-font-size);
+}
+.newproduct-form{
+    max-width: 600px;
+    width: 95%;
+    margin: 5rem auto;
+}
+.newproduct-form fieldset {
+    margin: 2rem 0;
+    padding: 2rem;
+    font-size: var(--h3-font-size);
+    border: 1px solid #e1e1e1;
+}
+.newproduct-field {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+}
+.newproduct-field label{
+    flex: 0 0 150px;
+    font-size: var(--normal-font-size);
+}
+.newproduct-field input,
+.newproduct-field textarea{
+    flex: 1;
+    padding: 1rem;
+}
+.newproduct-field textarea{
+    height: 400px;
+}
+.newproduct-submit{
+    background-color:#00bcd4;
+    width: 100%;
+    padding: 1.5rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    border: none;
+    font-family: var(--textFont);
+    font-weight: 700;
+    transition: .3s ease all;
+}
+.newproduct-submit:hover{
+    cursor: pointer;
+    background-color:#2cd3e9;
+}
 /* ==========FOOTER============ */
 .footer {
     background-color: #34383a;

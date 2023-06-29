@@ -16,7 +16,7 @@ const initialState = {
 }
 
 const NewProduct = () => {
-   const { user, errors, handleChange, onSubmit } =  useProductValidation(initialState,newProductValidation, addProduct)
+   const { product, errors, handleChange, onSubmit } =  useProductValidation(initialState,newProductValidation, addProduct)
    
    const [ errorauth, setErrorAuth ] = useState<string | null >(null)
 
@@ -25,7 +25,76 @@ const NewProduct = () => {
     async function addProduct() {
       
     }
+    return(
+        <main className="minvh">
+            <h1 className="newproduct-title">New Product</h1>
 
+            <form className="newproduct-form">
+                <fieldset>
+                    <legend>General information </legend>
+                    <div className="newproduct-field">
+                        <label htmlFor="name">Name</label>
+                        <input 
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Product name"
+                        onChange={handleChange}
+                         />
+                    </div>
+
+                    <div className="newproduct-field">
+                        <label htmlFor="name">Price</label>
+                        <input 
+                        type="number"
+                        name="price"
+                        id="price"
+                        placeholder="Product price dollar"
+                        onChange={handleChange}
+                         />
+                    </div>
+
+                    <div className="newproduct-field">
+                        <label htmlFor="name">Category</label>
+                        <input 
+                        type="text"
+                        name="category"
+                        id="category"
+                        placeholder="Product category"
+                        onChange={handleChange}
+                         />
+                    </div>
+
+                    <div className="newproduct-field">
+                        <label htmlFor="name">Discount</label>
+                        <input 
+                        type="number"
+                        name="discount"
+                        id="discount"
+                        placeholder="percentage discount"
+                        onChange={handleChange}
+                         />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Product features</legend>
+                    <div className="newproduct-field">
+                        <label htmlFor="information">Description</label>
+                        <textarea 
+                        name="information"
+                        id="information"
+                        onChange={handleChange}
+                        >
+
+                        </textarea>
+                    </div>    
+                </fieldset>
+                 <input className="newproduct-submit" type="submit" value="Add Product" />
+            </form>
+
+        </main>
+        
+    )
     // return (
     //      <main className="minvh">
     //         <div className="user_form">
