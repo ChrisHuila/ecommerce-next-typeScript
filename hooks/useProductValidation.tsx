@@ -12,7 +12,7 @@ acces: () => void
   const [ errors, setErrors ] = useState<ErrorsValidationProduct>({})
   const [ submitform, setSubmitForm ] = useState(false)
     
-  const handleChange = (e: React.ChangeEvent< HTMLInputElement |HTMLTextAreaElement >) => {
+  const handleChange = (e: React.ChangeEvent< HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement >) => {
         setValues({
             ...values,
             [e.target.name]: e.target.value

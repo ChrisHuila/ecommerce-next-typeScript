@@ -1,6 +1,7 @@
 import { Product } from "@/types";
 import firebaseConfig from "./config";
 import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL  } from "firebase/storage";
 import { 
     getAuth, 
     createUserWithEmailAndPassword, 
@@ -28,11 +29,13 @@ export class Firebase {
     app;
     db;
     auth;
+    storage;
 
     constructor() {
         this.app = initializeApp(firebaseConfig);
         this.db = getFirestore(this.app);
         this.auth = getAuth(this.app)
+        this.storage = getStorage(this.app)
     }
     // Sign up
     async signup(name: string,  email: string, password: string) {
@@ -96,6 +99,20 @@ export class Firebase {
         } catch (error) {
             console.log(error + "desde obtener");
         }
+    }
+
+    async uploadImage(image: File, path: string){
+        try {
+            const storeRef = ref(this.storage, path);
+            await uploadBytes(storeRef, image);
+
+            const url = await getDownloadURL(storeRef)
+            return url;
+
+        } catch (error) {
+                console.error("hubo un error con la imagen")
+        }
+
     }
 }
 

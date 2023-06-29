@@ -21,21 +21,14 @@ export default function newProductValidation(product: ValidationProduct) {
         errors.information = "Add a description of your product"
     }
 
-    if(!product.discount){
-        errors.discount = "add a discount"
-    }else if (product.discount < 0){
+    if(typeof product.discount !== "number" || product.discount < 0){
         errors.discount = "invalid discount"
     }
 
-    if(!product.number_warranty){
-        errors.number_warranty = "enter a number"
-    }else if (product.number_warranty < 0) {
+    if(typeof product.number_warranty !== "number" || product.number_warranty < 0){
         errors.number_warranty = "invalid warranty"
     }
 
-    if(!product.date_warranty){
-        errors.date_warranty = "select date"
-    }
 
     return errors;
 }

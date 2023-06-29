@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import firebase from "@/firebase/firebase";
 import useProductValidation from "@/hooks/useProductValidation";
 import newProductValidation from "@/services/validation/newProductValidation";
+import { uuid } from 'uuidv4';
+
 
 const initialState = {
     name: '',
@@ -26,11 +28,20 @@ const NewProduct = () => {
     const router = useRouter() //allow navigation
 
     async function addProduct() {
+        if(!image) {
+            return console.log('agrega una imagen');
+            
+        }
+        
+        // firebase.uploadImage(image, `products/image.name}` + uuid())
+        console.log('hola');
+        
       
     }
+    // technology
     const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) return
-            setImage(e.target.files[0])
+        setImage(e.target.files[0]);
     }
 
     return(
@@ -67,6 +78,7 @@ const NewProduct = () => {
                         <label htmlFor="image">Image</label>
                         <input 
                         type="file"
+                        accept="image/*" 
                         name="image"
                         id="image"
                         onChange={handleFile }
@@ -107,7 +119,11 @@ const NewProduct = () => {
                         onChange={handleChange}
                         value={product.number_warranty}
                          />
-                         <select name="date_warranty" value={product.date_warranty}>
+                         <select 
+                         name="date_warranty" 
+                         value={product.date_warranty}
+                         onChange={handleChange}
+                         >
                             <option value="day">Day</option>
                             <option value="month">Month</option>
                             <option value="year">Year</option>
