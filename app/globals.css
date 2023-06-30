@@ -646,10 +646,51 @@ a {
     
    }
 }
-.newproduct-field select{
+.newproduct-field_warranty select{
     min-width: 150px;
     font-size: var(--normal-font-size);
     padding: 1rem;
+}
+.tags-container {
+    position: relative;
+}
+.tags-container button{
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    color: #c0bfbf;
+    background-color: transparent;
+    position: absolute;
+    top: 25%;
+    right: 10px;
+    padding: 0.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    transition: 0.3s ease all;
+}
+.tags-container button:hover{
+    cursor: pointer;
+    background-color: #00bcd4;;
+    color: #fff;
+} 
+.current-tags{
+    padding: 1rem;
+    width: 150px;
+    border: 1px solid #4d4c4c;
+    color: #4d4c4c;
+}
+.current-tags li {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--textFont);
+    align-items: center;
+}
+.current-tags span {
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: var(--smaller-font-size);
+}
+.current-tags li:hover {
+    cursor: pointer;
 }
 .newproduct-field input,
 .newproduct-field textarea{

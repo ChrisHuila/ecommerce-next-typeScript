@@ -158,6 +158,24 @@ const NewProduct = () => {
                         </div>
                     </div>
                     {errors.number_warranty && <p className="auth-error"> {errors.number_warranty}</p>}
+                    
+                    <div className="newproduct-field">
+                        <label htmlFor="tags">Tags</label>
+                        <div className="newproduct-field_warranty">
+                            <div className="tags-container">
+                                <input 
+                                type="text"
+                                name="tags"
+                                id="tags"
+                                placeholder="Enter Tags max 9"
+                                />
+                                <button type="button">&#43;</button>
+                            </div>
+                            <ul className="current-tags">
+                                <li>Current Tags <span> &#8744;</span></li>
+                            </ul>
+                        </div>
+                    </div>
 
                 </fieldset>
                 <fieldset>

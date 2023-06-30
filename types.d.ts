@@ -9,6 +9,7 @@ export interface Product {
     discount: number;
     id: string;
     quantity?: number;
+    tags?: string[];
 }
 export interface StateReducer {
     user: User | null; 
