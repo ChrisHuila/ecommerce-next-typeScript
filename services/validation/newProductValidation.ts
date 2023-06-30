@@ -29,6 +29,8 @@ export default async function  newProductValidation(product: ValidationProduct, 
 
     if(!image){
         errors.img = "image is required"
+    }else if(!image.type.includes('image/')){
+        errors.img = "invalid image"
     }else{
         const img = new Image()
         let objectUrl = URL.createObjectURL(image)

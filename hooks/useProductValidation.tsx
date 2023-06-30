@@ -38,7 +38,7 @@ addProduct: () => void
                 const noErrors = Object.keys(errors).length === 0;
                 if(noErrors) {
                     addProduct();
-                    // setValues(initialState)
+                    setValues(initialState)
                 }
                 setSubmitForm(false)
             }

@@ -67,7 +67,7 @@ export class Firebase {
                 id: postRef.id,
                 ...element,
             });
-            console.log('exito desde collect', postRef.id);
+            console.log('success from collect', postRef.id);
             
         } catch (error) {
             console.log(error, "desde agregar colleccion");
