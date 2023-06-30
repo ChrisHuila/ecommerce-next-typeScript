@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import firebase from "@/firebase/firebase";
 import useProductValidation from "@/hooks/useProductValidation";
 import newProductValidation from "@/services/validation/newProductValidation";
@@ -26,7 +26,7 @@ const NewProduct = () => {
 
    const [ errorauth, setErrorAuth ] = useState<string | null >(null)
 
-    const router = useRouter() //allow navigation
+    // const router = useRouter() //allow navigation
 
     async function addProduct() {
      
@@ -137,23 +137,25 @@ const NewProduct = () => {
 
                     <div className="newproduct-field">
                         <label htmlFor="warranty">Warranty</label>
-                        <input 
-                        type="number"
-                        name="number_warranty"
-                        id="warranty"
-                        placeholder="number"
-                        onChange={handleChange}
-                        value={number_warranty}
-                         />
-                         <select 
-                         name="date_warranty" 
-                         value={product.date_warranty}
-                         onChange={handleChange}
-                         >
-                            <option value="day">Day</option>
-                            <option value="month">Month</option>
-                            <option value="year">Year</option>
-                         </select>
+                        <div className="newproduct-field_warranty">
+                            <input 
+                            type="number"
+                            name="number_warranty"
+                            id="warranty"
+                            placeholder="number"
+                            onChange={handleChange}
+                            value={number_warranty}
+                            />
+                            <select 
+                            name="date_warranty" 
+                            value={product.date_warranty}
+                            onChange={handleChange}
+                            >
+                                <option value="day">Day</option>
+                                <option value="month">Month</option>
+                                <option value="year">Year</option>
+                            </select>
+                        </div>
                     </div>
                     {errors.number_warranty && <p className="auth-error"> {errors.number_warranty}</p>}
 
