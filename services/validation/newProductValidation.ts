@@ -1,6 +1,6 @@
-import { ErrorsValidationProduct, ErrorsTags, ValidationProduct } from "@/types";
+import { ErrorsValidationProduct, ErrorsTags, ValidationProduct, Tags } from "@/types";
 
-export default async function  newProductValidation(product: ValidationProduct, image: File | null, tags: string[]) {
+export default async function  newProductValidation(product: ValidationProduct, image: File | null, tags: Tags[]) {
     let errors: ErrorsValidationProduct  = {}
 
     if(product.name?.trim() === ''){
@@ -56,7 +56,7 @@ export default async function  newProductValidation(product: ValidationProduct, 
     return errors;
 }
 
-export function validationTags(tags: string[], tag: string) {
+export function validationTags(tags: Tags[], tag: string) {
     let errors:ErrorsTags = {}
     
     if(tag.trim() === ""){
@@ -67,8 +67,8 @@ export function validationTags(tags: string[], tag: string) {
         errors.tags = 'mmaximum tags is 9'
     }
 
-    if (tags.includes(tag)) {
-        errors.tags = 'You have already added these tags'
+    if (tags.filter(e => e.tag === tag).length > 0) {
+        errors.tags = 'You have already added this tag'
     }
     return errors;
 }

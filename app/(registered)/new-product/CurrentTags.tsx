@@ -1,8 +1,16 @@
-const CurrentTags = () => {
+import { Tags } from "@/types"
+interface Props {
+    tags: Tags[]
+    settags: (tags: Tags[]) => void
+}
+
+const CurrentTags = ({ tags, settags: setTags }: Props) => {
     return (
-        <div className="tags-all show-tags">
-            <p>Hola</p>
-        </div>
+        <ul className="tags-all show-tags">
+            {tags?.map(tag => (
+                <li key={tag.id}>{tag.tag}</li>
+            ))}
+        </ul>
       );
 }
  

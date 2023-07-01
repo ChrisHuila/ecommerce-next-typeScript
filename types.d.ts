@@ -91,3 +91,7 @@ export interface ValidationProduct {
     discount?: string;
     tag?: string;
 }
+export interface Tags {
+    tag:string;
+    id: string
+}

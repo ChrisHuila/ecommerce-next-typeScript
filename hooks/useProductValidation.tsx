@@ -1,14 +1,15 @@
 "use client"
 import { useEffect, useState } from "react";
-import { ErrorsValidationProduct, ErrorsTags, ValidationProduct } from "@/types";
+import { v4 as uuidv4 } from 'uuid';
+import { ErrorsValidationProduct, ErrorsTags, ValidationProduct, Tags } from "@/types";
 
 
 export default function useProductValidation<T extends ValidationProduct>(
 initialState: T,
-tags: Array<string> ,
-setTags: (tag: string[]) => void,
-validation: (product: ValidationProduct, img: File | null, tags: string[]) => Promise<ErrorsValidationProduct>,
-validationTags: (tags: string[], tag: string) => ErrorsTags,
+tags: Array<Tags> ,
+setTags: (tag: Array<Tags>) => void,
+validation: (product: ValidationProduct, img: File | null, tags: Tags[]) => Promise<ErrorsValidationProduct>,
+validationTags: (tags: Tags[], tag: string) => ErrorsTags,
 addProduct: () => void  
 ){
     const [ values, setValues ] =  useState<T>(initialState)
@@ -48,8 +49,12 @@ addProduct: () => void
                 setErrorTags({})
         }, 3000)
 
+        const withErrors = Object.keys(errorsValidation).length > 0;
+        if(withErrors) return
+
         if(tags.length < 9){
-            setTags([...tags, values.tag])
+            // TODO
+            setTags([...tags, {tag: values.tag, id: uuidv4()}])
             setValues({
                 ...values,
                 ['tag']: ''
