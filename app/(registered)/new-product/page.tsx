@@ -4,7 +4,7 @@ import { useState } from "react";
 // import { useRouter } from 'next/navigation'
 import firebase from "@/firebase/firebase";
 import useProductValidation from "@/hooks/useProductValidation";
-import newProductValidation from "@/services/validation/newProductValidation";
+import newProductValidation, { validationTags } from "@/services/validation/newProductValidation";
 import { v4 as uuidv4 } from 'uuid';
 import CurrentTags from "./CurrentTags";
 
@@ -25,41 +25,42 @@ const NewProduct = () => {
     const [ errorauth, setErrorAuth ] = useState<string | null >(null)
     const [ tags, setTags ] = useState<Array<string>>([])
 
-   const { product, image, errors, handleChange, handleFile, onSubmit, onClickTag } =  useProductValidation(initialState, tags, setTags, newProductValidation, addProduct)
+   const { product, image, errors, errortags, handleChange, handleFile, onSubmit, onClickTag } =  useProductValidation(initialState, tags, setTags, newProductValidation, validationTags, addProduct)
    
    const { name, price, category, information, number_warranty, date_warranty, discount, tag } = product;
 
     // const router = useRouter() //allow navigation
 
     async function addProduct() {
+     console.log('test');
      
-        if(!image) return;
+        // if(!image) return;
                 
-        try {
-            const urlImage = await firebase.uploadImage(image, `productsImg/${image.name}` + uuidv4());
+        // try {
+        //     const urlImage = await firebase.uploadImage(image, `productsImg/${image.name}` + uuidv4());
         
-            // build product's object
-            const product = {
-                name,
-                price,
-                image: urlImage,
-                category,
-                date: Date.now(),
-                information,
-                warranty: {
-                    Number: Number(number_warranty),
-                    date: date_warranty
-                },
-                discount: Number(discount)
-            }
+        //     // build product's object
+        //     const product = {
+        //         name,
+        //         price,
+        //         image: urlImage,
+        //         category,
+        //         date: Date.now(),
+        //         information,
+        //         warranty: {
+        //             Number: Number(number_warranty),
+        //             date: date_warranty
+        //         },
+        //         discount: Number(discount)
+        //     }
 
-            // Add to the database
-            firebase.collect(product, "products");
-        } catch (error) {
-               if (error instanceof Error) {
-                setErrorAuth(error.message?.replace(/^Firebase: Error\s*/, '').replaceAll('-', ' '))
-            }
-        }
+        //     // Add to the database
+        //     firebase.collect(product, "products");
+        // } catch (error) {
+        //        if (error instanceof Error) {
+        //         setErrorAuth(error.message?.replace(/^Firebase: Error\s*/, '').replaceAll('-', ' '))
+        //     }
+        // }
         
     }
 
@@ -189,7 +190,8 @@ const NewProduct = () => {
                             </ul>
                         </div>
                     </div>
-
+                    {errortags.tags && <p className="auth-error"> {errortags.tags}</p>}
+                    {errors.tags && <p className="auth-error"> {errors.tags}</p>}
                 </fieldset>
                 <fieldset>
                     <legend>Product features</legend>

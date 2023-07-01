@@ -68,7 +68,10 @@ export interface ErrorsValidation {
     password?: string, 
     confirm?: string
 }
-export interface ErrorsValidationProduct {
+export interface ErrorsTags {
+    tags?: string;
+}
+export interface ErrorsValidationProduct extends ErrorsTags {
     name?: string;
     price?: string;
     category?: string;
@@ -86,5 +89,5 @@ export interface ValidationProduct {
     number_warranty: string;
     date_warranty: string;
     discount?: string;
-    tag?:string;
+    tag?: string;
 }

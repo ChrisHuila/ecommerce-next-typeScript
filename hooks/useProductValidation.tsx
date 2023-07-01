@@ -1,18 +1,20 @@
 "use client"
 import { useEffect, useState } from "react";
-import { ErrorsValidationProduct, ValidationProduct } from "@/types";
+import { ErrorsValidationProduct, ErrorsTags, ValidationProduct } from "@/types";
 
 
 export default function useProductValidation<T extends ValidationProduct>(
 initialState: T,
 tags: Array<string> ,
 setTags: (tag: string[]) => void,
-validation: (product: ValidationProduct, img: File | null) => Promise<ErrorsValidationProduct>,
+validation: (product: ValidationProduct, img: File | null, tags: string[]) => Promise<ErrorsValidationProduct>,
+validationTags: (tags: string[], tag: string) => ErrorsTags,
 addProduct: () => void  
 ){
     const [ values, setValues ] =  useState<T>(initialState)
     const [ image, setImage ] = useState< File | null >(null)
     const [ errors, setErrors ] = useState<ErrorsValidationProduct>({})
+    const [ errortags, setErrorTags ] = useState< ErrorsTags >({})
     const [ submitform, setSubmitForm ] = useState(false)
 
     
@@ -30,8 +32,23 @@ addProduct: () => void
     }
     
     const onClickTag = () => {
-        if(!values.tag) return
-        if(values.tag.trim() !== "" && tags.length < 9 && !tags.includes(values.tag)){
+        if(!values.tag) {
+            setErrorTags({
+                tags: 'enter at least one tag'               
+            })
+            setTimeout(() =>{
+                setErrorTags({})
+            }, 3000)
+            return
+        } 
+        const errorsValidation = validationTags(tags, values.tag )
+        setErrorTags(errorsValidation)
+
+        setTimeout(() =>{
+                setErrorTags({})
+        }, 3000)
+
+        if(tags.length < 9){
             setTags([...tags, values.tag])
             setValues({
                 ...values,
@@ -42,7 +59,7 @@ addProduct: () => void
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const errorsValidation = await validation(values, image)
+        const errorsValidation = await validation(values, image, tags)
         setErrors(errorsValidation)
         setSubmitForm(true)
     }
@@ -61,5 +78,5 @@ addProduct: () => void
         getConnection()
     },[submitform])
 
-    return{ product:values, image ,errors, handleChange, handleFile, onSubmit, onClickTag }
+    return{ product:values, image, errors, errortags, handleChange, handleFile, onSubmit, onClickTag }
 }
