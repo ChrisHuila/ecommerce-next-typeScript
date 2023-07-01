@@ -4,7 +4,9 @@ import { ErrorsValidationProduct, ValidationProduct } from "@/types";
 
 
 export default function useProductValidation<T extends ValidationProduct>(
-initialState: T, 
+initialState: T,
+tags: Array<string> ,
+setTags: (tag: string[]) => void,
 validation: (product: ValidationProduct, img: File | null) => Promise<ErrorsValidationProduct>,
 addProduct: () => void  
 ){
@@ -12,12 +14,14 @@ addProduct: () => void
     const [ image, setImage ] = useState< File | null >(null)
     const [ errors, setErrors ] = useState<ErrorsValidationProduct>({})
     const [ submitform, setSubmitForm ] = useState(false)
+
     
   const handleChange = (e: React.ChangeEvent< HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement >) => {
         setValues({
             ...values,
             [e.target.name]: e.target.value
         })
+              
     }
 
    const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +29,17 @@ addProduct: () => void
         setImage(e.target.files[0]);
     }
     
+    const onClickTag = () => {
+        if(!values.tag) return
+        if(values.tag.trim() !== "" && tags.length < 9 && !tags.includes(values.tag)){
+            setTags([...tags, values.tag])
+            setValues({
+                ...values,
+                ['tag']: ''
+            })
+        }
+    }
+
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const errorsValidation = await validation(values, image)
@@ -46,5 +61,5 @@ addProduct: () => void
         getConnection()
     },[submitform])
 
-    return{ product:values, image ,errors, handleChange, handleFile, onSubmit }
+    return{ product:values, image ,errors, handleChange, handleFile, onSubmit, onClickTag }
 }

@@ -677,20 +677,40 @@ a {
     width: 150px;
     border: 1px solid #4d4c4c;
     color: #4d4c4c;
+    position: relative;
 }
-.current-tags li {
+.current-tags li .current-tags-p{
     display: flex;
     justify-content: space-between;
     font-family: var(--textFont);
     align-items: center;
+    margin: 0;
+}
+.current-tags li p {
+    margin: 0;
 }
 .current-tags span {
     color: var(--text-color);
     font-weight: 700;
     font-size: var(--smaller-font-size);
 }
-.current-tags li:hover {
+.current-tags li .current-tags-p:hover {
     cursor: pointer;
+}
+.tags-all {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    padding: .5rem 1rem;
+    border: 1px solid #4d4c4c;
+    color: #4d4c4c;
+    background-color: #fff;
+    font-size: var(--normal-font-size);
+}
+.show-tags{
+    display: initial;
 }
 .newproduct-field input,
 .newproduct-field textarea{

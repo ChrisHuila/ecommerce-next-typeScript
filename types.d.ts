@@ -86,4 +86,5 @@ export interface ValidationProduct {
     number_warranty: string;
     date_warranty: string;
     discount?: string;
+    tag?:string;
 }

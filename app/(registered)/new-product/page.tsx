@@ -6,6 +6,7 @@ import firebase from "@/firebase/firebase";
 import useProductValidation from "@/hooks/useProductValidation";
 import newProductValidation from "@/services/validation/newProductValidation";
 import { v4 as uuidv4 } from 'uuid';
+import CurrentTags from "./CurrentTags";
 
 
 const initialState = {
@@ -16,15 +17,17 @@ const initialState = {
     number_warranty: '0',
     date_warranty: 'month',
     discount: '0',
+    tag:''
 }
 
 const NewProduct = () => {
 
-   const { product, image, errors, handleChange, handleFile, onSubmit } =  useProductValidation(initialState,newProductValidation, addProduct)
-   
-   const { name, price, category, information, number_warranty, date_warranty, discount } = product;
+    const [ errorauth, setErrorAuth ] = useState<string | null >(null)
+    const [ tags, setTags ] = useState<Array<string>>([])
 
-   const [ errorauth, setErrorAuth ] = useState<string | null >(null)
+   const { product, image, errors, handleChange, handleFile, onSubmit, onClickTag } =  useProductValidation(initialState, tags, setTags, newProductValidation, addProduct)
+   
+   const { name, price, category, information, number_warranty, date_warranty, discount, tag } = product;
 
     // const router = useRouter() //allow navigation
 
@@ -57,7 +60,6 @@ const NewProduct = () => {
                 setErrorAuth(error.message?.replace(/^Firebase: Error\s*/, '').replaceAll('-', ' '))
             }
         }
-      
         
     }
 
@@ -165,14 +167,25 @@ const NewProduct = () => {
                             <div className="tags-container">
                                 <input 
                                 type="text"
-                                name="tags"
-                                id="tags"
+                                name="tag"
+                                id="tag"
                                 placeholder="Enter Tags max 9"
+                                onChange={handleChange}
+                                value={tag}
                                 />
-                                <button type="button">&#43;</button>
+                                <button 
+                                type="button" 
+                                onClick={onClickTag}
+                                >&#43;</button>
                             </div>
                             <ul className="current-tags">
-                                <li>Current Tags <span> &#8744;</span></li>
+                                <li>
+                                    <p className="current-tags-p" onClick={() => console.log('diste click')}>
+                                        Current Tags <span> &#8744;</span>
+                                    </p>
+                                    
+                                    <CurrentTags />
+                                </li>
                             </ul>
                         </div>
                     </div>
