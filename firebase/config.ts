@@ -1,10 +1,10 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyA0v0A4TiIzkhl8ebwfMtuYekNNS4tA8KU",
-    authDomain: "commerce-next-edf79.firebaseapp.com",
-    projectId: "commerce-next-edf79",
-    storageBucket: "commerce-next-edf79.appspot.com",
-    messagingSenderId: "915595735485",
-    appId: "1:915595735485:web:07e7539bb67eb4d0fce2d4",
+    apiKey: process.env.NEXT_PUBLIC_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_MESSAGIN_SENDERID,
+    appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
 export default firebaseConfig;
