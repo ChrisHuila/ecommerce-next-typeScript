@@ -17,7 +17,7 @@ export default function useOutTags(ref: React.RefObject<HTMLUListElement>) {
         document.addEventListener("click", handleOutsideClick);
         return () => document.removeEventListener("click", handleOutsideClick);
 
-    }, [ref]);
+    }, [ref, showtags]);
     
     return{ showtags, setShowTags }
 } 

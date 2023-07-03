@@ -1,13 +1,13 @@
 "use client"
 import { useRef, useState } from "react";
 import firebase from "@/firebase/firebase";
+import { v4 as uuidv4 } from 'uuid';
 import useProductValidation from "@/hooks/useProductValidation";
 import DownArrowIcon from "@/components/icons/dowarrow-icon";
 import CurrentTags from "./CurrentTags";
-import { v4 as uuidv4 } from 'uuid';
+import useOutTags from "@/hooks/useOutTags";
 import { Tags } from "@/types";
 import newProductValidation, { validationTags } from "@/services/validation/newProductValidation";
-import useOutTags from "@/hooks/useOutTags";
 
 const initialState = {
     name: '',
@@ -179,7 +179,7 @@ const NewProduct = () => {
                     
                     <div className="newproduct-field">
                         <label htmlFor="tags">Tags</label>
-                        <div className="newproduct-field_warranty">
+                        <div className="newproduct-field_tags">
                             <div className="tags-container">
                                 <input 
                                 type="text"
@@ -196,7 +196,7 @@ const NewProduct = () => {
                             </div>
                             <ul className="current-tags" ref={selectTags}>
                                 <li>
-                                    <p className="current-tags-p" onClick={() => 
+                                    <p onClick={() => 
                                         {if(tags.length > 0) setShowTags(!showtags)}
                                         }>
                                         Current Tags <span> <DownArrowIcon /></span>
