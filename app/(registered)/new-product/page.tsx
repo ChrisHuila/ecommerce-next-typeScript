@@ -22,6 +22,7 @@ const initialState = {
 
 const NewProduct = () => {
     const selectTags = useRef<HTMLUListElement>(null)
+    const fileRef = useRef<HTMLInputElement>(null)
 
     const [ errorauth, setErrorAuth ] = useState<string | null >(null)
     const [ successprod, setSuccessProd ] = useState(false)
@@ -29,7 +30,7 @@ const NewProduct = () => {
 
     const { showtags, setShowTags } = useOutTags(selectTags);
 
-    const { product, image, errors, errortags, handleChange, handleFile, onSubmit, onClickTag } =  useProductValidation(initialState, tags, setTags, newProductValidation, validationTags, addProduct)
+    const { product, image, errors, errortags, handleChange, handleFile, onSubmit, onClickTag } =  useProductValidation(initialState, tags, fileRef, setTags, newProductValidation, validationTags, addProduct)
 
     const { name, price, category, information, number_warranty, date_warranty, discount, tag } = product;
 
@@ -119,6 +120,7 @@ const NewProduct = () => {
                         name="image"
                         id="image"
                         onChange={handleFile }
+                        ref={fileRef}
                          />
                     </div>
                     {errors.img && <p className="auth-error"> {errors.img}</p>}

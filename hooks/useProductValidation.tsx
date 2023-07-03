@@ -5,12 +5,13 @@ import { ErrorsValidationProduct, ErrorsTags, ValidationProduct, Tags } from "@/
 
 
 export default function useProductValidation<T extends ValidationProduct>(
-initialState: T,
-tags: Array<Tags> ,
-setTags: (tag: Array<Tags>) => void,
-validation: (product: ValidationProduct, img: File | null, tags: Tags[]) => Promise<ErrorsValidationProduct>,
-validationTags: (tags: Tags[], tag: string) => ErrorsTags,
-addProduct: () => void  
+    initialState: T,
+    tags: Array<Tags>,
+    fileRef: React.RefObject<HTMLInputElement>,
+    setTags: (tag: Array<Tags>) => void,
+    validation: (product: ValidationProduct, img: File | null, tags: Tags[]) => Promise<ErrorsValidationProduct>,
+    validationTags: (tags: Tags[], tag: string) => ErrorsTags,
+    addProduct: () => void  
 ){
     const [ values, setValues ] =  useState<T>(initialState)
     const [ image, setImage ] = useState< File | null >(null)
@@ -72,10 +73,11 @@ addProduct: () => void
         const getConnection = () => {
             if(submitform){
                 const noErrors = Object.keys(errors).length === 0;
-                if(noErrors) {
+                if(noErrors && fileRef.current) {
                     addProduct();
                     setValues(initialState)
                     setImage(null)
+                    fileRef.current.value = ''
                 }
                 setSubmitForm(false)
             }
