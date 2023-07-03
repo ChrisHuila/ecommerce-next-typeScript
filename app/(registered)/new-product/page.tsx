@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useRef, useState } from "react";
 import firebase from "@/firebase/firebase";
 import useProductValidation from "@/hooks/useProductValidation";
 import DownArrowIcon from "@/components/icons/dowarrow-icon";
@@ -7,6 +7,7 @@ import CurrentTags from "./CurrentTags";
 import { v4 as uuidv4 } from 'uuid';
 import { Tags } from "@/types";
 import newProductValidation, { validationTags } from "@/services/validation/newProductValidation";
+import useOutTags from "@/hooks/useOutTags";
 
 const initialState = {
     name: '',
@@ -20,11 +21,13 @@ const initialState = {
 }
 
 const NewProduct = () => {
+    const selectTags = useRef<HTMLUListElement>(null)
 
     const [ errorauth, setErrorAuth ] = useState<string | null >(null)
     const [ successprod, setSuccessProd ] = useState(false)
     const [ tags, setTags ] = useState<Array<Tags>>([])
-    const [ showtags, setShowTags ] = useState(false)
+
+    const { showtags, setShowTags } = useOutTags(selectTags);
 
     const { product, image, errors, errortags, handleChange, handleFile, onSubmit, onClickTag } =  useProductValidation(initialState, tags, setTags, newProductValidation, validationTags, addProduct)
 
@@ -189,7 +192,7 @@ const NewProduct = () => {
                                 onClick={onClickTag}
                                 >&#43;</button>
                             </div>
-                            <ul className="current-tags">
+                            <ul className="current-tags" ref={selectTags}>
                                 <li>
                                     <p className="current-tags-p" onClick={() => 
                                         {if(tags.length > 0) setShowTags(!showtags)}
