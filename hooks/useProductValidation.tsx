@@ -53,8 +53,7 @@ addProduct: () => void
         if(withErrors) return
 
         if(tags.length < 9){
-            // TODO
-            setTags([...tags, {tag: values.tag, id: uuidv4()}])
+            setTags([...tags, {tag: values.tag.toLowerCase(), id: uuidv4()}])
             setValues({
                 ...values,
                 ['tag']: ''

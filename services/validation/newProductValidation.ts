@@ -67,7 +67,7 @@ export function validationTags(tags: Tags[], tag: string) {
         errors.tags = 'mmaximum tags is 9'
     }
 
-    if (tags.filter(e => e.tag === tag).length > 0) {
+    if (tags.filter(e => e.tag === tag.toLowerCase()).length > 0) {
         errors.tags = 'You have already added this tag'
     }
     return errors;

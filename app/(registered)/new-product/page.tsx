@@ -1,14 +1,12 @@
 "use client"
-import Link from "next/link";
 import { useState } from "react";
-// import { useRouter } from 'next/navigation'
 import firebase from "@/firebase/firebase";
 import useProductValidation from "@/hooks/useProductValidation";
-import newProductValidation, { validationTags } from "@/services/validation/newProductValidation";
-import { v4 as uuidv4 } from 'uuid';
-import CurrentTags from "./CurrentTags";
-import { Tags } from "@/types";
 import DownArrowIcon from "@/components/icons/dowarrow-icon";
+import CurrentTags from "./CurrentTags";
+import { v4 as uuidv4 } from 'uuid';
+import { Tags } from "@/types";
+import newProductValidation, { validationTags } from "@/services/validation/newProductValidation";
 
 const initialState = {
     name: '',
@@ -31,12 +29,13 @@ const NewProduct = () => {
 
     const { name, price, category, information, number_warranty, date_warranty, discount, tag } = product;
 
-    // const router = useRouter() //allow navigation
-
     async function addProduct() {
      
         if(!image) return;
-                
+        
+        const tagsProduct = tags.map(tag => tag.tag); 
+        setTags([]);
+
         try {
             const urlImage = await firebase.uploadImage(image, `productsImg/${image.name}` + uuidv4());
         
@@ -52,7 +51,8 @@ const NewProduct = () => {
                     Number: Number(number_warranty),
                     date: date_warranty
                 },
-                discount: Number(discount)
+                discount: Number(discount),
+                tags: tagsProduct
             }
 
             // Add to the database
