@@ -8,6 +8,7 @@ import newProductValidation, { validationTags } from "@/services/validation/newP
 import { v4 as uuidv4 } from 'uuid';
 import CurrentTags from "./CurrentTags";
 import { Tags } from "@/types";
+import DownArrowIcon from "@/components/icons/dowarrow-icon";
 
 const initialState = {
     name: '',
@@ -24,6 +25,7 @@ const NewProduct = () => {
 
     const [ errorauth, setErrorAuth ] = useState<string | null >(null)
     const [ tags, setTags ] = useState<Array<Tags>>([])
+    const [ showtags, setShowTags ] = useState(false)
 
     const { product, image, errors, errortags, handleChange, handleFile, onSubmit, onClickTag } =  useProductValidation(initialState, tags, setTags, newProductValidation, validationTags, addProduct)
 
@@ -180,13 +182,17 @@ const NewProduct = () => {
                             </div>
                             <ul className="current-tags">
                                 <li>
-                                    <p className="current-tags-p" onClick={() => console.log('diste click')}>
-                                        Current Tags <span> &#8744;</span>
+                                    <p className="current-tags-p" onClick={() => 
+                                        {if(tags.length > 0) setShowTags(!showtags)}
+                                        }>
+                                        Current Tags <span> <DownArrowIcon /></span>
                                     </p>
                                     
                                     <CurrentTags
                                     tags={tags}
+                                    showtags={showtags}
                                     settags={setTags}
+                                    setShowTags={setShowTags}
                                     />
                                 </li>
                             </ul>
