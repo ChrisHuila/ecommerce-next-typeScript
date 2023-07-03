@@ -7,9 +7,8 @@ export default function useOutTags(ref: React.RefObject<HTMLUListElement>) {
     useEffect(() => {
 
         const handleOutsideClick = (e: MouseEvent)  => {
-            const currentTarget = e.target as Node;
 
-            if (showtags && ref.current && !ref.current.contains(currentTarget)) {
+            if (showtags && ref.current && !ref.current.contains(e.target as Node)) {
                 setShowTags(false);
             }
         }
