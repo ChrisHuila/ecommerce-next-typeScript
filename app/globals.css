@@ -773,6 +773,9 @@ a {
     cursor: pointer;
     background-color:#2cd3e9;
 }
+.success-product{
+    background-color: #31652a;
+}
 /* ==========FOOTER============ */
 .footer {
     background-color: #34383a;

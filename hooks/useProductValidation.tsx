@@ -75,6 +75,7 @@ addProduct: () => void
                 if(noErrors) {
                     addProduct();
                     setValues(initialState)
+                    setImage(null)
                 }
                 setSubmitForm(false)
             }

@@ -22,6 +22,7 @@ const initialState = {
 const NewProduct = () => {
 
     const [ errorauth, setErrorAuth ] = useState<string | null >(null)
+    const [ successprod, setSuccessProd ] = useState(false)
     const [ tags, setTags ] = useState<Array<Tags>>([])
     const [ showtags, setShowTags ] = useState(false)
 
@@ -57,6 +58,14 @@ const NewProduct = () => {
 
             // Add to the database
             firebase.collect(product, "products");
+            
+            setSuccessProd(true);
+            
+            setTimeout(() => {
+                setSuccessProd(false);
+
+            },5000)
+
         } catch (error) {
                if (error instanceof Error) {
                 setErrorAuth(error.message?.replace(/^Firebase: Error\s*/, '').replaceAll('-', ' '))
@@ -217,7 +226,7 @@ const NewProduct = () => {
                 </fieldset>
                 <input className="newproduct-submit" type="submit" value="Add Product" />
                 {errorauth && <p className="auth-error"> {errorauth}</p>}
-
+                {successprod && <p className="notification-added success-product"> Sended</p>}
             </form>
         </main>
         
