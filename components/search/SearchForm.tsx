@@ -1,13 +1,13 @@
 "use client"
+import { useState } from "react";
 import SearchIcon from "../icons/Search-icon";
-import useSearch from "@/hooks/useSearch";
 import { useRouter } from 'next/navigation'
 
 
 const SearchForm = () => {
     const router = useRouter()
-
-    const { search, setSearch, error } =  useSearch();
+    
+    const [ search, setSearch ] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newSearch = e.target.value;
