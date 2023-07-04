@@ -18,16 +18,15 @@ const Search = () => {
 
     if(!query) return;
 
-    // const { isLoading, isFetching, error, data, status } = useQuery('search', () =>getProducts(query) );
+    const { isLoading, isFetching, error, data, status } = useQuery('search', () =>getProducts(query) );
 
-    // const hasProduct = data && data.length > 0;
-    // TODO TYPE ID?
-    const hasProduct = newProducts.length > 0;    
+    const hasProduct = data && data.length > 0;
+
     return (
        <main className="minvh container">
         {hasProduct
         ? <ProductResult
-            products={newProducts}
+            products={data}
             />
         : <NoProductResult />
         }

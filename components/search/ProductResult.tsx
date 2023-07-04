@@ -41,7 +41,7 @@ const ProductResult = ({products}: Props) => {
                             priority={true}
                         />
                     </div>
-                    <h2 className="showproduct-title">{product.name}</h2>
+                    <h2 className={style.product_title}>{product.name}</h2>
                             <div className="showproduct-body_container">
                 <h3 className="percentage-discount">
                     {product.discount ? product.discount + "% off" : " "} Free Shipping <ThunderIcon />
