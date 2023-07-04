@@ -10,6 +10,7 @@ const getProductsFire = async (category: string) => {
     const res = (await firebase.getColletBy(category)) as Array<Product>;
     return res;
 };
+
 const GetHighlightedProducts = async () => {
     const [clothing, technology] = await Promise.all([getProductsFire("clothing"), getProductsFire("technology")]);
     return (

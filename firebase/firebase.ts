@@ -62,12 +62,12 @@ export class Firebase {
     // add to the collection
     async collect(element: object, nameCollect: string) {
         try {
-            const postRef = doc(collection(this.db, nameCollect));
-            await setDoc(postRef, {
-                id: postRef.id,
+            const productRef = doc(collection(this.db, nameCollect));
+            await setDoc(productRef, {
+                id: productRef.id,
                 ...element,
             });
-            console.log('success from collect', postRef.id);
+            console.log('success from collect', productRef.id);
             
         } catch (error) {
             console.log(error, "desde agregar colleccion");
@@ -90,8 +90,25 @@ export class Firebase {
     }
     async getColletBy(category: string) {
         const products: Array<Product> = [];
-        const postRef = collection(this.db, "products");
-        const q = query(postRef, where("category", "==", category));
+        const productRef = collection(this.db, "products");
+        const q = query(productRef, where("category", "==", category));
+        
+        try {
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach(doc => {
+                products.push(doc.data() as Product);
+            });
+            return products;
+        } catch (error) {
+            console.log(error + "desde obtener");
+        }
+    }
+
+    async getColletQuery(search: string){
+        const products: Array<Product> = [];
+        const productRef = collection(this.db, "products");
+        const q = query(productRef, where("tags", "array-contains", search));
+
         try {
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach(doc => {
