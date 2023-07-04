@@ -85,7 +85,7 @@ a {
     margin: 0 auto;
 }
 .minvh {
-    min-height: 85vh;
+    min-height: 88vh;
 }
 /* ==========HEADER=========== */
 
@@ -602,12 +602,12 @@ a {
     background-color:#6dacea
 }
 /* ========NEW PRODUCT======== */
-.newproduct-title{
+/* .newproduct-title{
     margin-top: 5rem;
     text-align: center;
     font-family: var(--textFont);
     font-size: var(--h1-font-size);
-}
+} */
 .newproduct-form{
     max-width: 600px;
     width: 95%;

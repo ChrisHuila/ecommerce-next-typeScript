@@ -8,6 +8,7 @@ import CurrentTags from "./CurrentTags";
 import useOutTags from "@/hooks/useOutTags";
 import { Tags } from "@/types";
 import newProductValidation, { validationTags } from "@/services/validation/newProductValidation";
+import style from '@/app/(registered)/new-product/Newproduct.module.css'
 
 const initialState = {
     name: '',
@@ -80,7 +81,7 @@ const NewProduct = () => {
 
     return(
         <main className="minvh">
-            <h1 className="newproduct-title">New Product</h1>
+            <h1 className={style.newproduct_title}>New Product</h1>
 
             <form className="newproduct-form" onSubmit={onSubmit}>
                 <fieldset>

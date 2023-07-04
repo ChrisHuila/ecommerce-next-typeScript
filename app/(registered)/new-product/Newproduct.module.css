@@ -1,0 +1,6 @@
+.newproduct_title{
+    margin-top: 5rem;
+    text-align: center;
+    font-family: var(--textFont);
+    font-size: var(--h1-font-size);
+}
