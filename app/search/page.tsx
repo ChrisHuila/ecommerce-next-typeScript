@@ -11,6 +11,7 @@ const getProducts = async (query: string) => {
     const res = (await firebase.getColletQuery(query)) as Array<Product>;
     return res;
 };
+// TODO RESPONSIVE - NEW PRODUCT MODULE STYLE - FORM? FOOTER - PROTECTECT ROOT - SKELETON? - BUILD NEW PRODUCT - NEW SLIDER 
 
 const Search = () => {
     const param = useSearchParams()

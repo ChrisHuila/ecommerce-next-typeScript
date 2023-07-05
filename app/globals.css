@@ -469,6 +469,7 @@ a {
     gap: 0.5rem;
 }
 /* ==========AUTH =============== */
+/*
 .user_form{
     background: rgb(159,197,217);
     background: linear-gradient(180deg, rgba(159,197,217,1) 2%, rgba(255,255,255,1) 98%);
@@ -553,6 +554,7 @@ a {
 .account-link:hover {
     color: #2d6eaf;
 }
+*/
 .auth-error{
     color: 	#ff3333;
     font-family: var(--textFont);

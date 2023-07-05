@@ -5,6 +5,7 @@ import firebase from "@/firebase/firebase";
 import useValidation from "@/hooks/useValidation";
 import loginValidation from "@/services/validation/loginValidation";
 import { useState } from "react";
+import style from "@/app/(auth)/Auth.module.css";
 
 const initialState = {
     email: '',
@@ -31,11 +32,11 @@ const Login = () => {
  
     return (
         <main className="minvh">
-            <div className="user_form">
-                <div className="form-container">
-                    <h2 className="title-login">Log in</h2>
+            <div className={style.user_form}>
+                <div className={style.form_container}>
+                    <h2 className={style.title_login}>Log in</h2>
                     <form action="" onSubmit={onSubmit}>
-                        <div className="form-field">
+                        <div className={style.form_field}>
                             <label htmlFor="email">E-mail</label>
                             <input 
                             type="text"
@@ -48,7 +49,7 @@ const Login = () => {
                         </div>
                         {errors.email && <p className="auth-error"> {errors.email}</p>}
 
-                        <div className="form-field">
+                        <div className={style.form_field}>
                             <label htmlFor="password">Password</label>
                             <input 
                             type="password"
@@ -61,15 +62,15 @@ const Login = () => {
                         </div>
                         {errors.password && <p className="auth-error"> {errors.password}</p>}
 
-                        <div className="form-field">
+                        <div className={style.form_field}>
                             <input 
                             type="submit"
                             value='Log in'
-                            className="btn btn-primary btn-block"
+                            className={`${style.btn} ${style.btn_primary} ${style.btn_block}`}
                              />
                         </div>
                     </form>
-                    <Link href="/signup" className="account-link">
+                    <Link href="/signup" className={style.account_link}>
                         Sign up
                     </Link>
                     {errorauth && <p className="auth-error"> {errorauth}</p>}
