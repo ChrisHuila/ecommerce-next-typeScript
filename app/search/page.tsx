@@ -21,14 +21,17 @@ const Search = () => {
     const { isLoading, isFetching, error, data, status } = useQuery('search', () =>getProducts(query) );
 
     const hasProduct = data && data.length > 0;
-
+    
     return (
        <main className="minvh container">
-        {hasProduct
-        ? <ProductResult
+        {!isLoading && !hasProduct 
+            && <NoProductResult />
+        }
+
+        {!isLoading &&  hasProduct 
+        && <ProductResult
             products={data}
             />
-        : <NoProductResult />
         }
        </main>
      );
