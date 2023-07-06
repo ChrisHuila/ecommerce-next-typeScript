@@ -2,27 +2,32 @@ import { productsContext } from "@/context/productsContext";
 import firebase from "@/firebase/firebase";
 import Link from "next/link";
 import { useContext } from "react";
+import style from "@/components/auth/Auth.module.css"
+import AddIcon from "../icons/add-icon";
 
 const CurrentUser = () => {
     const { user } = useContext(productsContext);
     
     return (
         <nav>
-            <ul className="Auth-container">
-                <li className="currentUser">
+            <ul className={style.auth_container}>
+                <li className={style.currentUser}>
                     <span>hi:</span>  {user?.displayName}
                 </li>
                 <li>
                     <Link href="/new-product" >
-                        <button className="btn-newproduct">Add product</button> 
+                        <button className={style.btn_newproduct}>
+                            <AddIcon />
+                        </button>
                     </Link>
                 </li>
                 <li>
                    <button 
-                   className="btn-logout"
+                   className={style.btn_logout}
                    onClick={() => firebase.logout()
                    }
-                   > Log out
+                   >
+                     Exit
                    </button> 
                 </li>
             </ul>

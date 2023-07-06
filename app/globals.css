@@ -106,7 +106,7 @@ a {
 @media (min-width: 415px) {
     .header-layout {
         column-gap: 3rem;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: auto auto;
     }
     .search-form {
         grid-row: 2/3;
@@ -476,6 +476,7 @@ a {
     font-size: var(--smaller-font-size);
 }
 /* =====CURRENT USER ========== */
+/*
 .currentUser {
    font-family: var(--textFont);
    font-style: italic;
@@ -484,6 +485,7 @@ a {
    font-weight: 700;
    font-style: normal;
 }
+
 .btn-newproduct{
     font-weight: 700;
     font-family: var(--textFont);
@@ -501,22 +503,8 @@ a {
     background-color:#6dacea;
     color: #fff;
 }
-.btn-logout {
-    font-weight: 700;
-    font-family: var(--textFont);
-    text-transform: uppercase;
-    border: 1px solid #d1d1d1;
-    padding: .8rem;
-    margin-right: 1rem;
-    background-color:#2d6eaf;
-    color: white;
-    border-radius: 5px;
-    font-size: var(--smaller-font-size);
-}
-.btn-logout:hover{
-    cursor: pointer;
-    background-color:#6dacea
-}
+*/
+
 /* ========NEW PRODUCT======== */
 /* .newproduct-title{
     margin-top: 5rem;

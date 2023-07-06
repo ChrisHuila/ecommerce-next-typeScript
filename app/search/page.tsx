@@ -7,11 +7,10 @@ import ProductResult from '@/components/search/ProductResult';
 import NoProductResult from '@/components/search/NoProductResult';
 
 const getProducts = async (query: string) => {
-    // const res = (await firebase.getColletQuery(query)) as Array<Product>;
-    const res = (await firebase.getColletBy(query)) as Array<Product>;
+    const res = (await firebase.getColletQuery(query)) as Array<Product>;
     return res;
 };
-// TODO RESPONSIVE - NEW PRODUCT MODULE STYLE - FORM? FOOTER - PROTECTECT ROOT - SKELETON? - BUILD NEW PRODUCT - NEW SLIDER 
+//  NEW PRODUCT MODULE STYLE - FORM? FOOTER - PROTECTECT ROOT - SKELETON? - BUILD NEW PRODUCT - NEW SLIDER 
 
 const Search = () => {
     const param = useSearchParams()

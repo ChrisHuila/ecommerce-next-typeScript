@@ -1,0 +1,34 @@
+/* ===========CURRENT USER ============== */
+.auth_container{
+    display: flex;
+    align-items: center;
+}
+.currentUser{
+    font-family: var(--textFont);
+}
+.currentUser span {
+   font-weight: 700;
+   font-style: normal;
+}
+.btn_newproduct{
+    background-color: transparent;
+    border: none;
+}
+.btn_newproduct:hover {
+    cursor: pointer;
+}
+.add_icon{
+    fill: #000;
+    width: 3rem;
+    height: 3rem;
+}
+.btn_logout {
+    font-weight: 900;
+    font-family: var(--textFont);
+    font-size: var(--small-font-size);
+    background-color: transparent;
+    border: none;
+}
+.btn_logout:hover{
+    cursor: pointer;
+}
