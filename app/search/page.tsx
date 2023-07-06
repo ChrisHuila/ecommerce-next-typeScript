@@ -18,7 +18,7 @@ const Search = () => {
 
     if(!query) return;
 
-    const { isLoading, isFetching, error, data, status } = useQuery('search', () =>getProducts(query) );
+    const { isLoading, data } = useQuery('search', () =>getProducts(query) );
 
     const hasProduct = data && data.length > 0;
     

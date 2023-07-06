@@ -7,12 +7,13 @@ import AddIcon from "../icons/add-icon";
 
 const CurrentUser = () => {
     const { user } = useContext(productsContext);
-    
+    const userName = user?.displayName.split(' ')[0];
+
     return (
         <nav>
             <ul className={style.auth_container}>
                 <li className={style.currentUser}>
-                    <span>hi:</span>  {user?.displayName}
+                    <span>hi:</span>{userName}
                 </li>
                 <li>
                     <Link href="/new-product" >

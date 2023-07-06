@@ -68,8 +68,6 @@ h2,
 h3 {
     margin: 0;
 }
-
-
 ul {
     margin: 0;
     padding: 0;
@@ -475,35 +473,6 @@ a {
     font-weight: 400;
     font-size: var(--smaller-font-size);
 }
-/* =====CURRENT USER ========== */
-/*
-.currentUser {
-   font-family: var(--textFont);
-   font-style: italic;
-}
-.currentUser span {
-   font-weight: 700;
-   font-style: normal;
-}
-
-.btn-newproduct{
-    font-weight: 700;
-    font-family: var(--textFont);
-    text-transform: uppercase;
-    border: 1px solid #d1d1d1;
-    padding: .8rem;
-    margin-right: 1rem;
-    border-radius: 5px;
-    font-size: var(--smaller-font-size);
-    background-color: #fff;
-    transition: .5s ease all;
-}
-.btn-newproduct:hover {
-    cursor: pointer;
-    background-color:#6dacea;
-    color: #fff;
-}
-*/
 
 /* ========NEW PRODUCT======== */
 /* .newproduct-title{
