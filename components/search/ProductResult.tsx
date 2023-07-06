@@ -33,16 +33,16 @@ const ProductResult = ({products}: Props) => {
                 <li className={style.product} key={i}>
                     <div className={style.image_box}>
                         <Image 
-                           style={{ maxWidth: "100%" }}
+                            className={style.image}
                             src={product?.image}
                             alt={product.name}
-                            width={232}
-                            height={160}
+                            width={300}
+                            height={180}
                             priority={true}
                         />
                     </div>
                     <h2 className={style.product_title}>{product.name}</h2>
-                            <div className="showproduct-body_container">
+            <div className="showproduct-body_container">
                 <h3 className="percentage-discount">
                     {product.discount ? product.discount + "% off" : " "} Free Shipping <ThunderIcon />
                     <p
