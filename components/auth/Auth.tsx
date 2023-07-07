@@ -16,9 +16,9 @@ const getuser = async (id: string) => {
 const Auth = () => {
     const [ userprepared, setUserPrepared ] = useState(false)
 
-   const user = useAuth();
+   const { user, isresolve } = useAuth();
     
-   const { data, isLoading } = useQuery('currentuser', () =>getuser(user?.uid as string),{enabled: userprepared});
+   const { data } = useQuery('currentuser', () =>getuser(user?.uid as string),{enabled: userprepared});
 
    const { getUser } = useContext(productsContext);
 
@@ -36,11 +36,12 @@ const Auth = () => {
     return (
         <nav>
             {user 
-            ? <CurrentUser 
+             && <CurrentUser 
                 firebaseuser={user}
-                isLoading={isLoading}
              />
-            :    <ul className="Auth-container">
+            }
+            {!user && isresolve
+            &&   <ul className="Auth-container">
                     <li>
                         <Link href="/signup">
                             Sign up
@@ -52,7 +53,8 @@ const Auth = () => {
                         </Link>
                     </li>
                 </ul>
-            }
+            }  
+            
         </nav>
     );
 }

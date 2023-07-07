@@ -2,9 +2,11 @@
 .auth_container{
     display: flex;
     align-items: center;
+    gap: .5rem;
 }
 .currentUser{
     font-family: var(--textFont);
+    text-transform: capitalize;
 }
 .currentUser span {
    font-weight: 700;

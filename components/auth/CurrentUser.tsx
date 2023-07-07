@@ -8,10 +8,9 @@ import { User } from "firebase/auth";
 
 interface Props {
     firebaseuser: User
-    isLoading: boolean
 }
 
-const CurrentUser = ({ firebaseuser, isLoading }: Props) => {
+const CurrentUser = ({ firebaseuser}: Props) => {
     const { user } = useContext(productsContext);
 
     const userName = firebaseuser?.displayName?.split(' ')[0];
@@ -20,13 +19,9 @@ const CurrentUser = ({ firebaseuser, isLoading }: Props) => {
         <nav>
             <ul className={style.auth_container}>
                 <li className={style.currentUser}>
-                    <span>hi:</span>{userName}
+                    <span>hi: </span>{userName}
                 </li>
-                {isLoading 
-                &&  <li>
-                        loading
-                    </li>
-                }
+
                 {user?.roles?.includes('admin') 
                 &&  <li>
                         <Link href="/new-product" >
