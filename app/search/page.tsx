@@ -16,9 +16,7 @@ const Search = () => {
     const param = useSearchParams()
     const query = param.get('q')
 
-    if(!query) return;
-
-    const { isLoading, data } = useQuery('search', () =>getProducts(query) );
+    const { isLoading, data } = useQuery('search', () =>getProducts(query as string) );
 
     const hasProduct = data && data.length > 0;
     

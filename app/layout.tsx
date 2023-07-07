@@ -3,7 +3,6 @@ import ProductsProvaider from "@/context/productsContext";
 import "./normalize.css";
 import "./globals.css";
 import { Roboto } from "next/font/google";
-import Footer from "@/components/layout/Footer";
 
 const roboto = Roboto({
     subsets: ["latin"],
@@ -21,7 +20,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={roboto.className}>
                 <ProductsProvaider>
                     {children}
-                    <Footer />
                 </ProductsProvaider>
             </body>
         </html>

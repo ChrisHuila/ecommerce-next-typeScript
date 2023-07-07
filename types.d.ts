@@ -7,7 +7,7 @@ export interface Product {
     information: string;
     warranty: { number: number; date: string };
     discount: number;
-    id?: string;
+    id: string;
     quantity?: number;
     tags?: string[];
 }

@@ -13,8 +13,8 @@ const CartItem = ({ product }: Props) => {
 
     const finalPrice = `$${priceFormat(parseInt(product.price))}`;
 
-    const handleRemove = () => {
-        removeFromCart(product.id);
+    const handleRemove = (id: string) => {
+        removeFromCart(id);
     };
 
     return (
@@ -41,7 +41,7 @@ const CartItem = ({ product }: Props) => {
             <td>
                 <button
                     className="remove-item"
-                    onClick={handleRemove}>
+                    onClick={() => handleRemove(product.id)}>
                     &times;
                 </button>
             </td>

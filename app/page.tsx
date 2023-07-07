@@ -1,6 +1,7 @@
 import Notification from "@/components/layout/Notification";
 import GetHighlightedProducts from "@/components/products/GetHighlightedProducts";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import UploadProductTest from "@/components/mock/UploadProductTest";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
                 <GetHighlightedProducts />
                 <Notification />
             </main>
+            <Footer />
         </>
    
     );
