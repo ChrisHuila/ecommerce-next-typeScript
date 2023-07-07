@@ -1,21 +1,20 @@
-import { productsContext } from "@/context/productsContext";
 import firebase from "@/firebase/firebase";
 import Link from "next/link";
+import { productsContext } from "@/context/productsContext";
 import { useContext } from "react";
-import style from "@/components/auth/Auth.module.css"
 import AddIcon from "../icons/add-icon";
-import { Users } from "@/types";
-
+import style from "@/components/auth/Auth.module.css"
+import { User } from "firebase/auth";
 
 interface Props {
-    userdata: Users[] | undefined;
+    firebaseuser: User
+    isLoading: boolean
 }
-const CurrentUser = ({ userdata }: Props) => {
-    const currentuser = userdata && userdata[0];
-    
+
+const CurrentUser = ({ firebaseuser, isLoading }: Props) => {
     const { user } = useContext(productsContext);
 
-    const userName = user?.displayName.split(' ')[0];
+    const userName = firebaseuser?.displayName?.split(' ')[0];
 
     return (
         <nav>
@@ -23,7 +22,12 @@ const CurrentUser = ({ userdata }: Props) => {
                 <li className={style.currentUser}>
                     <span>hi:</span>{userName}
                 </li>
-                {currentuser?.roles.includes('admin') 
+                {isLoading 
+                &&  <li>
+                        loading
+                    </li>
+                }
+                {user?.roles?.includes('admin') 
                 &&  <li>
                         <Link href="/new-product" >
                             <button className={style.btn_newproduct}>

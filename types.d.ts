@@ -15,10 +15,10 @@ export interface Users {
     name: string;
     email: string;
     id: string;
-    roles: string[];
+    roles?: string[];
 }
 export interface StateReducer {
-    user: User | null; 
+    user: Users | null; 
     cartitems: Array<Product>;
     cartquantity: number;
     notificationadded: boolean;

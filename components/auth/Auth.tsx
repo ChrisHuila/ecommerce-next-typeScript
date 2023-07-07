@@ -5,7 +5,7 @@ import useAuth from '@/hooks/useAuth';
 import firebase from '@/firebase/firebase';
 import { useQuery } from 'react-query'
 import { Users } from "@/types";
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { productsContext } from '@/context/productsContext';
 
 const getuser = async (id: string) => {
@@ -14,21 +14,32 @@ const getuser = async (id: string) => {
 };
 
 const Auth = () => {
+    const [ userprepared, setUserPrepared ] = useState(false)
+
    const user = useAuth();
     
-   const { data } = useQuery('currentuser', () =>getuser(user?.uid as string));
+   const { data, isLoading } = useQuery('currentuser', () =>getuser(user?.uid as string),{enabled: userprepared});
 
    const { getUser } = useContext(productsContext);
 
    useEffect(() => {
-        getUser(user)
+        if(user){
+            setUserPrepared(true)
+        }
+        if(!data) return
 
-   }, [user])
-    
+        const currentUser = data[0];
+
+        getUser(currentUser)
+   }, [user, data])
+
     return (
         <nav>
             {user 
-            ? <CurrentUser userdata={data} />
+            ? <CurrentUser 
+                firebaseuser={user}
+                isLoading={isLoading}
+             />
             :    <ul className="Auth-container">
                     <li>
                         <Link href="/signup">

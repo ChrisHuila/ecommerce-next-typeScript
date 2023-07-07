@@ -1,11 +1,16 @@
+"use client"
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import ProtectedRoute from "@/components/protected/ProtectedRoute";
+import { productsContext } from "@/context/productsContext";
+import { useContext } from "react";
 
 const registeredLayout = ({children}: {children: React.ReactNode}) => {
+    const { user } = useContext(productsContext);
+
     return (
         <>  
-            <ProtectedRoute isAllowed={true}>
+            <ProtectedRoute isAllowed={!!user?.roles?.includes('admin')}>
                 <Header />
                 {children}
                 <Footer />
