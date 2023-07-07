@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 export default function useAuth() {
     const [ userauthed, setUserAuthed ] = useState< User | null >(null);
     const [ isresolve, setIsResolve ] = useState(false)
+    
 
      useEffect(() => {
         const unsuscribe = onAuthStateChanged(firebase.auth, user => {

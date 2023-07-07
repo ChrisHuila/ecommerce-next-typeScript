@@ -28,7 +28,7 @@ export interface ProductsContext extends StateReducer {
     addCartProduct: (product: Product) => void;
     removeFromCart: (id: string) => void;
     getLocalStorage: (storage: Product[]) => void;
-    getUser: (user: User) => void;
+    getUser: (user: Users) => void;
 }
 
 export type ProductReducerAction =

@@ -7,6 +7,7 @@ import { useQuery } from 'react-query'
 import { Users } from "@/types";
 import { useContext, useEffect, useState } from 'react';
 import { productsContext } from '@/context/productsContext';
+import useCurrentUser from '@/hooks/useCurrentUser';
 
 const getuser = async (id: string) => {
     const res = (await firebase.getColletUser(id)) as Array<Users>;
@@ -21,17 +22,19 @@ const Auth = () => {
    const { data } = useQuery('currentuser', () =>getuser(user?.uid as string),{enabled: userprepared});
 
    const { getUser } = useContext(productsContext);
+   
+   useCurrentUser({ user, data, setUserPrepared, getUser });
 
-   useEffect(() => {
-        if(user){
-            setUserPrepared(true)
-        }
-        if(!data) return
+//    useEffect(() => {
+//         if(user){
+//             setUserPrepared(true)
+//         }
+//         if(!data) return
 
-        const currentUser = data[0];
+//         const currentUser = data[0];
 
-        getUser(currentUser)
-   }, [user, data])
+//         getUser(currentUser)
+//    }, [user, data])
 
     return (
         <nav>
