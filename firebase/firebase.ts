@@ -39,7 +39,14 @@ export class Firebase {
     }
     // Sign up
     async signup(name: string,  email: string, password: string) {
-        await createUserWithEmailAndPassword(this.auth, email, password)
+        const user = await createUserWithEmailAndPassword(this.auth, email, password)
+        const userID = user.user.uid;
+        
+        const userData = {
+            name,
+            email,
+        }
+        await this.collectUser(userData,userID );
 
         await updateProfile(this.auth.currentUser as User, {
         displayName: name 
@@ -57,6 +64,21 @@ export class Firebase {
     // log out
     async logout(){
         await signOut(this.auth)
+    }
+    
+    // add to the user collection 
+    async collectUser(element: object, iduser: string) {
+        try {
+            const productRef = doc(collection(this.db, 'users'));
+            await setDoc(productRef, {
+                id: iduser,
+                ...element,
+            });
+            console.log('success from user', productRef.id);
+            
+        } catch (error) {
+            console.log(error, "desde agregar usuario");
+        }
     }
 
     // add to the collection
