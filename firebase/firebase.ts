@@ -1,4 +1,4 @@
-import { Product } from "@/types";
+import { Product, Users } from "@/types";
 import firebaseConfig from "./config";
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL  } from "firebase/storage";
@@ -121,6 +121,21 @@ export class Firebase {
                 products.push(doc.data() as Product);
             });
             return products;
+        } catch (error) {
+            console.log(error + "desde obtener");
+        }
+    }
+    async getColletUser(id: string) {
+        const users: Array<Users> = [];
+        const userRef = collection(this.db, "users");
+        const q = query(userRef, where("id", "==", id));
+        
+        try {
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach(doc => {
+                users.push(doc.data() as Users);
+            });
+            return users;
         } catch (error) {
             console.log(error + "desde obtener");
         }

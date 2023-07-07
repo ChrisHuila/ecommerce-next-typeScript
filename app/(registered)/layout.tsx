@@ -5,7 +5,7 @@ import ProtectedRoute from "@/components/protected/ProtectedRoute";
 const registeredLayout = ({children}: {children: React.ReactNode}) => {
     return (
         <>  
-            <ProtectedRoute>
+            <ProtectedRoute isAllowed={true}>
                 <Header />
                 {children}
                 <Footer />

@@ -1,10 +1,13 @@
 import { redirect } from 'next/navigation'
 
-const ProtectedRoute = ({children}:{children: React.ReactNode}) => {
+interface Props {
+    children: React.ReactNode
+    isAllowed: boolean
+}
 
-    const userhere = true;
+const ProtectedRoute = ({ children, isAllowed }: Props) => {
 
-    if(!userhere){
+    if(!isAllowed){
         return redirect('/')
     }
 
