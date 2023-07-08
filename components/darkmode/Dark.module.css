@@ -1,0 +1,15 @@
+.btn{
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.icon {
+    fill: #c5b843;
+    width: 2.5rem;
+    height: 2.5rem;
+}
