@@ -6,7 +6,6 @@ import { Product } from "@/types";
 
 export const revalidate = 3600; // revalidate every minute
 
-
 const getProductsFire = async (category: string) => {
     const res = (await firebase.getColletBy(category)) as Array<Product>;
     return res;

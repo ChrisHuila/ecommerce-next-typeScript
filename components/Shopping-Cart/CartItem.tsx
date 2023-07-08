@@ -23,14 +23,14 @@ const CartItem = ({ product }: Props) => {
                 <Image
                     src={product?.image}
                     alt={product.name}
-                    width={60}
-                    height={60}
+                    width={50}
+                    height={50}
                     style={{ borderRadius: "50%", objectFit: "cover" }}
                     className="skeleton"
                 />
             </td>
             <td>
-                <p>{product.name.substring(0, 27)}</p>
+                <p className="cartItem-name">{product.name.substring(0, 27)}</p>
             </td>
             <td>
                 <p>{`${finalPrice}`}</p>

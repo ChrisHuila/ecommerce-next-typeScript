@@ -329,6 +329,9 @@ a {
     font-size: var(--smaller-font-size);
     text-align: center;
 }
+.cartItem-name{
+    text-align: left;
+}
 .cartItem .remove-item {
     background-color: #dd3b3b;
     border-radius: 50%;
