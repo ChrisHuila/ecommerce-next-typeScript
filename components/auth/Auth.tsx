@@ -16,25 +16,13 @@ const getuser = async (id: string) => {
 
 const Auth = () => {
     const [ userprepared, setUserPrepared ] = useState(false)
+    const { user, isresolve } = useAuth();
 
-   const { user, isresolve } = useAuth();
-    
-   const { data } = useQuery('currentuser', () =>getuser(user?.uid as string),{enabled: userprepared});
+    const { data } = useQuery('currentuser', () =>getuser(user?.uid as string),{enabled: userprepared});
 
-   const { getUser } = useContext(productsContext);
+    const { getUser } = useContext(productsContext);
    
    useCurrentUser({ user, data, setUserPrepared, getUser });
-
-//    useEffect(() => {
-//         if(user){
-//             setUserPrepared(true)
-//         }
-//         if(!data) return
-
-//         const currentUser = data[0];
-
-//         getUser(currentUser)
-//    }, [user, data])
 
     return (
         <nav>

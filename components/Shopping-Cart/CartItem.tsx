@@ -26,6 +26,7 @@ const CartItem = ({ product }: Props) => {
                     width={60}
                     height={60}
                     style={{ borderRadius: "50%", objectFit: "cover" }}
+                    className="skeleton"
                 />
             </td>
             <td>

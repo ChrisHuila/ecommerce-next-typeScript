@@ -3,6 +3,7 @@ import GetHighlightedProducts from "@/components/products/GetHighlightedProducts
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import UploadProductTest from "@/components/mock/UploadProductTest";
+import { Suspense } from 'react'
 
 export default function Home() {
     return (
@@ -10,9 +11,11 @@ export default function Home() {
             <Header />
             <main className="minvh">
                 {/* <UploadProductTest /> */}
-
-                {/* @ts-expect-error async server component */}
-                <GetHighlightedProducts />
+                 <Suspense fallback={<p>Loading feed...</p>}>
+                    {/* @ts-expect-error async server component */}
+                    <GetHighlightedProducts />
+                 </Suspense>
+                
                 <Notification />
             </main>
             <Footer />
