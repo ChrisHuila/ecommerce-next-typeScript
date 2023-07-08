@@ -6,11 +6,12 @@ import { Product } from "@/types";
 import ProductResult from '@/components/search/ProductResult';
 import NoProductResult from '@/components/search/NoProductResult';
 
+
 const getProducts = async (query: string) => {
     const res = (await firebase.getColletQuery(query)) as Array<Product>;
     return res;
 };
-//  NEW PRODUCT MODULE STYLE - FORM? FOOTER - PROTECTECT ROOT - SKELETON? - BUILD NEW PRODUCT - NEW SLIDER 
+//  MODULE STYLE - FORM? FOOTER - BUILD NEW PRODUCT - NEW SLIDER 
 
 const Search = () => {
     const param = useSearchParams()

@@ -31,7 +31,6 @@ const ShowProduct = ({ article }: Props) => {
                     alt={article.name}
                     width={232}
                     height={160}
-                    priority={true}
                 />
             </div>
             <h2 className="showproduct-title">{article.name}</h2>

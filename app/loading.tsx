@@ -1,7 +1,6 @@
 const loading = () => {
     return (
         <main className="minvh">
-            <p>cargamdp</p>
         </main>
     )
 };

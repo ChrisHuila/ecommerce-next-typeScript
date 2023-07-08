@@ -44,7 +44,7 @@ const HighlightedProducts = ({ products, category }: Props) => {
                 slidesPerView={1}
                 breakpoints={productResponsive}
             >
-                {products.map(product => (
+                {products?.map(product => (
                     <SwiperSlide key={product.id}>
                         <ShowProduct article={product} />
                     </SwiperSlide>
