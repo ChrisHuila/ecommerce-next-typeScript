@@ -9,13 +9,14 @@
     --textFont: "Roboto", sans-serif;
     --title-color: #260c22;
     /* 
-   2d6eaf
-   --first-color:#0e2342
-   --first-color-alt: #0a58ca
-   #6a7586 button
-   #607D8B
-   294b7f
+        --yt-spec-text-primary: #f1f1f1;
+        --yt-spec-text-primary-inverse: #0f0f0f;
+
+        --yt-spec-icon-inactive: #fff;
+        --yt-spec-icon-disabled: #717171;
+        --yt-spec-brand-icon-inactive: #fff;
      */
+
 
     /*========== typography ==========*/
     --biggest-font-size: 3rem;
@@ -97,6 +98,46 @@ a {
         background-color: hsl(200, 20%, 95%);
     }
 }
+/*========== Variables Dark theme ==========*/
+.dark body{
+    --body-color: #0f0f0f;
+    --title-color: #f1f1f1;
+    --text-color: #f1f1f1;
+}
+
+/*========== 
+    Color changes in some parts of 
+    the website, in Dark theme
+==========*/
+.dark .header{
+    background-color: var(--body-color);
+}
+.dark .header-logo{
+    color: #fff;
+}
+.dark .header-logo span {
+    color: #00bcd4;
+}
+.dark .Auth-container a {
+   color: #aaaaaa; 
+}
+.dark .shopCart {
+   border: 1px solid rgb(255 255 255 / 10%); 
+}
+.dark .shopCart svg{
+   color: #f1f1f1; 
+}
+.dark .percentage-discount{
+    color: #aaaaaa;
+}
+.dark .showproduct-btn {
+    background-color: rgb(255 255 255 / 10%);
+    color: #f1f1f1;
+}
+.dark .footer {
+    background-color: rgb(255 255 255 / 10%);
+}
+
 /* ==========HEADER=========== */
 
 .header {
@@ -439,7 +480,6 @@ a {
     color: var(--text-color);
 }
 .final-price span {
-    font-size: var(--normal-font-size);
     font-weight: 700;
 }
 .showproduct-btn_container {

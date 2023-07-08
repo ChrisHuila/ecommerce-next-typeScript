@@ -24,16 +24,14 @@ const ShowProduct = ({ article }: Props) => {
 
     return (
         <div className="showproduct-container">
-            <div className="showproduct-img_container">
-                <Image
+            <Image
                     style={{ maxWidth: "100%" }}
                     src={article?.image}
                     alt={article.name}
                     width={232}
                     height={160}
                     priority={true}
-                />
-            </div>
+            />
             <h2 className="showproduct-title">{article.name}</h2>
 
             <div className="showproduct-body_container">
