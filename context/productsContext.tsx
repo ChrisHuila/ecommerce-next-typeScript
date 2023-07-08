@@ -1,8 +1,7 @@
 "use client";
 import { ReactNode, createContext, useReducer } from "react";
 import shopingCartReducer from "./shoopingCartReducer";
-import { Product, ProductsContext } from "@/types";
-import { User } from "firebase/auth";
+import { Product, ProductsContext,Users } from "@/types";
 
 interface productProvaiderProps {
     children: ReactNode;
@@ -23,7 +22,7 @@ const ProductsProvaider = ({ children }: productProvaiderProps) => {
 
     const [state, dispatch] = useReducer(shopingCartReducer, initialState);
 
-    const getUser = (user: User) => {
+    const getUser = (user: Users) => {
         dispatch({
             type: "GET_USER",
             payload: user,

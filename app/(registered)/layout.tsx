@@ -5,7 +5,7 @@ import ProtectedRoute from "@/components/protected/ProtectedRoute";
 import { productsContext } from "@/context/productsContext";
 import { useContext } from "react";
 
-const registeredLayout = ({children}: {children: React.ReactNode}) => {
+const RegisteredLayout = ({children}: {children: React.ReactNode}) => {
     const { user } = useContext(productsContext);
 
     return (
@@ -20,4 +20,4 @@ const registeredLayout = ({children}: {children: React.ReactNode}) => {
       );
 }
  
-export default registeredLayout;
+export default RegisteredLayout;
