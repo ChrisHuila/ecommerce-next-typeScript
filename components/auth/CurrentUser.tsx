@@ -33,13 +33,15 @@ const CurrentUser = ({ firebaseuser}: Props) => {
                 }
             
                 <li>
-                   <button 
-                   className={style.btn_logout}
-                   onClick={() => firebase.logout()
-                   }
-                   >
-                     Exit
-                   </button> 
+                    <Link href="/" >
+                        <button 
+                        className={style.btn_logout}
+                        onClick={() => firebase.logout()
+                        }
+                        >
+                            Exit
+                        </button>
+                    </Link> 
                 </li>
             </ul>
         </nav>
