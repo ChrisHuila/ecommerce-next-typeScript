@@ -4,7 +4,7 @@ import style from "@/components/auth/Auth.module.css"
 const AddIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className={style.add_icon}
+    className={`add_icon ${style.add_icon}`}
     viewBox="0 0 24 24"
     {...props}
   >

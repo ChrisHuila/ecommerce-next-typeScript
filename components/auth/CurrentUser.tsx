@@ -17,7 +17,7 @@ const CurrentUser = ({ firebaseuser}: Props) => {
 
     return (
         <nav>
-            <ul className={style.auth_container}>
+            <ul className={`auth_container ${style.auth_container}`}>
                 <li className={style.currentUser}>
                     <span>hi: </span>{userName}
                 </li>

@@ -129,6 +129,25 @@ a {
 .dark .shopCart svg{
    color: #f1f1f1; 
 }
+.dark .shopCart:hover .shopCart-menu {
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+.dark .auth_container{
+    color: var(--title-color);
+}
+.dark .auth_container span {
+    color: #aaaaaa;
+}
+.dark .auth_container button:last-of-type{
+    color: var(--title-color);
+}
+.dark .add_icon{
+    fill: var(--title-color);
+}
+.dark .showproduct-container{
+    border: 1px solid rgb(255 255 255 / 10%);
+}
 .dark .percentage-discount{
     color: #aaaaaa;
 }
@@ -358,9 +377,9 @@ a {
     padding: 0 1rem;
 }
 
-.shopCart-menu th:first-child,
-.shopCart-menu th:last-child {
-    padding: 12px 15px 5px 12px;
+
+.shopCart-menu th{
+    padding: .5rem 0;
 }
 
 .shopCart-menu td {
