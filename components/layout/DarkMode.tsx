@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import style from "@/components/darkmode/Dark.module.css"
 import MoonIcon from "../icons/moon-icon";
 import SunIcon from "../icons/sun-icon";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 const DarkMode = () => {
-    const [ toggle, setToggle ] = useState(false)
+    const [ toggle, setToggle ] = useLocalStorage('dark-mode', false);
 
     useEffect(() => {
         if(toggle){
