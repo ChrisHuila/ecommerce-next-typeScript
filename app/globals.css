@@ -111,6 +111,15 @@ a {
     Color changes in some parts of 
     the website, in Dark theme
 ==========*/
+.dark .auth-page {
+    background: var(--body-color);
+}
+.dark .auth-form{
+    background-color: rgb(255 255 255 / 10%);
+}
+.dark .current-tags{
+    background-color: #fff;
+}
 .dark .header{
     background-color: var(--body-color);
 }
@@ -552,12 +561,6 @@ a {
 }
 
 /* ========NEW PRODUCT======== */
-/* .newproduct-title{
-    margin-top: 5rem;
-    text-align: center;
-    font-family: var(--textFont);
-    font-size: var(--h1-font-size);
-} */
 .newproduct-form{
     max-width: 600px;
     width: 95%;
@@ -568,6 +571,7 @@ a {
     padding: 2rem;
     font-size: var(--h3-font-size);
     border: 1px solid #e1e1e1;
+    color: var(--text-color);
 }
 .newproduct-field {
     margin-bottom: 2rem;
@@ -578,6 +582,7 @@ a {
     flex: 0 0 150px;
     font-size: var(--normal-font-size);
     padding: .5rem 0;
+    color: var(--text-color);
 }
 @media (min-width: 610px) {
    .newproduct-field{

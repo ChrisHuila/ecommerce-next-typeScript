@@ -37,8 +37,8 @@ const SignUp = () => {
 
     return (
          <main className="minvh">
-            <div className={style.user_form}>
-                <div className={style.form_container}>
+            <div className={`auth-page ${style.user_form}`}>
+                <div className={`auth-form ${style.form_container}`}>
                     <h2 className={style.title_login}>Sign up</h2>
                     <form action="" onSubmit={onSubmit}>
                         <div className={style.form_field}>

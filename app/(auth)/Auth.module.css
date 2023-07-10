@@ -36,6 +36,7 @@
 .form_field label {
     flex: 0 0 100px;
     font-family: var(--textFont);
+    color: var(--text-color);
 }
 .form_field input[type="password"],
 .form_field input[type="email"],
@@ -78,6 +79,7 @@
     font-size: var(--normal-font-size);
     font-family: var(--textFont);
     font-weight: 700;
+    color: var(--text-color);
 }
 .account_link:hover {
     color: #2d6eaf;

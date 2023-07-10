@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import style from "@/components/darkmode/Dark.module.css"
 import MoonIcon from "../icons/moon-icon";
 import SunIcon from "../icons/sun-icon";
@@ -11,7 +11,7 @@ const DarkMode = () => {
         if(toggle){
             document.documentElement.classList.add('dark')
         }
-        if(!toggle && document.documentElement.classList.contains('dark') ){
+        if(!toggle && document.documentElement.classList.contains('dark')){
             document.documentElement.classList.remove('dark')
         }
 
@@ -20,7 +20,9 @@ const DarkMode = () => {
     return( 
         <button 
         className={style.btn} 
-        onClick={() => setToggle(!toggle)}
+        onClick={() => {
+            setToggle(!toggle)
+        }}
         >
             {!toggle 
             ? <MoonIcon />
