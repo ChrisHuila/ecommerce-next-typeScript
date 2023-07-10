@@ -16,7 +16,7 @@ const DarkMode = () => {
             document.documentElement.classList.remove('dark')
         }
 
-    },[toggle])
+    },[toggle, remove])
     
     return( 
         <button 

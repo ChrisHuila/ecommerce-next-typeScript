@@ -1,10 +1,10 @@
 "use client";
 import dynamic from "next/dynamic";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import SwiperCore, { Navigation } from 'swiper';
+
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
 // interface
 import { Product } from "@/types";
 
@@ -14,6 +14,8 @@ interface Props {
     products: Array<Product>;
     category: string;
 }
+
+SwiperCore.use([ Navigation ]);
 
 const HighlightedProducts = ({ products, category }: Props) => {
     const productResponsive = {
@@ -34,15 +36,17 @@ const HighlightedProducts = ({ products, category }: Props) => {
             spaceBetween: 10,
         },
     };
+     
     return (
         <div className="container HighlightedProducts">
             <h2 className="HighlightedProducts-category">{category}</h2>
             <Swiper
                 navigation={true}
-                modules={[Navigation]}
                 spaceBetween={10}
                 slidesPerView={1}
                 breakpoints={productResponsive}
+             
+                 
             >
                 {products?.map(product => (
                     <SwiperSlide key={product.id}>
