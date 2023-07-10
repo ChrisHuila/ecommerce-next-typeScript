@@ -4,7 +4,7 @@ import ShopCart from "../Shopping-Cart/ShopCart"
 import Auth from "../auth/Auth"
 import SearchForm from "../search/SearchForm"
 import Logo from "./Logo"
-import DarkMode from "./DarkMode";
+import DarkMode from "@/components/darkmode/DarkMode";
 
 const Header = () => {
     const queryClient = new QueryClient();

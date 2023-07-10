@@ -25,12 +25,12 @@ const ShowProduct = ({ article }: Props) => {
     return (
         <div className="showproduct-container">
             <Image
-                    style={{ maxWidth: "100%" }}
-                    src={article?.image}
-                    alt={article.name}
-                    width={232}
-                    height={160}
-                    priority={true}
+                style={{ maxWidth: "100%" }}
+                src={article?.image}
+                alt={article.name}
+                width={232}
+                height={160}
+                loading="lazy"
             />
             <h2 className="showproduct-title">{article.name}</h2>
 

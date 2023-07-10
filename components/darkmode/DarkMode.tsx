@@ -16,14 +16,14 @@ const DarkMode = () => {
             document.documentElement.classList.remove('dark')
         }
 
-    },[toggle, remove])
+    },[toggle])
     
     return( 
         <button 
         className={style.btn} 
         onClick={() => {
             setToggle(!toggle)
-            setRemove(!remove)
+            setRemove(true)
         }}
         >
             {!toggle 

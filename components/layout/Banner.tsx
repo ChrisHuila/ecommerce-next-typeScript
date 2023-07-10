@@ -1,12 +1,10 @@
 "use client"
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination, Autoplay } from 'swiper';
+import { Pagination, Autoplay } from 'swiper/modules';
 
-import 'swiper/swiper.scss';
-import 'swiper/components/pagination/pagination.scss';
+import 'swiper/css';
+import 'swiper/css/pagination';
 import Covers from './Covers';
-
-SwiperCore.use([ Pagination, Autoplay ]);
 
 const banner = [
   { img: 'https://user-images.githubusercontent.com/99347883/226123794-5b9e0b5a-c533-4af4-ac26-4676dea8ffaf.jpg' },
@@ -18,22 +16,22 @@ const banner = [
 const Banner = () => {
     return (
           <div>
-             <Swiper                    
-                pagination={{ clickable: true }}
-                autoplay={{
-                    delay: 6000,
-                    disableOnInteraction: false,
-                  }}
-                slidesPerView={1}
-                
+             <Swiper
+				modules={[ Pagination, Autoplay ]}                    
+				pagination={{ clickable: true }}
+				autoplay={{
+					delay: 6000,
+					disableOnInteraction: false,
+					}}
+				slidesPerView={1}
             >       
-                   {banner.map((portada, i) => (
-                        <SwiperSlide key={i}>
-                        <Covers 
-                            cover={portada.img}
-                        />
-                        </SwiperSlide>
-                   ))}
+				{banner.map((portada, i) => (
+					<SwiperSlide key={i}>
+					<Covers 
+						cover={portada.img}
+					/>
+					</SwiperSlide>
+				))}
                                          
             </Swiper>
         </div>
