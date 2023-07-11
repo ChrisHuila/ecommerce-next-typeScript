@@ -13,5 +13,4 @@ npm run dev
 
 ```
 
-## Learn More
 
