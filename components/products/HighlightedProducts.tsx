@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 // interface
 import { Product } from "@/types";
 
-const ShowProduct = dynamic(() => import("./ShowProduct"), { ssr: false });
+const ShowProduct = dynamic(() => import("./ShowProduct"));
 
 interface Props {
     products: Array<Product>;

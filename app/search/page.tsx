@@ -19,7 +19,6 @@ const Search = () => {
     const { isLoading, data } = useQuery(['search', query], () =>getProducts(query as string) );
 
     const hasProduct = data && data.length > 0;
-    console.log(data);
     
     return (
        <main className="minvh container">

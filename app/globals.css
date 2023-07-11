@@ -8,15 +8,6 @@
 
     --textFont: "Roboto", sans-serif;
     --title-color: #260c22;
-    /* 
-        --yt-spec-text-primary: #f1f1f1;
-        --yt-spec-text-primary-inverse: #0f0f0f;
-
-        --yt-spec-icon-inactive: #fff;
-        --yt-spec-icon-disabled: #717171;
-        --yt-spec-brand-icon-inactive: #fff;
-     */
-
 
     /*========== typography ==========*/
     --biggest-font-size: 3rem;
@@ -91,15 +82,15 @@ a {
 }
 @keyframes skeleton-loading {
     0%{
-        background-color: hsl(200, 20%, 75%);
+        background-color: hsl(210, 15%, 75%);
     }
 
     100% {
-        background-color: hsl(200, 20%, 95%);
+        background-color: hsl(210, 15%, 90%);
     }
 }
+
 /*========== Variables Dark theme ==========*/
-/* #313338  #0f0f0f #f1f2f4*/
 
 .dark body{
     --body-color: #1a1b1d ;

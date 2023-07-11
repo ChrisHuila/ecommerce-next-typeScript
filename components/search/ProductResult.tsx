@@ -38,7 +38,7 @@ const ProductResult = ({products}: Props) => {
                             alt={product.name}
                             width={300}
                             height={180}
-                            priority={true}
+                            loading="lazy"
                         />
                     </div>
                     <h2 className={style.product_title}>{product.name}</h2>
