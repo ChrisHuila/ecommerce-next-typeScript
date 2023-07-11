@@ -9,7 +9,7 @@ export interface Product {
     discount: number;
     id: string;
     quantity?: number;
-    tags?: string[];
+    tags: string[];
 }
 export interface Users {
     name: string;

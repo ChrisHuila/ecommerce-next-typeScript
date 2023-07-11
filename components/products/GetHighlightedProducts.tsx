@@ -12,7 +12,7 @@ const getProductsFire = async (category: string) => {
 };
 
 const GetHighlightedProducts = async () => {
-    const [clothing, technology] = await Promise.all([getProductsFire("clothing"), getProductsFire("technology")]);
+    const [ clothing, technology, sport ] = await Promise.all([getProductsFire("clothing"), getProductsFire("technology"), getProductsFire("Sports and Fitness")]);
     
     return (
         <div className="highlighted-products_container">
@@ -24,6 +24,10 @@ const GetHighlightedProducts = async () => {
             <HighlightedProducts
                 products={technology}
                 category={"technology"}
+            />
+            <HighlightedProducts
+                products={sport}
+                category={"Sports and Fitness"}
             />
         </div>
     );

@@ -4,15 +4,13 @@ import firebase from "@/firebase/index";
 import { newProducts } from "./fire";
 
 const UploadProductTest = () => {
-    // useEffect(() => {
-    //     const uploadData = () => {
-    //         newProducts.forEach(product => firebase.collect(product, "products"));
-    //     };
-    //     uploadData();
-    // }, []);
+    const handleProducts = () => {
+        newProducts.forEach(product => firebase.collect(product, "products"));
+        console.log('finish');
+    }
     return (
         <>
-            <p> upload</p>
+            <button onClick={handleProducts}> products</button>
         </>
     );
 };
