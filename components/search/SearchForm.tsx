@@ -28,7 +28,7 @@ const SearchForm = () => {
             <div className="search-box">
                 <input 
                 type="text"
-                placeholder="Search product"
+                placeholder="technology, sports, ball ..."
                 onChange={handleChange}
                 value={search} 
                  />
