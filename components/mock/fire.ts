@@ -133,69 +133,69 @@ tags: [ 'clothing']    },
         tags: ['technology']
     },
     {
-        name: "Tennis Ball and Racket",
+        name: "Tennis ball and Racket",
         price: "520",
         image: "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        category: "Sports and Fitness",
+        category: "sports and Fitness",
         date: 1686175261459,
-        information: "Tennis Ball and Racket",
+        information: "Tennis ball and Racket",
         warranty: { number: 6, date: "mont" },
         discount: 30,
-        tags: [ 'Sports', 'fitness', 'Tennis', 'Ball', 'Racket' ]
+        tags: [ 'sports', 'fitness', 'tennis', 'ball', 'racket' ]
     },
     {
-        name: "White Adidas Soccer Ball",
+        name: "White Adidas Soccer ball",
         price: "220",
         image: "https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        category: "Sports and Fitness",
+        category: "sports and Fitness",
         date: 1686175261459,
-        information: "White Adidas Soccer Ball",
+        information: "White Adidas Soccer ball",
         warranty: { number: 8, date: "mont" },
         discount: 10,
-        tags: [ 'Sports', 'fitness', 'Adidas', 'Ball', 'Soccer' ]
+        tags: [ 'sports', 'fitness', 'adidas', 'ball', 'soccer' ]
     },
     {
         name: "shoes",
         price: "150",
         image: "https://images.pexels.com/photos/7432/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        category: "Sports and Fitness",
+        category: "sports and Fitness",
         date: 1686175261459,
         information: "shoes",
         warranty: { number: 12, date: "mont" },
         discount: 10,
-        tags: [ 'Sports', 'fitness', 'shoes', 'running']
+        tags: [ 'sports', 'fitness', 'shoes', 'running']
     },
      {
         name: "Green, Blue, and Pink Kettle Bells",
         price: "420",
         image: "https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        category: "Sports and Fitness",
+        category: "sports and Fitness",
         date: 1686175261459,
         information: "Green, Blue, and Pink Kettle Bells",
         warranty: { number: 0, date: "mont" },
         discount: 0,
-        tags: [ 'Sports', 'fitness', 'Adidas', 'Kettle Bells']
+        tags: [ 'sports', 'fitness', 'adidas', 'kettle bells']
     },
      {
         name: "Black Skip Rope",
         price: "20",
         image: "https://images.pexels.com/photos/45056/pexels-photo-45056.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        category: "Sports and Fitness",
+        category: "sports and Fitness",
         date: 1686175261459,
         information: "Black Skip Rope",
         warranty: { number: 1, date: "mont" },
         discount: 0,
-        tags: [ 'Sports', 'fitness', 'Rope']
+        tags: [ 'sports', 'fitness', 'rope']
     },
      {
         name: "Basketball Hoop",
         price: "110",
         image: "https://images.pexels.com/photos/1332237/pexels-photo-1332237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        category: "Sports and Fitness",
+        category: "sports and Fitness",
         date: 1686175261459,
         information: "Basketball Hoop",
         warranty: { number: 8, date: "mont" },
         discount: 0,
-        tags: [ 'Sports', 'fitness', 'Basketball', "Basketball Hoop"]
+        tags: [ 'sports', 'fitness', 'Basketball', "Basketball Hoop"]
     },
 ];
