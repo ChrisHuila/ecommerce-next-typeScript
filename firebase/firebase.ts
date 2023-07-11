@@ -21,8 +21,6 @@ import {
     getDocs,
     orderBy,
     limit,
-    updateDoc,
-    increment,
 } from "firebase/firestore";
 
 export class Firebase {
