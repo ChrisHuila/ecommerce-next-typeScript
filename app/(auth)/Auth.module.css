@@ -26,7 +26,7 @@
     font-weight: 700;
 }
 .form_field{
-    display: flex;
+    display: grid;
     margin-bottom: 20px;
     align-items: center;
 }
@@ -37,6 +37,15 @@
     flex: 0 0 100px;
     font-family: var(--textFont);
     color: var(--text-color);
+    padding: .5rem;
+}
+@media (min-width: 400px) {
+   .form_field{
+    display: flex;
+   }
+   .form_field label{
+    padding: 0;
+   }
 }
 .form_field input[type="password"],
 .form_field input[type="email"],
