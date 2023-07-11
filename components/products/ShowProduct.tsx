@@ -31,6 +31,8 @@ const ShowProduct = ({ article }: Props) => {
                 width={232}
                 height={160}
                 loading="lazy"
+                className="skeleton"
+                onLoad={(e) => (e.target as Element).classList.remove('skeleton')}
             />
             <h2 className="showproduct-title">{article.name}</h2>
 

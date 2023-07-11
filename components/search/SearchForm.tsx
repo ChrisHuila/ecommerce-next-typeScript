@@ -11,16 +11,16 @@ const SearchForm = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newSearch = e.target.value;
-        const starSearch = newSearch.trim();
 
-        setSearch(starSearch);
+        setSearch(newSearch);
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement> ) => {
         e.preventDefault()
         if(search.trim() === '') return
+        const query = search.trim().toLowerCase();
 
-        router.push(`/search?q=${search}`)
+        router.push(`/search?q=${query}`)
     }
 
     return (
