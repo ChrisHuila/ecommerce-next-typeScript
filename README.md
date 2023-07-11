@@ -1,4 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 Commerce is fully responsive, the website allows users to browse and purchase products online. It features a shopping cart functionality where users can add products they wish to buy. Additionally, users can register on the website to create an account.
 
@@ -12,5 +11,5 @@ First, run the development server:
 npm run dev
 
 ```
-
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
