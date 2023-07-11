@@ -87,7 +87,7 @@ export class Firebase {
                 id: productRef.id,
                 ...element,
             });
-            // console.log('success from collect', productRef.id);
+            console.log('success from collect', productRef.id);
             
         } catch (error) {
             console.log(error, "desde agregar colleccion");
