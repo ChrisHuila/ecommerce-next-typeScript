@@ -5,7 +5,7 @@ import useAuth from '@/hooks/useAuth';
 import firebase from '@/firebase/firebase';
 import { useQuery } from 'react-query'
 import { Users } from "@/types";
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { productsContext } from '@/context/productsContext';
 import useCurrentUser from '@/hooks/useCurrentUser';
 

@@ -90,7 +90,7 @@ export class Firebase {
             console.log('success from collect', productRef.id);
             
         } catch (error) {
-            console.log(error, "desde agregar colleccion");
+            throw new Error('from collect')
         }
     }
 
