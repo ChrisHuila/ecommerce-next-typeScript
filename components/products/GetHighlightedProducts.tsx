@@ -4,7 +4,7 @@ import firebase from "@/firebase/index";
 // Interface
 import { Product } from "@/types";
 
-export const revalidate = 3600; // revalidate every minute
+export const revalidate = 0; 
 
 const getProductsFire = async (category: string) => {
     const res = (await firebase.getColletBy(category)) as Array<Product>;
@@ -13,6 +13,7 @@ const getProductsFire = async (category: string) => {
 
 const GetHighlightedProducts = async () => {
     const [ clothing, technology, sport ] = await Promise.all([getProductsFire("clothing"), getProductsFire("technology"), getProductsFire("sports and Fitness")]);
+    console.log(technology);
     
     return (
         <div className="highlighted-products_container">
