@@ -20,7 +20,6 @@ import {
     where,
     getDocs,
     orderBy,
-    limit,
 } from "firebase/firestore";
 
 export class Firebase {
@@ -93,25 +92,10 @@ export class Firebase {
             throw new Error('from collect')
         }
     }
-
-    async getCollet<T>(collect: string, limitNumber: number) {
-        const items: Array<T> = [];
-        const q = query(
-            collection(this.db, collect),
-            orderBy("date", "desc"),
-            limit(limitNumber)
-        );
-
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach(doc => {
-            items.push(doc.data() as T);
-        });
-        return items;
-    }
     async getColletBy(category: string) {
         const products: Array<Product> = [];
         const productRef = collection(this.db, "products");
-        const q = query(productRef, where("category", "==", category));
+        const q = query(productRef, where("category", "==", category), orderBy("date", "desc"));
         
         try {
             const querySnapshot = await getDocs(q);
