@@ -1,5 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from 'swiper/modules';
 
